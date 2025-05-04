@@ -6,19 +6,18 @@ body {
     display: flex;
     flex-direction: column;
     direction: rtl;
-    
+    background-size: cover;
 }
 
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(224, 224, 224, 0.4);
+    background-color: rgba(224, 224, 224, 0.253);
     padding: 10px 20px;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     direction: ltr;
-   
   }
 
   h1 {
@@ -42,7 +41,7 @@ body {
   }
 
   nav a {
-    color: #2c2a1e;
+    color: white;
     text-decoration: none;
     font-size: 20px;
     padding: 6px 8px;
@@ -94,7 +93,7 @@ body {
   .buttons p {
     margin: 0;
     font-size: 15px;
-    color: #444;
+    color: white;
     direction: rtl;
   }
 
@@ -130,10 +129,10 @@ body {
   }
 
   footer {
-    background-color: rgba(220, 220, 220, 0.4);
+    background-color: rgba(220, 220, 220, 0.253);
     border-top: 1px solid #aaa;
     font-size: 14px;
-    color: hwb(0 20% 80%);
+    color: white;
     display: flex;
     justify-content: space-between; 
     align-items: center;
@@ -144,9 +143,13 @@ body {
 
   footer a {
     color: #5e66f6;
-    text-decoration: none;;
+    text-decoration: none;
     
-    
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
   }
 
   footer a:hover {
@@ -171,7 +174,7 @@ body {
  }
  #footer-left p {
     margin: 0px;
-    color: #0d02026f;
+    color: white;
     font-size: small;
  }
  #vertical-line{
