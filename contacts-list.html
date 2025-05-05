@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="contact-list.css">
+    <title>مشخصات کاربران</title>
 </head>
 <body>
-    
+   
+    <table id="data-table">
+        <caption>مشخصات کاربران</caption>
+        <thead>
+          <tr>
+            <th>نام کاربری</th>
+            <th>نام و نام خانوادگی</th>
+            <th>ایمیل</th>
+            <th>رمز ورود</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      
+      <script>
+        let UserDataList = JSON.parse(localStorage.getItem("UserDataList")) || [];
+      
+        if (UserDataList.length > 0) {
+          let rows = "";
+          UserDataList.forEach(user => {
+            rows += `
+              <tr>
+                <td>${user.username}</td>
+                <td>${user.fullName}</td>
+                <td>${user.email}</td>
+                <td>${user.password}</td>
+              </tr>
+            `;
+          });
+          document.getElementById("table-body").innerHTML = rows;
+        } else {
+          document.getElementById("table-body").innerHTML = '<tr><td colspan="4">هیچ کاربری یافت نشد</td></tr>';
+        }
+      </script>
+      
 </body>
 </html>
