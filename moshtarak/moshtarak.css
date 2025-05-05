@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: 'Vazirmatn', sans-serif;
+    background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    background-size: cover;
+}
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(224, 224, 224, 0.253);
+    padding: 10px 20px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    direction: ltr;
+  }
+
+  h1 {
+    margin: 0;
+    color: #5e66f6;
+    font-size: 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  nav .menu-item {
+    position: relative;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 6px 8px;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #5e66f6;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: rgb(162, 206, 236);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    min-width: 200px;
+    direction: rtl;
+    z-index: 1000;
+  }
+
+  .submenu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    color: #333;
+    font-size: 16px;
+  }
+
+  .submenu a:hover {
+    background-color: #f0f0f0;
+  }
+
+  .menu-item:hover .submenu {
+    display: block;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
+
+  .buttons p {
+    margin: 0;
+    font-size: 15px;
+    color: white;
+    direction: rtl;
+  }
+
+  .buttons button {
+    padding: 6px 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5e66f6;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Vazirmatn', sans-serif;
+    width: 96px;
+    height: auto;
+  }
+
+  .buttons button:hover {
+    background-color: #3a41d8;
+    border: solid 2px white;
+    font-size: 14px;
+  }
+
+  .submenu i {
+    width: 20px;
+    text-align: center;
+  }
+
+  main {
+    flex: 1;
+    padding: 40px 20px;
+    
+  }
+
+  footer {
+    background-color: rgba(220, 220, 220, 0.253);
+    border-top: 1px solid #aaa;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 110px;
+    
+    
+  }
+
+  footer a {
+    color: #4bf1d8;
+    text-decoration: none;
+    
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+  img{
+    width: 150px;
+    height: 150px;
+    
+  }
+ #footer-center{
+    text-align: center;
+ }
+ #footer-left{
+    text-align: center;
+    gap: 0;
+ }
+ #footer-right{
+    text-align: center;
+    
+    
+ }
+ #footer-left p {
+    margin: 0px;
+    color: white;
+    font-size: small;
+ }
+ #vertical-line{
+    width: 1px;
+    height: 80%;
+    background-color: rgba(63, 63, 62, 0.222);
+ }
+ #apps{
+  direction: ltr;
+ }
+
