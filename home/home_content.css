@@ -1,63 +1,90 @@
 table {
-    width           : 100%;
-    max-width       : 20vh;                         /* عرض حداکثر برای خوانایی */
-    margin          : 20px auto;                     /* وسط‌چین کردن و فاصله بین جدول‌ها */
-    border-collapse : collapse;
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
     background-color: #fff;
-    box-shadow      : 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius   : 8px;
-    float: left;
-    height: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     direction: ltr;
 }
 
-#tabel{
+#tabel {
     overflow: auto;
-    width: 38vh;
+    width: 100%;
+    max-width: 38vh;
+    margin: 0 auto;
     float: left;
 }
 
-h1{
+h1 {
     direction: rtl;
+    float: right;
 }
 
 th {
     background-color: #5e66f6;
-    color           : white;
-    font-size       : 18px;
-    font-weight     : bold;
-    padding         : 12px;
-    text-align      : center;
-    text-transform  : uppercase;
-    font-family     : 'Bebas Neue', sans-serif;  /* فونت هدر */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 tr {
-    border    : none;
+    border: none;
     transition: background-color 0.3s;
 }
 
 tr:nth-child(even) {
-    background-color: #f8f8f8;  /* رنگ متناوب برای سطرها */
+    background-color: #f8f8f8;
 }
 
 tr:hover {
-    background-color: #e0e0e0;  /* رنگ هنگام هاور */
+    background-color: #e0e0e0;
 }
 
 td {
-    padding      : 10px;
-    text-align   : center;
-    font-size    : 16px;
-    color        : #333;
-    border-bottom: 1px solid #ddd;  /* خط جداکننده سطرها */
-    margin-left  : 0;               /* حذف حاشیه چپ */
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
 }
 
-caption{
+caption {
     margin-bottom: 8px;
-    border-radius: 8px;
-    padding      : 2px;  
-    background-color:#5e66f6 ;
-    color:      white;
+    padding: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.neon {
+    position: relative;
+    display: inline-block; /* عرض را با متن تنظیم می‌کند */
+    color: white;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 4px; /* فاصله برای افکت زیر متن */
+}
+
+.neon::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #6ee2f4, #e9001e, transparent);
+    animation: neon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
