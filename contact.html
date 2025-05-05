@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="../moshtarak/moshtarak.css">
     <title>تماس با ما</title>
 </head>
 <body>               
     <script>
         async function loadPage() {
           // لود قالب ثابت
-          const layout = await fetch('moshtarak.html').then(res => res.text());
+          const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
           document.body.innerHTML = layout;
       
           // لود محتوای صفحه
