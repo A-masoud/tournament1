@@ -1,6 +1,6 @@
 table {
     width           : 100%;
-    max-width       : 20vh;                         /* عرض حداکثر برای خوانایی */
+    max-width       : 30vh;                         /* عرض حداکثر برای خوانایی */
     margin          : 20px auto;                     /* وسط‌چین کردن و فاصله بین جدول‌ها */
     border-collapse : collapse;
     background-color: #fff;
@@ -13,8 +13,9 @@ table {
 
 #tabel{
     overflow: auto;
-    width: 38vh;
+    width: 50vh;
     float: left;
+    height: 340px;
 }
 
 h1{
