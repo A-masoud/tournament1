@@ -13,11 +13,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(224, 224, 224, 0.253);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid white;
     padding: 10px 20px;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     direction: ltr;
+    border-top: none;
   }
 
   h1 {
@@ -129,16 +131,16 @@ body {
   }
 
   footer {
-    background-color: rgba(220, 220, 220, 0.253);
-    border-top: 1px solid #aaa;
     font-size: 14px;
     color: white;
     display: flex;
     justify-content: space-between; 
     align-items: center;
     padding: 20px 110px;
-    
-    
+    border-radius: 12px 12px 0px 0px;
+    backdrop-filter: blur(20px);
+    border: 1.5px solid white;
+    border-bottom: none;
   }
 
   footer a {
