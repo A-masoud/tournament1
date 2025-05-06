@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Vazirmatn', sans-serif;
-    background-image: url(ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
+    background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -13,16 +13,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(224, 224, 224, 0.253);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid white;
     padding: 10px 20px;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     direction: ltr;
+    border-top: none;
   }
 
   h1 {
     margin: 0;
-    color: #5e66f6;
+    color: white;
     font-size: 28px;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 40px;
@@ -129,16 +131,16 @@ body {
   }
 
   footer {
-    background-color: rgba(220, 220, 220, 0.253);
-    border-top: 1px solid #aaa;
     font-size: 14px;
     color: white;
     display: flex;
     justify-content: space-between; 
     align-items: center;
     padding: 20px 110px;
-    
-    
+    border-radius: 12px 12px 0px 0px;
+    backdrop-filter: blur(20px);
+    border: 1.5px solid white;
+    border-bottom: none;
   }
 
   footer a {

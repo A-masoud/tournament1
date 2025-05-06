@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ورود</title>
     <link rel="stylesheet" href="rigister.css">
+    <link rel="stylesheet" href="../moshtarak/moshtarak.css">
 </head>
 <body>
     <script>
         async function loadPage (){
-        const layout = await fetch("moshtarak.html").then(res => res.text());
+        const layout = await fetch("../moshtarak/moshtarak.html").then(res => res.text());
         document.body.innerHTML = layout;
 
         await new Promise(resolve => setTimeout(resolve, 100));

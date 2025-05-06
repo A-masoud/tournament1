@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ثبت نام</title>
-  <link rel="stylesheet" href="moshtarak.css">
+  <link rel="stylesheet" href="../moshtarak/moshtarak.css">
   <link rel="stylesheet" href="rigister.css">
 </head>
 <body>
   <script>
     async function loadPage() {
      
-      const layout = await fetch('moshtarak.html').then(res => res.text());
+      const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
       document.body.innerHTML = layout;
 
     
