@@ -209,7 +209,52 @@ img {
   }
 
   .buttons {
+<<<<<<< Updated upstream
       align-items: center;
+=======
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
+
+  .buttons p {
+    margin: 0;
+    font-size: 15px;
+    color: white;
+    direction: rtl;
+  }
+
+  .buttons button {
+    padding: 6px 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5e66f6;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Vazirmatn', sans-serif;
+    width: 96px;
+    height: auto;
+  }
+
+  .buttons button:hover {
+    background-color: #3a41d8;
+    border: solid 2px white;
+    font-size: 14px;
+  }
+
+  .submenu i {
+    width: 20px;
+    text-align: center;
+  }
+
+  main {
+    flex: 1;
+    padding:20px;
+    
+>>>>>>> Stashed changes
   }
 
   footer {

@@ -1,20 +1,30 @@
 <div class="login-container">
   <div class="terms">
-    <form id="rigister-form"  action="#" method="POST">
-      <label for="fullName">نام و نام خانوادگی</label>
-      <input type="text" id="fullName" name="fullName" placeholder="نام و نام خانوادگی را وارد کنید">
+    <form id="rigister-form" action="#" method="POST">
+      <div class="input-group">
+        <input type="text" id="fullName" name="fullName" required aria-label="نام و نام خانوادگی">
+        <label for="fullName">نام و نام خانوادگی:</label>
+      </div>
 
-      <label for="username">نام کاربری</label>
-      <input type="text" id="username" name="username" placeholder="نام کاربری را وارد کنید">
+      <div class="input-group">
+        <input type="text" id="username" name="username" required aria-label="نام کاربری">
+        <label for="username">نام کاربری:</label>
+      </div>
 
-      <label for="password">رمز عبور</label>
-      <input type="password" id="password" name="password" placeholder="رمز عبور را وارد کنید">
+      <div class="input-group">
+        <input type="password" id="password" name="password" required aria-label="رمز عبور">
+        <label for="password">رمز عبور:</label>
+      </div>
 
-      <label for="passwordAgain">تکرار رمز عبور</label>
-      <input id="passwordAgain" type="password" name="passwordAgain" placeholder="رمزعبور را دوباره وارد کنید">
+      <div class="input-group">
+        <input type="password" id="passwordAgain" name="passwordAgain" required aria-label="تکرار رمز عبور">
+        <label for="passwordAgain">تکرار رمز عبور:</label>
+      </div>
 
-      <label for="email">ایمیل</label>
-      <input id="email" type="email" name="email" placeholder="ایمیل را وارد کنید">
+      <div class="input-group">
+        <input type="email" id="email" name="email" required aria-label="ایمیل">
+        <label for="email">ایمیل:</label>
+      </div>
 
       <label for="agree">
         <input class="checkbox" type="checkbox" id="agree">

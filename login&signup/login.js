@@ -13,7 +13,7 @@ document.getElementById("login-form").addEventListener("submit", function(e){
     if (matchedUser) {
         localStorage.setItem("currentUser", matchedUser.username);
         alert("شما با موفقیت وارد شدید");
-        window.location.href ="home.html"
+        window.location.href ="../home/home.html"
     } else {
         alert("کاربری با این مشخصات یافت نشد");
     }
