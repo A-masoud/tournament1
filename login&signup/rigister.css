@@ -61,7 +61,7 @@ input:focus {
   position: absolute;
   top: 12px;
   right: 10px;
-  color: #ffffff;
+  color: black;
   font-size: 16px;
   font-family: 'Vazirmatn', sans-serif;
   transition: all 0.3s ease;
