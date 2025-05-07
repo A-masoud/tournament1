@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center; 
+    margin-top: 50px;
+}
+
+.slider {
+    display: none; 
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.slider img {
+    width: 70vh;
+    height: 40vh;
+    border-radius: 20px;
+    margin: 0 auto; 
+}
+
+.slider h1 {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.next, .prev {
+    font-size: xx-large;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* برای وسط‌چین کردن دکمه‌ها در محور عمودی */
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.next:hover, .prev:hover {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.cont {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pic {
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0.5px solid black;
+    margin: 0 5px;
+}
+
+.pic:hover {
+    border-color: #504e4e;
+}
+
+.Deactivating {
+    opacity: 0.5;
+}
+
+.active {
+    border: 2px solid #504e4e;
+    opacity: 1;
+}
+
+.cont img{
+    width: 120px;
+    height: 120px;
+}
