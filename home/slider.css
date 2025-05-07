@@ -1,99 +1,55 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
+body {
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+
+.slider-container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
     position: relative;
-    text-align: center; 
-    margin-top: 50px;
+    overflow: hidden;
 }
 
 .slider {
-    display: none; 
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex;
+    transition: transform 0.3s ease;
 }
 
+.slide {
+    min-width: 100%;
+}
 
 .slider img {
-    width: 70vh;
-    height: 40vh;
-    border-radius: 20px;
-    margin: 0 auto; 
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
-.slider h1 {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    font-size: 36px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin: 0;
-}
-
-.next, .prev {
-    font-size: xx-large;
-    text-decoration: none;
-    cursor: pointer;
+.nav-button {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* برای وسط‌چین کردن دکمه‌ها در محور عمودی */
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     padding: 10px;
-    color: #000;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.next:hover, .prev:hover {
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-
-}
-
-
-.next {
-    right: 10px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .prev {
     left: 10px;
 }
 
-.cont {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.pic {
-    cursor: pointer;
-    border-radius: 10px;
-    border: 0.5px solid black;
-    margin: 0 5px;
-}
-
-.pic:hover {
-    border-color: #504e4e;
-}
-
-.Deactivating {
-    opacity: 0.5;
-}
-
-.active {
-    border: 2px solid #504e4e;
-    opacity: 1;
-}
-
-.cont img{
-    width: 120px;
-    height: 120px;
+.next {
+    right: 10px;
 }
