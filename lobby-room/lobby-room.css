@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 300px; /* حداقل ۳۰۰ پیکسل، واکنش‌گرا */
+}
+
+.avatar-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.377);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.avatar-row img {
+    width: 7vw;
+    height: 7vw;
+    object-fit: cover;
+    border-radius: 20%;
+    border: solid 1px rgb(255, 255, 255);
+    
+}
