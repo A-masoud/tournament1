@@ -18,14 +18,16 @@ body {
   .header, .footer {
     width: 100%;
     height: 5%;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 50px;
+    border: 2.5px solid white;
+    border-radius: 0 0 12px 12px;
+    border-top: none;
   }
   
   /* سایدبار شفاف */
@@ -33,11 +35,12 @@ body {
     width: 25%;
     height: 75%;
     backdrop-filter: blur(12px);
-    background-color: rgba(240, 240, 240, 0.25);
     padding: 15px;
     border-radius: 12px;
     color: #ffffff;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    margin-right: 10px;
   }
   
   /* منوی سایدبار */
@@ -48,14 +51,14 @@ body {
   
   .sidebar ul li {
     margin-bottom: 10px;
+    border-right: 1.5px solid white;
   }
   
   .sidebar ul li a {
     display: block;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
     text-decoration: none;
-    color: #2c3e50;
+    color: white;
     border-radius: 8px;
     transition: background-color 0.3s;
   }
@@ -69,36 +72,69 @@ body {
     flex-grow: 1;
     height: 75%;
     backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.25);
     padding: 20px;
     border-radius: 12px;
     overflow-y: auto;
     color: #ffffff;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 2px solid white;
+    margin-left: 10px;
   }
   
   /* کارت آمار و اقدامات سریع */
   .stats, .quick-actions {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    border:1.5px solid whitesmoke;
   }
   
-  .quick-actions button {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #2c3e50;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px 5px 0 0;
-    border-radius: 6px;
+
+
+  .btn41-43 {
+    padding: 10px 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
   }
   
-  .quick-actions button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+  .btn-41 {
+    border: 2px solid rgb(255, 255, 255);
+    z-index: 1;
+    color: white;
+  }
+  
+  .btn-41:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    background: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-41:hover {
+    color: rgb(0, 0, 0);
+  }
+  
+  .btn-41:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  
+  .btn-41:active {
+    top: 2px;
   }
   

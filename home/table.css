@@ -6,13 +6,13 @@ table {
     border-radius: 8px;
     direction: ltr;
     border: #5e66f6 3px solid;
+    border-radius: 12px 12px 0 0;
 }
 
 #tabel {
     overflow: auto;
     width: 100%;
     margin: 0 auto;
-    
 }
 
 h1 {
