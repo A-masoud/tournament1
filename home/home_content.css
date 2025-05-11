@@ -8,11 +8,11 @@
 }
 
 .item:nth-child(1) {
-  width: 64%;
+  width:64%;
   height: 32%;
-  flex-grow: ;
+ 
   order: 0;
-  flex-shrink: ;
+  
   margin-top:  100px;
 }
 
