@@ -1,67 +1,114 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-  <title>پنل مدیریت</title>
-  <link rel="stylesheet" href="admin-panel.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منوی رودخانه‌ای</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      background: #f0f0f0;
+      padding: 20px;
+      position: relative;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-item {
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .menu-item:hover {
+      background: #e0e0e0;
+    }
+
+    .menu-item.active {
+      background: #d0ebff;
+    }
+
+    .menu-item.active::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 2px;
+      background: #3498db;
+      animation: flow 0.5s forwards;
+    }
+
+    @keyframes flow {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 10px;
+        opacity: 1;
+      }
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+      border-right: 3px solid transparent;
+      transition: border-color 0.3s;
+      background-color: #fff;
+    }
+
+    .content.border-active {
+      border-right-color: #3498db;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>پنل مدیریت</h1>
-    </div>
-
     <div class="sidebar">
-      <ul>
-        <li><a href="#" data-section="dashboard">🏠 داشبورد و آمار کلی</a></li>
-        <li><a href="#" data-section="users-list">👥 لیست کاربران</a></li>
-        <li><a href="#" data-section="teams">🧑‍🤝‍🧑 تیم‌های مسابقات</a></li>
-        <li><a href="#" data-section="timer">⏱  تنظیم تایمر شروع</a></li>
-        <li><a href="#" data-section="discounts">🏷 کد تخفیف</a></li>
-        <li><a href="#" data-section="add-admin">➕ افزودن ادمین</a></li>
-        <li><a href="#" data-section="settings">⚙️ تنظیمات</a></li>
-        <li><a href="#" data-section="logout">🚪 خروج</a></li>
-      </ul>
-      
+      <div class="menu-item" data-target="خانه">خانه</div>
+      <div class="menu-item" data-target="درباره ما">درباره ما</div>
+      <div class="menu-item" data-target="خدمات">خدمات</div>
+      <div class="menu-item" data-target="تماس با ما">تماس با ما</div>
     </div>
-
-    <div class="content">
-      <h2>خوش آمدید به پنل مدیریت</h2>
-
-      <section class="stats">
-        <h3>آمار کلی</h3>
-        <ul>
-         <li><p>👤کاربران ثبت نام کننده:<span id="UserCount"></span></p></li>
-          <li>🏆 تیم‌های فعال: 0</li>
-          <li>⏰ تایمر: فعال</li>
-          <li>🏷 کدهای تخفیف ارسال‌شده: 12</li>
-        </ul>
-      </section>
-
-      <section class="quick-actions">
-        <h3>اقدامات سریع</h3>
-        <a class="btn41-43 btn-41">
-          افزودن تیم دستی
-        </a>
-        <a class="btn41-43 btn-41">
-          ارسال کد تخفیف
-        </a>
-        <a class="btn41-43 btn-41">
-          حذف کاربر
-        </a>
-        
-      </section>
+    <div class="content" id="content">
+      لطفاً یکی از گزینه‌های منو را انتخاب کنید.
     </div>
+  </div>
 
-    <script src="admin-panel.js">
+  <script>
+    const menuItems = document.querySelectorAll('.menu-item');
+    const content = document.getElementById('content');
 
-     
-    </script>
-   
-    
-    
-    
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        content.classList.add('border-active');
+        const target = item.getAttribute('data-target');
+        content.innerHTML = `<h2>${target}</h2><p>محتوای بخش ${target} اینجاست.</p>`;
+      });
+    });
+  </script>
 </body>
 </html>
