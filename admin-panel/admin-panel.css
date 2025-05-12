@@ -9,7 +9,6 @@ body {
   
   .container {
     display: flex;
-    gap: 2%;
     flex-wrap: wrap;
     align-content: start;
   }
@@ -37,10 +36,12 @@ body {
     backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 12px;
+    margin-right: 12px;
     color: #ffffff;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     border: 2px solid rgb(129, 120, 120);
-    margin-right: 10px;
+    border-left: none;
+    padding-left: 0;
   }
   
   /* منوی سایدبار */
@@ -51,7 +52,6 @@ body {
   
   .sidebar ul li {
     margin-bottom: 10px;
-    border-right: 1.5px solid rgb(26, 219, 122);
   }
   
   .sidebar ul li a {
@@ -59,12 +59,22 @@ body {
     padding: 10px;
     text-decoration: none;
     color: white;
-    border-radius: 8px;
     transition: background-color 0.3s;
   }
   
   .sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.6);
+
+ 
+  }
+
+  .sidebar ul li a:active{
+       border: 2px solid white;
+      border-left: none;
+  }
+
+  .border{
+    border: 2px solid white;
+      border-left: none;
   }
   
   /* محتوای اصلی شفاف */
@@ -80,7 +90,15 @@ body {
     border-radius: 12px;
     border: 2px solid rgb(90, 73, 73);
     margin-left: 10px;
-  }
+
+    border-image: linear-gradient(to top, white 0%, white 77%, transparent 60%, transparent 86%, white 70%, white 100%) 1
+}
+
+#border{
+  border-right:2px solid white ;
+  z-index: 100;
+}
+
   
   /* کارت آمار و اقدامات سریع */
   .stats, .quick-actions {
