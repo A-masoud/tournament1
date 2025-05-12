@@ -15,7 +15,7 @@ body {
   }
   
   /* هدر و فوتر شفاف */
-  .header, .footer {
+  .header {
     width: 100%;
     height: 5%;
     backdrop-filter: blur(12px);
@@ -33,7 +33,7 @@ body {
   /* سایدبار شفاف */
   .sidebar {
     width: 25%;
-    height: 75%;
+    height: auto;
     backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 12px;
@@ -70,7 +70,7 @@ body {
   /* محتوای اصلی شفاف */
   .content {
     flex-grow: 1;
-    height: 75%;
+    height: 95%;
     backdrop-filter: blur(12px);
     padding: 20px;
     border-radius: 12px;
@@ -138,3 +138,21 @@ body {
     top: 2px;
   }
   
+
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 60%;
+    color: #f0f0f0;
+  }
+  th, td {
+    border: 1px solid rgb(161, 136, 233);
+    padding: 12px;
+  }
+  th {
+    background-color: rgba(162, 46, 172 ,0.4);
+  }
+  caption{
+    margin-top: 10px;
+    border: solid 1px rgb(161, 136, 233);
+  }
