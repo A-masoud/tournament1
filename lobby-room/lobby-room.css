@@ -5,6 +5,7 @@ body {
     background-color: #f0f0f0;
 }
 
+
 .main-container {
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex: 1 1 300px; /* حداقل ۳۰۰ پیکسل، واکنش‌گرا */
+    flex: 1 1 300px; 
 }
 
 .avatar-row {
@@ -38,3 +39,56 @@ body {
     border: solid 1px rgb(255, 255, 255);
     
 }
+.team-wrapper {
+    border: 2px solid transparent;
+    transition: border 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .team-wrapper.hover-effect:hover {
+    border: 2px solid #00bcd4;
+  }
+  
+  .team-wrapper.selected {
+    border: 2px solid #4caf50 !important;
+    background-color: #446b43;
+  }
+  #team-selection-info {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(181, 197, 203, 0.799);
+    color: #213742;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-family: 'Vazirmatn', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 18px;
+    transition: top 0.5s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #team-selection-info.active {
+    top: 30px;
+  }
+  
+  #go-to-register {
+    margin-top: 10px;
+    background-color: #00cc66;
+    border: none;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  
+
+  
+  

@@ -3,15 +3,17 @@ const rightColumn = document.querySelectorAll('.column')[1];
 
 function createTeamBlock(teamNumber) {
     const wrapper = document.createElement('div');
+    wrapper.classList.add("team-wrapper", "hover-effect");
+
     const title = document.createElement('p');
     title.textContent = `Team ${teamNumber}`;
     title.style.margin = "0 0 5px 0";
     title.style.fontWeight = "bold";
-    title.style.textAlign="center";
-    title.style.color= "#f0f0f0"
-    title.style.fontFamily="'Bebas Neue', sans-serif"
-    title.style.backgroundColor= "rgba(255, 255, 255, 0.377)"
-    title.style.borderRadius = "50px"
+    title.style.textAlign = "center";
+    title.style.color = "#f0f0f0";
+    title.style.fontFamily = "'Bebas Neue', sans-serif";
+    title.style.backgroundColor = "rgba(255, 255, 255, 0.377)";
+    title.style.borderRadius = "50px";
 
     const row = document.createElement('div');
     row.className = 'avatar-row';
@@ -25,6 +27,28 @@ function createTeamBlock(teamNumber) {
 
     wrapper.appendChild(title);
     wrapper.appendChild(row);
+
+   //////////////////////////////////////////////////////////////////////////////// /// هندل انتخاب تیم
+    wrapper.addEventListener("click", () => {
+        document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
+        wrapper.classList.add("selected");
+
+        const teamSelectionInfo = document.getElementById("team-selection-info");
+        const selectedText = document.getElementById("selected-team-text");
+
+        selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
+        teamSelectionInfo.classList.add("active");
+
+        document.getElementById("go-to-register").onclick = () => {
+            localStorage.setItem("selectedTeamNumber", teamNumber);
+            window.location.href = "register.html";
+        };
+
+        setTimeout(() => {
+            teamSelectionInfo.classList.remove("active");
+        }, 5000);
+    });
+
     return wrapper;
 }
 
@@ -35,6 +59,7 @@ for (let i = 0; i < 12; i++) {
     rightColumn.appendChild(createTeamBlock(teamNumberRight));
     leftColumn.appendChild(createTeamBlock(teamNumberLeft));
 }
-const avatar10 = document.querySelectorAll('.avatar-row img')[9]; // چون اندیس از 0 شروع میشه
-avatar10.style.border = "2px solid red"; // مثلاً دورش قرمز شه
 
+// مثال تستی که یه آواتار خاص رو بردر قرمز بدیم
+const avatar10 = document.querySelectorAll('.avatar-row img')[9];
+avatar10.style.border = "2px solid red";

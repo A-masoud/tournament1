@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+</head>
+</head>
+<style>
+    body {
+  background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
+  background-size: cover;
+  font-family: 'Vazirmatn', sans-serif;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+form#register-form {
+  background: rgba(30, 30, 30, 0.95);
+  border: 2px solid #00ffea;
+  border-radius: 15px;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px #00fff2aa;
+  animation: fadeIn 0.8s ease;
+  direction: rtl;
+}
+
+form h3 {
+  text-align: center;
+  color: #00ffea;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #00ffea;
+  padding-bottom: 10px;
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  color: #ddd;
+  font-size: 14px;
+  text-shadow: 0 0 2px #00ffee;
+}
+
+form input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: auto;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+form input:focus {
+  border-color: #00ffea;
+  box-shadow: 0 0 5px #00ffea88;
+}
+
+form button {
+  font-family: 'Vazirmatn', sans-serif;
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px 0;
+  background: #00ffea;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #00ffeacc;
+  box-shadow: 0 0 10px #00ffea;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+<body>
+    <form id="register-form">
+        <h3>مشخصات لیدر</h3>
+      
+        <label>نام و نام خانوادگی لیدر</label>
+        <input type="text" name="leaderName" required>
+      
+        <hr>
+      
+        <h3>مشخصات بازیکنان</h3>
+      
+        <label>بازیکن ۱ - نام کاربری</label>
+        <input type="text" name="player1Username" required>
+      
+        <label>آیدی بازی بازیکن ۱ (۱۰ رقمی)</label>
+        <input type="text" name="player1ID" pattern="\d{10}" required>
+      
+        <label>بازیکن ۲ - نام کاربری</label>
+        <input type="text" name="player2Username" required>
+      
+        <label>آیدی بازی بازیکن ۲ (۱۰ رقمی)</label>
+        <input type="text" name="player2ID" pattern="\d{10}" required>
+      
+        <label>بازیکن ۳ - نام کاربری</label>
+        <input type="text" name="player3Username" required>
+      
+        <label>آیدی بازی بازیکن ۳ (۱۰ رقمی)</label>
+        <input type="text" name="player3ID" pattern="\d{10}" required>
+      
+        <label>بازیکن ۴ - نام کاربری</label>
+        <input type="text" name="player4Username" required>
+      
+        <label>آیدی بازی بازیکن ۴ (۱۰ رقمی)</label>
+        <input type="text" name="player4ID" pattern="\d{10}" required>
+      
+        <button type="submit"> پرداخت و نهایی کردن ثبت نام</button>
+      </form>
+      
+</body>
+</html>
