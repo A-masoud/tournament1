@@ -41,7 +41,7 @@ function createTeamBlock(teamNumber) {
 
         document.getElementById("go-to-register").onclick = () => {
             localStorage.setItem("selectedTeamNumber", teamNumber);
-            window.location.href = "register.html";
+            window.location.href = "rigister-tournament.html";
         };
 
         setTimeout(() => {

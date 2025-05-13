@@ -71,6 +71,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: #000000 solid 1px;
   }
   
   #team-selection-info.active {
