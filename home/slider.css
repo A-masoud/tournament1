@@ -11,7 +11,7 @@ body {
 
 .slider-container {
     width: 80%;
-    max-width: 800px;
+    max-width: 1920px;
     margin: auto;
     position: relative;
     overflow: hidden;
