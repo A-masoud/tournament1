@@ -139,6 +139,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 59vh;
   padding: 0px 20px;
 }

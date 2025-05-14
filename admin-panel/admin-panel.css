@@ -68,10 +68,6 @@ body {
  
   }
 
-  .sidebar ul li a:active{
-       border: 2px solid white;
-      border-left: none;
-  }
 
   .border{
     border: 2px solid white;
@@ -81,7 +77,6 @@ body {
   /* محتوای اصلی شفاف */
   .content {
     flex-grow: 1;
-    height: 95%;
     backdrop-filter: blur(12px);
     padding: 20px;
     border-radius: 12px;
@@ -89,10 +84,10 @@ body {
     color: #ffffff;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     border-radius: 12px;
-    border: 2px solid rgb(90, 73, 73);
+    border: 2px solid rgb(129, 120, 120);
     margin-left: 10px;
-
-    border-image: linear-gradient(to top, white 0%, white 77%, transparent 60%, transparent 86%, white 70%, white 100%) 1
+    background-color: rgba(129, 120, 120, 0.288);
+    border-right: none;
 }
 
 #border{
@@ -110,8 +105,15 @@ body {
     border:1.5px solid rgb(80, 79, 79);
   }
   
+.sidebar ul li a.active-link {
+  background-color: rgba(129, 120, 120, 0.315);
+  border-radius: 0 8px 8px 0;
+}
 
-
+.sidebar ul li a:hover{
+  background-color: rgba(129, 120, 120, 0.103);
+  border-radius: 0 8px 8px 0;
+}
   .btn41-43 {
     padding: 10px 25px;
     font-family: "Roboto", sans-serif;
