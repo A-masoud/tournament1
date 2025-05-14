@@ -63,11 +63,6 @@ body {
     transition: background-color 0.3s;
   }
   
-  .sidebar ul li a:hover {
-
- 
-  }
-
 
   .border{
     border: 2px solid white;
