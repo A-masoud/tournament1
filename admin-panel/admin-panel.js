@@ -86,3 +86,32 @@ function clearUsers() {
     alert("همه کاربران حذف شدند ✅");
   }
 }
+////////////////////////////////////////////////////////////////////////////
+function setStartTime() {
+  const dateValue = document.getElementById("startDate").value;
+  const timeValue = document.getElementById("startClock").value;
+
+  if (!dateValue || !timeValue) {
+    alert("لطفاً تاریخ و ساعت رو کامل وارد کن.");
+    return;
+  }
+
+  // ترکیب تاریخ و ساعت به فرمت استاندارد
+  const fullDateTime = new Date(`${dateValue}T${timeValue}`);
+
+  // ذخیره در localStorage
+  localStorage.setItem("tournamentStartTime", fullDateTime.toISOString());
+
+  document.getElementById("currentTime").textContent =
+    "زمان تنظیم‌شده: " + fullDateTime.toLocaleString("fa-IR");
+
+  alert("⏳ زمان شروع مسابقه با موفقیت ذخیره شد!");
+}
+
+// نمایش زمان فعلی ذخیره‌شده
+const savedTime = localStorage.getItem("tournamentStartTime");
+if (savedTime) {
+  const date = new Date(savedTime);
+  document.getElementById("currentTime").textContent =
+    "زمان فعلی ذخیره‌شده: " + date.toLocaleString("fa-IR");
+}
