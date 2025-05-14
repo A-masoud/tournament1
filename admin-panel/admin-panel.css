@@ -1,174 +1,246 @@
 body {
-    direction: rtl;
-    font-family: 'Vazirmatn', sans-serif;
-    background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
-    background-size: cover;
-    margin: 0;
-    height: 100vh;
-  }
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: start;
-  }
-  
-  /* هدر و فوتر شفاف */
-  .header {
-    width: 100%;
-    height: 5%;
-    backdrop-filter: blur(12px);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 50px;
-    border: 2.5px solid rgb(70, 68, 68);
-    border-radius: 0 0 12px 12px;
-    border-top: none;
-  }
-  
-  
-  /* سایدبار شفاف */
-  .sidebar {
-    width: 25%;
-    height: auto;
-    backdrop-filter: blur(12px);
-    padding: 15px;
-    border-radius: 12px;
-    margin-right: 12px;
-    color: #ffffff;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    border: 2px solid rgb(129, 120, 120);
-    border-left: none;
-    padding-left: 0;
-  }
-  
-  /* منوی سایدبار */
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar ul li a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    transition: background-color 0.3s;
-  }
-  
-
-  .border{
-    border: 2px solid white;
-      border-left: none;
-  }
-  
-  /* محتوای اصلی شفاف */
-  .content {
-    flex-grow: 1;
-    backdrop-filter: blur(12px);
-    padding: 20px;
-    border-radius: 12px;
-    overflow-y: auto;
-    color: #ffffff;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    border: 2px solid rgb(129, 120, 120);
-    margin-left: 10px;
-    background-color: rgba(129, 120, 120, 0.288);
-    border-right: none;
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+  background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  padding: 40px;
+  text-align: center;
 }
 
-#border{
-  border-right:2px solid white ;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+}
+
+.header {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #fff;
+  backdrop-filter: blur(12px);
+  border: 2.5px solid rgb(70, 68, 68);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+}
+
+.sidebar {
+  width: 25%;
+  padding: 15px 0;
+  margin-right: 12px;
+  color: #fff;
+  backdrop-filter: blur(12px);
+  border: 2px solid rgb(129, 120, 120);
+  border-left: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border-radius: 0 8px 8px 0;
+}
+
+.sidebar ul li a.active-link {
+  background-color: rgba(129, 120, 120, 0.315);
+}
+
+.sidebar ul li a:hover {
+  background-color: rgba(129, 120, 120, 0.103);
+}
+
+.border {
+  border: 2px solid white;
+  border-left: none;
+}
+
+#border {
+  border-right: 2px solid white;
   z-index: 100;
 }
 
-  
-  /* کارت آمار و اقدامات سریع */
-  .stats, .quick-actions {
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
-    border:1.5px solid rgb(80, 79, 79);
-  }
-  
-.sidebar ul li a.active-link {
-  background-color: rgba(129, 120, 120, 0.315);
-  border-radius: 0 8px 8px 0;
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 10px;
+  color: #fff;
+  overflow-y: auto;
+  backdrop-filter: blur(12px);
+  background-color: rgba(129, 120, 120, 0.288);
+  border: 2px solid rgb(129, 120, 120);
+  border-right: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
-.sidebar ul li a:hover{
-  background-color: rgba(129, 120, 120, 0.103);
-  border-radius: 0 8px 8px 0;
+.stats,
+.quick-actions {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1.5px solid rgb(80, 79, 79);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
-  .btn41-43 {
-    padding: 10px 25px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background: transparent;
-    outline: none !important;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .btn-41 {
-    border: 2px solid rgb(255, 255, 255);
-    z-index: 1;
-    color: white;
-  }
-  
-  .btn-41:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    left: 0;
-    direction: rtl;
-    z-index: -1;
-    background: rgb(255, 255, 255);
-    transition: all 0.3s ease;
-  }
-  
-  .btn-41:hover {
-    color: rgb(0, 0, 0);
-  }
-  
-  .btn-41:hover:after {
-    left: auto;
-    right: 0;
-    width: 100%;
-  }
-  
-  .btn-41:active {
-    top: 2px;
-  }
-  
 
-  table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 60%;
-    color: #f0f0f0;
-  }
-  th, td {
-    border: 1px solid rgb(161, 136, 233);
-    padding: 12px;
-  }
-  th {
-    background-color: rgba(162, 46, 172 ,0.4);
-  }
-  caption{
-    margin-top: 10px;
-    border: solid 1px rgb(161, 136, 233);
-  }
+.btn41-43 {
+  padding: 10px 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+}
+
+.btn-41 {
+  border: 2px solid #fff;
+  color: #fff;
+  z-index: 1;
+}
+
+.btn-41:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #fff;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.btn-41:hover {
+  color: #000;
+}
+
+.btn-41:hover:after {
+  width: 100%;
+  right: 0;
+  left: auto;
+}
+
+.btn-41:active {
+  top: 2px;
+}
+
+table {
+  width: 60%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  color: #f0f0f0;
+}
+
+th,
+td {
+  border: 1px solid rgb(161, 136, 233);
+  padding: 12px;
+}
+
+th {
+  background-color: rgba(162, 46, 172, 0.4);
+}
+
+caption {
+  margin-top: 10px;
+  border: 1px solid rgb(161, 136, 233);
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #bc6ff1;
+  text-shadow: 0 0 10px #bc6ff1;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #fff;
+}
+
+input[type="date"],
+input[type="time"] {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-top: 10px;
+  direction: ltr;
+  text-align: left;
+  border: 2px solid #bc6ff1;
+  border-radius: 8px;
+  background-color: #2a003f;
+  color: #e0d7ff;
+}
+
+#rahnema {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #c0aaff;
+}
+
+button {
+  margin-top: 25px;
+  padding: 10px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #bc6ff1;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #bc6ff1;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: #bc6ff1;
+  border-radius: 8px;
+  z-index: -1;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #1f0036;
+}
+
+button:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+#currentTime {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #d9d9ff;
+}
