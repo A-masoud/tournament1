@@ -23,10 +23,6 @@
   width: 32%;
   height: 32%;
 }
-.item:nth-child(2){
-    margin-top: 80px;
-}
-
 
 #timer-tournament{
     direction: rtl;
