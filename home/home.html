@@ -8,26 +8,38 @@
     <link rel="stylesheet" href="../moshtarak/moshtarak.css">
     <link rel="stylesheet" href="slider.css">
     <link rel="stylesheet" href="table.css">
-    
+    <link rel="stylesheet" href="timer-box.css">
     
 </head>
-<body>
-    <script>
-        async function loadPage() {
-          // لود قالب ثابت
-          const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
-          document.body.innerHTML = layout;
-        
-        const content = await fetch('home-content.html').then(res => res.text());
-          document.getElementById('content').innerHTML = content;
-
-        }
-      
-     loadPage();
-
-     src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"
-
-    </script>
-    <script src="slider.js"></script>
+>
+  
+<script>
+  async function loadPage() {
+    // لود قالب اصلی
+    const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
+    document.body.innerHTML = layout;
+  
+    // لود محتوای اصلی
+    const content = await fetch('home-content.html').then(res => res.text());
+    document.getElementById('content').innerHTML = content;
+  
+    // بعد از لود کامل محتوا، اسکریپت‌ها رو اضافه کن 👇
+  
+    // slider.js
+    const sliderScript = document.createElement('script');
+    sliderScript.src = 'slider.js';
+    document.body.appendChild(sliderScript);
+  
+    // timer-box.js
+    const timerScript = document.createElement('script');
+    timerScript.src = 'timer-box.js';
+    document.body.appendChild(timerScript);
+  }
+  loadPage();
+  </script>
+    
+    
+    
+    
 </body>
 </html>

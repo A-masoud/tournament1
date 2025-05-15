@@ -23,7 +23,7 @@ function currentSlide(index) {
     if (index >= 1 && index <= totalSlides) {
         currentIndex = index - 1;
         updateSlider();
-        resetAutoSlide(); // ریست تایمر هنگام کلیک کاربر
+        resetAutoSlide();
     }
 }
 
@@ -34,14 +34,16 @@ function updateSlider() {
 
 function startAutoSlide() {
     autoSlideInterval = setInterval(() => {
-        moveSlide(1); // هر 3.5 ثانیه به اسلاید بعدی برو
+        moveSlide(1);
     }, 3500);
 }
 
 function resetAutoSlide() {
-    clearInterval(autoSlideInterval); // توقف تایمر فعلی
-    startAutoSlide(); // شروع مجدد تایمر
+    clearInterval(autoSlideInterval); 
+    startAutoSlide(); 
 }
 
 startAutoSlide();
 //////////////////////////////////////////////////////////////////////
+
+  
