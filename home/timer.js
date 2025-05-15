@@ -24,9 +24,10 @@ function startCountdown() {
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
-    countdownEl.textContent =
-      `⏳ زمان باقی مانده تا مسابقه:\n` +
-      `${days} روز، ${hours} ساعت، ${minutes} دقیقه، ${seconds} ثانیه`;
+    countdownEl.style.direction = 'rtl';
+
+    countdownEl.innerHTML =
+  `⏳ زمان باقی مانده تا مسابقه:<br><hr>${days} روز، ${hours} ساعت، ${minutes} دقیقه، ${seconds} ثانیه`;
   }
 
   update(); // اجرای اول
