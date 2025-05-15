@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="home_content.css">
-    <link rel="stylesheet" href="../moshtarak/moshtarak.css">
-    <link rel="stylesheet" href="slider.css">
-    <link rel="stylesheet" href="table.css">
-    <link rel="stylesheet" href="timer-box.css">
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>صفحه خانه</title>
+  <link rel="stylesheet" href="home_content.css" />
+  <link rel="stylesheet" href="../moshtarak/moshtarak.css" />
+  <link rel="stylesheet" href="slider.css" />
+  <link rel="stylesheet" href="table.css" />
+  <link rel="stylesheet" href="timer.css">
 </head>
->
-  
-<script>
-  async function loadPage() {
-    // لود قالب اصلی
-    const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
-    document.body.innerHTML = layout;
-  
-    // لود محتوای اصلی
-    const content = await fetch('home-content.html').then(res => res.text());
-    document.getElementById('content').innerHTML = content;
-  
-    // بعد از لود کامل محتوا، اسکریپت‌ها رو اضافه کن 👇
-  
-    // slider.js
-    const sliderScript = document.createElement('script');
-    sliderScript.src = 'slider.js';
-    document.body.appendChild(sliderScript);
-  
-    // timer-box.js
-    const timerScript = document.createElement('script');
-    timerScript.src = 'timer-box.js';
-    document.body.appendChild(timerScript);
-  }
-  loadPage();
+<body>
+  <div id="content"></div>
+
+  <script>
+    async function loadPage() {
+      // 1. بارگذاری قالب ثابت و جایگزینی body
+      const layout = await fetch('../moshtarak/moshtarak.html').then(r => r.text());
+      document.body.innerHTML = layout;
+
+      // 2. بارگذاری محتوای صفحه اصلی در المنت با id content
+      const content = await fetch('home-content.html').then(r => r.text());
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = content;
+
+      // 3. صبر کن تا DOM اضافه شده کاملاً آماده بشه (اختیاری اما بهتر)
+      await new Promise(res => setTimeout(res, 50));
+
+      // 4. بارگذاری اسکریپت‌های مورد نیاز بعد از لود شدن DOM (تایمر، اسلایدر)
+      const timerScript = document.createElement('script');
+      timerScript.src = 'timer.js';
+      document.body.appendChild(timerScript);
+
+      const sliderScript = document.createElement('script');
+      sliderScript.src = 'slider.js';
+      document.body.appendChild(sliderScript);
+    }
+
+    loadPage();
   </script>
-    
-    
-    
-    
 </body>
 </html>
