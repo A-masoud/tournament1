@@ -28,7 +28,7 @@ function createTeamBlock(teamNumber) {
     wrapper.appendChild(title);
     wrapper.appendChild(row);
 
-   //////////////////////////////////////////////////////////////////////////////// /// هندل انتخاب تیم
+//   هندل انتخاب تیم
     wrapper.addEventListener("click", () => {
         document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
         wrapper.classList.add("selected");
