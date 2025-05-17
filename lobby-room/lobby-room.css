@@ -87,6 +87,37 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
+  /* استایل مهر رزرو شده */
+.reserved-stamp {
+  position: absolute;
+  top: 8px;
+  left: 8px; /* می‌تونی اگه خواستی right: 8px بذاری */
+  width: 15%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0); /* سبز مات */
+  border: 3px solid #ff1e00; /* بردر سبز تیره */
+  border-radius: 10%;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-15deg);
+  box-shadow: 
+  0 0 15px rgb(255, 0, 0),         /* بیرون */
+  inset 0 0 10px rgba(255, 0, 0, 0.726);    /* داخل */
+  user-select: none;
+  pointer-events: none;
+  z-index: 100;
+  
+  
+}
+
+
+
+
   
   
   

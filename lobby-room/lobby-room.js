@@ -18,36 +18,96 @@ function createTeamBlock(teamNumber) {
     const row = document.createElement('div');
     row.className = 'avatar-row';
 
+    // داده‌های تیم از لوکال‌استوریج بخون
+    const savedData = localStorage.getItem(`team-${teamNumber}`);
+    const isLocked = !!savedData;
+    let playerNames = [];
+
+    if (isLocked) {
+      const teamData = JSON.parse(savedData);
+      // فقط نام‌های بازیکنان (بازی‌کن‌ها) که داخل آرایه players هستند
+      playerNames = teamData.players || [];
+    }
+
     for (let i = 0; i < 4; i++) {
+        const container = document.createElement('div');
+        container.style.position = "relative";
+        container.style.display = "inline-block";
+
         const img = document.createElement('img');
         img.src = "../img/1.PNG";
         img.alt = "Avatar";
-        row.appendChild(img);
+
+        const nameOverlay = document.createElement('span');
+        nameOverlay.textContent = playerNames[i] || "";
+        nameOverlay.style.position = "absolute";
+        nameOverlay.style.bottom = "4px";
+        nameOverlay.style.left = "50%";
+        nameOverlay.style.transform = "translateX(-50%)";
+        nameOverlay.style.fontSize = "10px";
+        nameOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        nameOverlay.style.color = "white";
+        nameOverlay.style.padding = "0px 4px";
+        nameOverlay.style.borderRadius = "4px";
+        nameOverlay.style.pointerEvents = "none";
+        nameOverlay.style.whiteSpace = "nowrap";
+
+        container.appendChild(img);
+        container.appendChild(nameOverlay);
+        row.appendChild(container);
     }
 
     wrapper.appendChild(title);
     wrapper.appendChild(row);
 
-//   هندل انتخاب تیم
-    wrapper.addEventListener("click", () => {
-        document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
-        wrapper.classList.add("selected");
+    if (isLocked) {
+        wrapper.classList.add("locked");
+        if (!wrapper.querySelector('.reserved-stamp')) {
+            const stamp = document.createElement('div');
+            stamp.classList.add('reserved-stamp');
+            stamp.textContent = 'رزرو شد';
+            wrapper.style.position = 'relative';
+            wrapper.appendChild(stamp);
+          }
+        wrapper.style.opacity = "0.5";
+        wrapper.style.cursor = "not-allowed";
 
-        const teamSelectionInfo = document.getElementById("team-selection-info");
-        const selectedText = document.getElementById("selected-team-text");
+        wrapper.addEventListener("mouseenter", () => {
+            wrapper.style.opacity = "1";
+            wrapper.style.border = "2px solid red";
+            wrapper.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+        });
 
-        selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
-        teamSelectionInfo.classList.add("active");
+        wrapper.addEventListener("mouseleave", () => {
+            wrapper.style.opacity = "0.5";
+            wrapper.style.border = "none";
+            wrapper.style.backgroundColor = "transparent";
+        });
 
-        document.getElementById("go-to-register").onclick = () => {
-            localStorage.setItem("selectedTeamNumber", teamNumber);
-            window.location.href = "rigister-tournament.html";
-        };
+        wrapper.addEventListener("click", () => {
+            alert("❌ این تیم قبلاً رزرو شده است.");
+        });
+    } else {
+        wrapper.addEventListener("click", () => {
+            document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
+            wrapper.classList.add("selected");
 
-        setTimeout(() => {
-            teamSelectionInfo.classList.remove("active");
-        }, 5000);
-    });
+            const teamSelectionInfo = document.getElementById("team-selection-info");
+            const selectedText = document.getElementById("selected-team-text");
+
+            selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
+            teamSelectionInfo.classList.add("active");
+
+            document.getElementById("go-to-register").onclick = () => {
+                localStorage.setItem("selectedTeamNumber", teamNumber);
+                window.location.href = "rigister-tournament.html";
+            };
+
+            setTimeout(() => {
+                teamSelectionInfo.classList.remove("active");
+            }, 5000);
+        });
+    }
 
     return wrapper;
 }
@@ -59,7 +119,3 @@ for (let i = 0; i < 12; i++) {
     rightColumn.appendChild(createTeamBlock(teamNumberRight));
     leftColumn.appendChild(createTeamBlock(teamNumberLeft));
 }
-
-// مثال تستی که یه آواتار خاص رو بردر قرمز بدیم
-const avatar10 = document.querySelectorAll('.avatar-row img')[9];
-avatar10.style.border = "2px solid red";
