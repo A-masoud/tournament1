@@ -16,19 +16,19 @@
 
   <script>
     async function loadPage() {
-      // 1. بارگذاری قالب ثابت و جایگزینی body
+      
       const layout = await fetch('../moshtarak/moshtarak.html').then(r => r.text());
       document.body.innerHTML = layout;
 
-      // 2. بارگذاری محتوای صفحه اصلی در المنت با id content
+      
       const content = await fetch('home-content.html').then(r => r.text());
       const contentDiv = document.getElementById('content');
       contentDiv.innerHTML = content;
 
-      // 3. صبر کن تا DOM اضافه شده کاملاً آماده بشه (اختیاری اما بهتر)
+      
       await new Promise(res => setTimeout(res, 50));
 
-      // 4. بارگذاری اسکریپت‌های مورد نیاز بعد از لود شدن DOM (تایمر، اسلایدر)
+      
       const timerScript = document.createElement('script');
       timerScript.src = 'timer.js';
       document.body.appendChild(timerScript);
@@ -39,7 +39,7 @@
 
       const teamsCounter = document.createElement('script');
       sliderScript.src = 'teamsCounter.js';
-      document.body.appendChild(sliderScript);
+      document.body.appendChild(teamsCounter);
     }
 
     loadPage();
