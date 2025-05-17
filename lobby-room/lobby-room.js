@@ -119,3 +119,29 @@ for (let i = 0; i < 12; i++) {
     rightColumn.appendChild(createTeamBlock(teamNumberRight));
     leftColumn.appendChild(createTeamBlock(teamNumberLeft));
 }
+
+
+
+const totalTeams = 24;
+
+function countAvailableTeams(totalTeams) {
+    let count = 0;
+    for (let teamNumber = 1; teamNumber <= totalTeams; teamNumber++) {
+        const savedData = localStorage.getItem(`team-${teamNumber}`);
+        if (!savedData) {
+            count++;
+        }
+    }
+    return count;
+} 
+
+let availableTeamsCount = countAvailableTeams(totalTeams);
+localStorage.setItem("availableTeamsCount", availableTeamsCount);
+
+
+setInterval(() => {
+    const updatedCount = countAvailableTeams(totalTeams);
+    localStorage.setItem("availableTeamsCount", updatedCount);
+    console.log("تعداد تیم‌های خالی به‌روز شد:", updatedCount);
+}, 5000);
+

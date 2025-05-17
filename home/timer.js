@@ -36,3 +36,30 @@ function startCountdown() {
 
 // وقتی فایل لود شد، تایمر رو استارت کن
 startCountdown();
+
+const totalTeams = 24;
+
+const registeredTeamsElement = document.getElementById("registered-teams");
+const emptySlotsElement = document.getElementById("empty-slots");
+
+
+function updateTeamCounts() {
+  let registeredCount = 0;
+
+  for (let i = 1; i <= totalTeams; i++) {
+    const teamData = localStorage.getItem(`team-${i}`);
+    if (teamData) {
+      registeredCount++;
+    }
+  }
+
+  const emptySlots = totalTeams - registeredCount;
+
+  registeredTeamsElement.textContent = `${registeredCount} تیم ثبت‌نام شده`;
+  emptySlotsElement.textContent = `${emptySlots} جایگاه خالی`;
+}
+
+updateTeamCounts();
+
+// هر ۵ ثانیه آپدیت کن
+setInterval(updateTeamCounts, 5000);
