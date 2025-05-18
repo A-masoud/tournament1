@@ -32,6 +32,7 @@ body {
 
 .sidebar {
   width: 25%;
+  height: 70vh;
   padding: 15px 0;
   margin-right: 12px;
   color: #fff;

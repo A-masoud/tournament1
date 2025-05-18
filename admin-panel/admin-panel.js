@@ -118,66 +118,24 @@ if (savedTime) {
 }
 
 ////////////////////////////////////////////////////////////////////////
-document.addEventListener("DOMContentLoaded", function () {
-  const users = JSON.parse(localStorage.getItem("UserDataList")) || [];
-  const NumberMember = users.length;
-  const userCountEl = document.getElementById("UserCount");
-  if (userCountEl) {
-    userCountEl.textContent = NumberMember;
-  }
-
-  const sidebarLinks = document.querySelectorAll(".sidebar a");
-  const contentSection = document.querySelector(".content");
-
-  sidebarLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      sidebarLinks.forEach(item => item.classList.remove("active-link"));
-      this.classList.add("active-link");
-
-      const section = this.dataset.section;
-
-      fetch(`sections/${section}.html`)
-        .then(res => res.text())
-        .then(data => {
-          contentSection.innerHTML = data;
-
-          if (section === "users-list") {
-            renderTable();
-          }
-
-          if (section === "event") {
-            setupEventSteps(); // ✅ بعد از لود رویداد، اسکریپت مراحل اجرا می‌شه
-          }
-        })
-        .catch(err => {
-          contentSection.innerHTML = `<p style="color:red;">خطا در بارگذاری محتوا</p>`;
-          console.error(err);
-        });
-    });
-  });
-});
-
 function setupEventSteps() {
-  console.log("setupEventSteps called");
+  const startTimeInput = document.getElementById("event-start-time");
+  const now = new Date();
+  const localISOTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  startTimeInput.min = localISOTime;
 
   const step1Next = document.getElementById("step1-next");
   const step2Next = document.getElementById("step2-next");
   const saveEvent = document.getElementById("save-event");
-
-  let eventData = {}; // ✅ اول تعریف می‌شه
+  let eventData = {};
 
   if (step1Next) {
     step1Next.addEventListener("click", () => {
-      const startTime = document.getElementById("event-start-time").value;
-      if (!startTime) {
-        alert("⏰ لطفا زمان شروع رو وارد کن");
-        return;
-      }
+      const startTime = startTimeInput.value;
+      if (!startTime) return alert("⏰ لطفا زمان شروع رو وارد کن");
+      if (new Date(startTime) < new Date()) return alert("❌ نمی‌تونی تاریخ گذشته انتخاب کنی!");
 
       eventData.start = startTime;
-
       document.getElementById("step-1").style.display = "none";
       document.getElementById("step-2").style.display = "block";
     });
@@ -187,10 +145,8 @@ function setupEventSteps() {
     step2Next.addEventListener("click", () => {
       const selectedMap = document.getElementById("event-map").value;
       eventData.map = selectedMap;
-
       document.getElementById("confirm-start").textContent = eventData.start;
       document.getElementById("confirm-map").textContent = eventData.map;
-
       document.getElementById("step-2").style.display = "none";
       document.getElementById("step-3").style.display = "block";
     });
@@ -199,24 +155,34 @@ function setupEventSteps() {
   if (saveEvent) {
     saveEvent.addEventListener("click", () => {
       let events = JSON.parse(localStorage.getItem("EventHistory")) || [];
+
+      const isDuplicate = events.some(ev => ev.start === eventData.start && ev.map === eventData.map);
+      if (isDuplicate) {
+        alert("❗ این رویداد قبلاً ثبت شده");
+        return;
+      }
+
       events.push(eventData);
       localStorage.setItem("EventHistory", JSON.stringify(events));
-
       alert("✅ رویداد ثبت شد");
-
       renderEventHistory();
     });
   }
 
-  renderEventHistory(); // ✅ نمایش لیست قبلی
+  renderEventHistory();
+}
+
+function deleteEvent(index) {
+  let events = JSON.parse(localStorage.getItem("EventHistory")) || [];
+  events.splice(index, 1);
+  localStorage.setItem("EventHistory", JSON.stringify(events));
+  renderEventHistory();
 }
 
 function renderEventHistory() {
   const history = JSON.parse(localStorage.getItem("EventHistory")) || [];
   const list = document.getElementById("event-history");
-
   if (!list) return;
-
   list.innerHTML = "";
 
   if (history.length === 0) {
@@ -226,8 +192,71 @@ function renderEventHistory() {
 
   history.forEach((event, index) => {
     const li = document.createElement("li");
-    li.textContent = `#${index + 1} - ⏰ ${event.start} | 🗺️ ${event.map}`;
+
+    // بخش کلی رویداد (متن اصلی)
+    const mainInfo = document.createElement("div");
+    mainInfo.style.cursor = "default"; // کلیک روش کاری نکنه
+    mainInfo.textContent = `#${index + 1} - ⏰ ${event.start} | 🗺️ ${event.map}`;
+
+    // دکمه نمایش جزئیات
+    const toggleDetailsBtn = document.createElement("button");
+    toggleDetailsBtn.textContent = "نمایش جزئیات";
+    toggleDetailsBtn.style.marginRight = "10px";
+    toggleDetailsBtn.style.background = "#007bff";
+    toggleDetailsBtn.style.color = "white";
+    toggleDetailsBtn.style.border = "none";
+    toggleDetailsBtn.style.borderRadius = "6px";
+    toggleDetailsBtn.style.padding = "4px 8px";
+    toggleDetailsBtn.style.cursor = "pointer";
+
+    // دکمه حذف
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "حذف";
+    deleteBtn.style.marginRight = "10px";
+    deleteBtn.style.background = "red";
+    deleteBtn.style.color = "white";
+    deleteBtn.style.border = "none";
+    deleteBtn.style.borderRadius = "6px";
+    deleteBtn.style.padding = "4px 8px";
+
+    // container برای دمو (جزئیات)
+    const demo = document.createElement("div");
+    demo.className = "event-demo";
+    demo.style.marginTop = "8px";
+    demo.style.padding = "8px";
+    demo.style.background = "#3b3b3b";
+    demo.style.borderRadius = "10px";
+    demo.style.display = "none"; // اول مخفی باشه
+    demo.innerHTML = `
+      <p><strong>تاریخ شروع:</strong> ${event.start}</p>
+      <p><strong>نقشه انتخاب‌شده:</strong> ${event.map}</p>
+      <p><strong>وضعیت:</strong> در انتظار شروع...</p>
+    `;
+
+    // رویداد کلیک روی دکمه نمایش جزئیات
+    toggleDetailsBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // از انتشار رویداد جلوگیری کن
+      if (demo.style.display === "none") {
+        demo.style.display = "block";
+        toggleDetailsBtn.textContent = "پنهان کردن جزئیات";
+      } else {
+        demo.style.display = "none";
+        toggleDetailsBtn.textContent = "نمایش جزئیات";
+      }
+    });
+
+    // رویداد کلیک روی دکمه حذف
+    deleteBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // کلیک روی حذف دمو رو باز نکنه
+      deleteEvent(index);
+    });
+
+    li.appendChild(mainInfo);
+    li.appendChild(toggleDetailsBtn);
+    li.appendChild(deleteBtn);
+    li.appendChild(demo);
     list.appendChild(li);
   });
 }
+
 
