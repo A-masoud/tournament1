@@ -3,25 +3,24 @@
     border-collapse: collapse;
     direction: rtl;
     font-family: 'B Nazanin', Tahoma, sans-serif;
-    background-color: #111;
+    background-color: #b3b3b3;
     color: #eee;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 10px #0f0;
   }
   
   .status-table caption {
     font-size: 1.4rem;
     padding: 10px 0;
     font-weight: bold;
-    color: #0f0;
+    color: white;
   }
   
   .status-table th, 
   .status-table td {
     padding: 10px 15px;
     border-bottom: 1px solid #222;
-    text-align: right;
+    text-align: center;
     font-size: 1rem;
   }
   
