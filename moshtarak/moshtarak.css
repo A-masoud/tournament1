@@ -20,6 +20,7 @@ header {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   direction: ltr;
   border-top: none;
+  z-index: 1;
 }
 
 h1 {

@@ -3,9 +3,7 @@
     border-collapse: collapse;
     direction: rtl;
     font-family: 'B Nazanin', Tahoma, sans-serif;
-    background-color: #b3b3b3;
-    color: #eee;
-    border-radius: 10px;
+    border-radius: 26px;
     overflow: hidden;
   }
   
@@ -25,7 +23,8 @@
   }
   
   .status-table tr:last-child td {
-    border-bottom: none;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
   }
   
   #register-btn {
@@ -43,3 +42,7 @@
     background-color: #0f0;
   }
   
+   .status-table tr:first-child th {
+    border: none;
+    border-radius: 25px 25px 0 0 ;
+  }
