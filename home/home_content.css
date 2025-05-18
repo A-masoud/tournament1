@@ -8,9 +8,9 @@
 }
 
 .item:nth-child(1){
-  width:66%;
+  width:60%;
   order:0%;
-  margin-bottom: 6%;
+  margin-bottom: 5%;
 }
 
 .item:nth-child(2),
@@ -19,5 +19,6 @@
 .item:nth-child(5) {
   width: 32%;
   height: 32%;
+  margin: 0 auto;
 }
 

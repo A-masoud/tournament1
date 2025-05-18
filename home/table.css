@@ -1,11 +1,11 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
+    background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     direction: ltr;
-    border-radius: 12px 12px 0 0;
+    border-radius: 29px 29px 0 0;
 }
 
 #tabel {
@@ -32,6 +32,7 @@ th {
     text-align: center;
     text-transform: uppercase;
     font-family: 'Bebas Neue', sans-serif;
+    border-radius: 28px 28px 0 0;
 }
 
 tr {
@@ -40,26 +41,23 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: #f8f8f8;
+    background-color: #e2e2e2;
 }
 
-tr:hover {
-    background-color: #e0e0e0;
-}
 
 td {
     padding: 10px;
     text-align: center;
     font-size: 16px;
     color: #333;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #222;
 }
 
 caption {
     margin-bottom: 8px;
     padding: 8px;
     color: white;
-    font-size: 18px;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
@@ -89,4 +87,10 @@ caption {
     100% {
         left: 100%;
     }
+}
+
+.lePeek span { animation-name: lePeek }
+@keyframes lePeek {
+    25% {  transform: rotateX(30deg) translateY(10px) rotate(-13deg); }
+    50% { transform: translateY(-22px) rotate(3deg) scale(1.1);  }
 }

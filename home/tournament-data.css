@@ -3,7 +3,7 @@
     border-collapse: collapse;
     direction: rtl;
     font-family: 'B Nazanin', Tahoma, sans-serif;
-    border-radius: 26px;
+    border-radius: 29px 29px 0 0;
     overflow: hidden;
   }
   
@@ -24,25 +24,62 @@
   
   .status-table tr:last-child td {
     border-top: none;
-    border-radius: 0 0 8px 8px;
   }
   
-  #register-btn {
-    background-color: #0a0;
-    border: none;
-    color: white;
-    padding: 8px 15px;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  #register-btn:hover {
-    background-color: #0f0;
-  }
-  
+
    .status-table tr:first-child th {
     border: none;
     border-radius: 25px 25px 0 0 ;
   }
+
+  .btn41-43 {
+  padding: 10px 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.btn-41 {
+  border: 2px solid #000000;
+  color: #000000;
+  z-index: 1;
+  border-radius: 13px;
+}
+
+.btn-41:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #5e66f6;
+  z-index: -1;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.btn-41:hover {
+  color: white;
+}
+
+.btn-41:hover:after {
+  width: 100%;
+  right: 0;
+  left: auto;
+}
+
+.btn-41:active {
+  top: 2px;
+}
