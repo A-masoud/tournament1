@@ -1,8 +1,9 @@
 .login-container {
-  background: linear-gradient(243deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
   border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.703);
+  box-shadow: 3px 7px 10px rgb(255 255 255 / 34%);
   max-width: 400px;
   width: 100%;
   height: auto;
@@ -20,12 +21,12 @@
 
 .terms a {
   text-decoration: none;
-  color: #e7fb73;
+  color:  #0cddf8;
   font-weight: bold;
 }
 
 .terms a:hover {
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid  #0cddf8;
 }
 
 /* Input Group */
@@ -35,7 +36,7 @@
 }
 
 input {
-  background-color: #faf9ffad;
+  background-color: #faf9ff;
   border: none;
   border-radius: 10px;
   padding: 12px;
@@ -44,14 +45,20 @@ input {
   font-family: 'Vazirmatn', sans-serif;
   width: 100%;
   box-sizing: border-box;
-  text-align: left;
+  text-align: center;
+}
+
+#fullName{
+  
+  left: 0;
 }
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 25px 2.5px rgb(36, 43, 83);
+  -webkit-box-shadow:0px 0px 32px 0px rgba(0,3,167,0.52);
+  -moz-box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
   background-color: white;
-  border: 1.5px solid #020024;
   text-align: right;
 }
 
@@ -84,11 +91,6 @@ label[for="agree"] {
   margin-bottom: 15px;
 }
 
-input.checkbox {
-  margin-right: 10px;
-  transform: scale(1.3);
-  width: 4%;
-}
 input:focus+label{
   transform: translateY(-28px);
   color: #020024;
@@ -104,7 +106,7 @@ input:focus+label{
   align-items: center;
   cursor: pointer;
   height: 45px;
-  background-color: #8bbafc;
+  background-color: #002a7c ;
   border: 1px solid rgba(0, 0, 0, 0.6);
   width: 100%;
   margin-top: 12px;
@@ -141,4 +143,62 @@ main {
   align-items: center;
   min-height: 88vh;
   padding: 0px 20px;
+}
+
+
+.checkbox {
+  appearance: none;
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  border: 2px solid #ffe3e4;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox::before {
+  font-family: "Quicksand", sans-serif;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  content: "✔";
+  font-size: 33px;
+  color: #002a7c;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox:checked::before {
+  animation: zoom 0.5s ease-in-out;
+  transform: scale(1);
+}
+
+@keyframes zoom {
+  0% {
+  transform: scale(0);
+  }
+
+  20% {
+  transform: scale(1.5);
+  }
+
+  40% {
+  transform: scale(0.5);
+  }
+
+  50% {
+  transform: scale(1);
+  }
+
+  70% {
+  transform: scale(1.2);
+  }
+
+  90% {
+  transform: scale(0.8);
+  }
+
+  100% {
+  transform: scale(1);
+  }
 }
