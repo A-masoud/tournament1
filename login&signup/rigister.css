@@ -77,7 +77,6 @@ input:focus {
 input:focus + label,
 input:not(:placeholder-shown) + label {
   font-size: 17px;
-  padding: 0 5px;
   border-radius: 5px;
 }
 
@@ -92,10 +91,11 @@ label[for="agree"] {
 }
 
 input:focus+label{
-  transform: translateY(-28px);
-  color: #020024;
+  transform: translateY(-31px);
+  color: #002a7c;
   background-color: #ffffff;
   border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
 }
 
 /* Submit Button */
@@ -148,12 +148,13 @@ main {
 
 .checkbox {
   appearance: none;
-  width: 15px;
+  width: 25px;
   aspect-ratio: 1;
   border-radius: 5px;
   border: 2px solid #ffe3e4;
   position: relative;
   transition: all 0.2s ease-in-out;
+  transform: scale(0.9);
 }
 
 .checkbox::before {
@@ -201,4 +202,17 @@ main {
   100% {
   transform: scale(1);
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #faf9ff inset !important; 
+  -webkit-text-fill-color: #000000 !important; 
+  border: none !important; 
+  border-radius: 10px !important; 
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl !important;
+  background-color: #faf9ff ;
 }

@@ -7,6 +7,8 @@ if (teamNumber) {
     welcomeMessage.textContent = "لطفاً ابتدا تیم خود را انتخاب کنید.";
 }
 
+welcomeMessage.classList.add('active');
+
 // تابع اعتبارسنجی آیدی‌ها (10 رقم)
 function validatePlayerID(inputElement, errorElementID) {
     const value = inputElement.value.trim();

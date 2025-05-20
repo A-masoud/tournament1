@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../moshtarak/moshtarak.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="rigister-tournament.css">
+    <title>فرم ثبت نام در مسابقه</title>
+</head>
+<body>               
+<script>
+    async function loadPage() {
+     
+      const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
+      document.body.innerHTML = layout;
+
+    
+      await new Promise(resolve => setTimeout(resolve, 50));
+
+     
+      const content = await fetch('register-tournament-content.html').then(res => res.text());
+      document.getElementById('content').innerHTML = content;
+
+
+    
+      const script = document.createElement("script");
+      script.src = "rigister-tournament.js";
+      document.body.appendChild(script);
+    }
+
+    loadPage();
+  </script>
+  </body>
+  </html>  
