@@ -31,6 +31,7 @@ body {
   .input-group {
     position: relative;
     margin-bottom: 37px;
+    margin-top: 5px;
   }
   
   input {
@@ -67,6 +68,7 @@ body {
     transition: all 0.3s ease;
     pointer-events: none;
     direction: rtl;
+
   }
   
   input:focus + label,
@@ -89,4 +91,9 @@ body {
 
   #welcome-message{
     direction: rtl;
+  }
+
+  label{
+    direction: rtl;
+    color
   }
