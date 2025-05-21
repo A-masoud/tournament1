@@ -15,6 +15,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+document.querySelectorAll('.player-group').forEach(element => {
+  element.classList.add('active');
+});
+
 // هندل ثبت‌نام
 document.getElementById("register-form").addEventListener("submit", async function(e) {
   e.preventDefault();

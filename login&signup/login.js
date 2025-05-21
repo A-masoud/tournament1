@@ -14,6 +14,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+document.querySelectorAll('.player-group').forEach(element => {
+  element.classList.add('active');
+}); 
+
 document.getElementById("login-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 

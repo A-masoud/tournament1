@@ -13,12 +13,12 @@ document.querySelectorAll('.leader, .player-group').forEach(element => {
     element.classList.add('active');
 });
 
-// تابع اعتبارسنجی آیدی‌ها (10 رقم)
+
 function validatePlayerID(inputElement, errorElementID) {
     const value = inputElement.value.trim();
     const errorElement = document.getElementById(errorElementID);
     
-    if (!/^\d{10}$/.test(value)) {
+    if (!/^\d{8,12}$/.test(value)) {
         errorElement.style.display = "block";
         inputElement.classList.add("invalid");
         return false;
@@ -67,38 +67,32 @@ document.getElementById("register-form").addEventListener("submit", function (e)
     ];
     const playerIDs = playerIDInputs.map(({ input }) => input.value.trim());
 
-    // اعتبارسنجی خالی بودن فیلدها
     if (!leaderName || players.some(p => !p) || playerIDs.some(id => !id)) {
         alert("لطفاً تمام فیلدها را به‌طور کامل پر کنید.");
         return;
     }
 
-    // دیباگ: نمایش داده‌ها در کنسول
     console.log("نام‌های کاربری:", players);
     console.log("آیدی‌ها:", playerIDs);
 
-    // اعتبارسنجی تکراری بودن نام‌های کاربری
     const uniquePlayers = new Set(players);
     if (uniquePlayers.size !== players.length) {
         alert("نام‌های کاربری نباید تکراری باشند.");
         return;
     }
 
-    // اعتبارسنجی تکراری بودن آیدی‌ها
     const uniquePlayerIDs = new Set(playerIDs);
     if (uniquePlayerIDs.size !== playerIDs.length) {
         alert("آیدی‌های بازیکنان نباید تکراری باشند.");
         return;
     }
 
-    // اعتبارسنجی آیدی‌های بازیکنان (10 رقم)
     const areIDsValid = playerIDInputs.every(({ input, error }) => validatePlayerID(input, error));
     if (!areIDsValid) {
-        alert("لطفاً تمام آیدی‌های بازیکنان را به‌درستی (دقیقاً ۱۰ رقم) وارد کنید.");
+        alert("لطفاً تمام آیدی‌های بازیکنان را به‌درستی (بین ۸ تا ۱۲ رقم) وارد کنید.");
         return;
     }
 
-    // بررسی رزرو تیم
     const existingTeam = localStorage.getItem(`team-${teamNumber}`);
     if (existingTeam) {
         alert("این تیم قبلاً رزرو شده است!");
@@ -138,7 +132,7 @@ document.getElementById("register-form").addEventListener("submit", function (e)
 
     document.body.appendChild(messagePanel);
 
-    // شمارش معکوس
+    
     const countdownElement = document.getElementById('countdown');
     if (!countdownElement) {
         console.error("عنصر countdown یافت نشد.");

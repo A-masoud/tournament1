@@ -104,13 +104,7 @@ input:focus {
   direction: rtl;
 }
 
-.input-group input {
-  text-align: left;
-}
 
-.input-group-user input {
-  text-align: left;
-}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -120,7 +114,7 @@ input[type="number"]::-webkit-outer-spin-button {
 input:focus+label {
   transform: translateY(-31px);
   color: #002a7c;
-  background-color: #faf9ff;
+  background-color: white;
   border-radius: 8px;
   padding: 2px 3.5px 0 3.5px;
 }
@@ -135,7 +129,7 @@ input:not(:placeholder-shown) + label {
 input:focus+label {
   transform: translateY(-31px);
   color: #002a7c;
-  background-color: #faf9ff;
+  background-color: white ;
   border-radius: 8px;
   padding: 2px 3.5px 0 3.5px;
 }
@@ -204,8 +198,27 @@ h3 {
   transition-delay: 1.0s;
 }
 
+.player-group:nth-of-type(5){
+  transition-delay: 1.2s;
+}
+
+.player-group:nth-of-type(6){
+  transition-delay: 1.4s;
+}
+
+.player-group:nth-of-type(7){
+  transition-delay: 1.4s;
+}
+
 label {
   direction: rtl;
+}
+
+.error-message{
+  color: red;
+  font-size: 16.5px;
+  display: none;
+  margin-top: 3px;
 }
 
 .between {
@@ -270,11 +283,11 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #faf9ff inset !important;
-  -webkit-text-fill-color: #000000 !important;
-  border: none !important;
-  border-radius: 10px !important;
+  -webkit-box-shadow: 0 0 0 30px #faf9ff inset !important; 
+  -webkit-text-fill-color: #000000 !important; 
+  border: none !important; 
+  border-radius: 10px !important; 
   font-family: 'Vazirmatn', sans-serif !important;
   direction: rtl !important;
-  background-color: #faf9ff !important;
+  background-color: #faf9ff ;
 }

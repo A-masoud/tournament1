@@ -18,14 +18,12 @@ function createTeamBlock(teamNumber) {
     const row = document.createElement('div');
     row.className = 'avatar-row';
 
-    // داده‌های تیم از لوکال‌استوریج بخون
     const savedData = localStorage.getItem(`team-${teamNumber}`);
     const isLocked = !!savedData;
     let playerNames = [];
 
     if (isLocked) {
       const teamData = JSON.parse(savedData);
-      // فقط نام‌های بازیکنان (بازی‌کن‌ها) که داخل آرایه players هستند
       playerNames = teamData.players || [];
     }
 

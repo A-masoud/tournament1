@@ -1,31 +1,37 @@
 <div class="login-container">
     <div class="terms">
       <form id="login-form" action="#" method="POST">
+        <div class="player-group">
         <div class="input-group">
           <input type="text" id="username" name="username" required aria-label="نام کاربری">
           <label for="username">نام کاربری:</label>
         </div>
-  
+        </div>
+
+        <div class="player-group">
         <div class="input-group">
           <input type="password" id="password" name="password" required aria-label="رمز عبور">
           <label for="password">رمز عبور:</label>
         </div>
-
+        </div>
         
         <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
           <div class="loader"></div>
         </div>
-  
+        <div class="player-group">
         <div>
           آیا حسابی ندارید؟
           <a href="rigister.html">ثبت نام کنید</a>
         </div>
         <span style="margin: 7px 0;">رمز عبور خود را فراموش کرده‌اید؟</span>
         <span><a href="#">ورود با رمز یکبار مصرف</a></span>
+      </div>
+      <div class="player-group">
         <div>
           <button class="submit-btn" type="submit">
             <span>وارد شوید</span>
           </button>
+        </div>
         </div>
       </form>
     </div>
