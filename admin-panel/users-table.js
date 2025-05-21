@@ -14,16 +14,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-let UserDataList = [];  // حالا این لیست رو با داده های فایربیس میسازیم
+let UserDataList = [];
 
-// خواندن کاربران از فایربیس
 async function loadUsers() {
-  const querySnapshot = await getDocs(collection(db, "UserDataList"));
-  UserDataList = [];
-  querySnapshot.forEach((doc) => {
-    UserDataList.push({ id: doc.id, ...doc.data() });  // id برای حذف
-  });
-  renderTable();
+  const spinner = document.getElementById("spinner");
+  if (spinner) spinner.style.display = "block"; // نمایش لودینگ
+
+  try {
+    const querySnapshot = await getDocs(collection(db, "UserDataList"));
+    const newData = [];
+    querySnapshot.forEach((doc) => {
+      newData.push({ id: doc.id, ...doc.data() });
+    });
+
+    // فقط اگه داده‌ها تغییر کردن، جدول رو دوباره رندر کن
+    if (JSON.stringify(newData) !== JSON.stringify(UserDataList)) {
+      UserDataList = newData;
+      renderTable();
+    }
+  } catch (err) {
+    alert("خطا در دریافت اطلاعات: " + err.message);
+  } finally {
+    if (spinner) spinner.style.display = "none"; // مخفی کردن لودینگ
+  }
 }
 
 function renderTable() {
@@ -32,7 +45,7 @@ function renderTable() {
 
   if (UserDataList.length > 0) {
     let rows = "";
-    UserDataList.forEach((user, index) => {
+    UserDataList.forEach((user) => {
       rows += `
         <tr>
           <td>${user.username || ""}</td>
@@ -54,7 +67,7 @@ async function deleteUser(id) {
     try {
       await deleteDoc(doc(db, "users", id));
       alert("کاربر حذف شد ✅");
-      await loadUsers();  // مجدد لیست رو بارگذاری کن
+      await loadUsers();
     } catch (error) {
       alert("خطا در حذف: " + error.message);
     }
@@ -64,7 +77,6 @@ async function deleteUser(id) {
 async function clearUsers() {
   if (confirm("آیا مطمئنی که می‌خوای همه کاربران حذف بشن؟")) {
     try {
-      // گرفتن تمام داکیومنت ها
       const querySnapshot = await getDocs(collection(db, "users"));
       const promises = [];
       querySnapshot.forEach((document) => {
@@ -80,11 +92,10 @@ async function clearUsers() {
   }
 }
 
-// وقتی صفحه بارگذاری شد، کاربران رو لود کن
 window.addEventListener("DOMContentLoaded", () => {
-  loadUsers();
+  loadUsers(); // بارگذاری اولیه
+  setInterval(loadUsers, 5000); // هر ۳ ثانیه آپدیت لیست
 });
 
-// چون دکمه‌ها تابع حذف دارن که الان async شده، باید دسترسی داشته باشی به تابع deleteUser در window
 window.deleteUser = deleteUser;
 window.clearUsers = clearUsers;

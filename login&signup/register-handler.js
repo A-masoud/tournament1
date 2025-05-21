@@ -25,6 +25,7 @@ document.getElementById("register-form").addEventListener("submit", async functi
   const passwordAgain = document.getElementById("passwordAgain").value;
   const email = document.getElementById("email").value.trim();
   const agree = document.getElementById("agree").checked;
+  const spinner = document.getElementById("spinner");
 
   if (!fullName || !username || !password || !passwordAgain || !email) {
     alert("لطفاً همه فیلدها را پر کنید.");
@@ -41,6 +42,8 @@ document.getElementById("register-form").addEventListener("submit", async functi
     return;
   }
 
+  spinner.style.display = "block"; // نمایش لودینگ
+
   try {
     await addDoc(collection(db, "UserDataList"), {
       fullName,
@@ -55,5 +58,7 @@ document.getElementById("register-form").addEventListener("submit", async functi
 
   } catch (err) {
     alert("خطا در ذخیره اطلاعات: " + err.message);
+  } finally {
+    spinner.style.display = "none"; // مخفی‌سازی لودینگ
   }
 });
