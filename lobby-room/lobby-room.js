@@ -17,7 +17,7 @@ const db = getFirestore(app);
 const leftColumn = document.querySelectorAll('.column')[0];
 const rightColumn = document.querySelectorAll('.column')[1];
 
-let teamDataMap = new Map(); // teamNumber => teamData
+let teamDataMap = new Map();
 
 function createTeamBlock(teamNumber) {
   const wrapper = document.createElement('div');

@@ -9,7 +9,7 @@ if (teamNumber) {
 
 welcomeMessage.classList.add('active');
 
-document.querySelectorAll('.leader, .player-group').forEach(element => {
+document.querySelectorAll('.leader, .player-group ,.hr-user , h3,.between').forEach(element => {
     element.classList.add('active');
 });
 
