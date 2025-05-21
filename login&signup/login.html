@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ورود</title>
-    <link rel="stylesheet" href="rigister.css">
+    <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="../moshtarak/moshtarak.css">
 </head>
 <body>
@@ -19,10 +19,10 @@
         document.getElementById("content").innerHTML =content
         
         const script = document.createElement("script");
-        script.src = "login.js";
-        document.body.appendChild(script);
-        }
-
+      script.src = "login.js";
+      script.type = "module";
+      document.body.appendChild(script);
+    }
 
         loadPage();
 

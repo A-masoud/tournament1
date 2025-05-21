@@ -1,6 +1,6 @@
 <div class="login-container">
   <div class="terms">
-    <form id="rigister-form" action="#" method="POST">
+    <form id="register-form" action="#" method="POST">
       <div class="input-group">
         <input type="text" id="fullName" name="fullName" required aria-label="نام و نام خانوادگی">
         <label for="fullName"> نام کامل :</label>
@@ -35,6 +35,11 @@
         از قبل حساب کاربری دارید؟
         <a href="login.html">وارد شوید</a>
       </div>
+
+      <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+        <div class="loader"></div>
+      </div>
+      
 
       <div>
         <button class="submit-btn" type="submit">
