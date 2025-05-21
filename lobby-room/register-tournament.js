@@ -1,0 +1,148 @@
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+const db = getDatabase();
+const urlParams = new URLSearchParams(window.location.search);
+const teamNumber = urlParams.get("team"); // دریافت شماره تیم از URL
+
+const welcomeMessage = document.getElementById("welcome-message");
+
+if (teamNumber) {
+    welcomeMessage.innerHTML = `🌟 خوش اومدی <strong>لیدر</strong>!<br>شما وارد ثبت‌نام شدید و <strong>تیم شماره ${teamNumber}</strong> رو انتخاب کردی.<br>با آرزوی بهترین‌ها در مسیر رقابت!`;
+} else {
+    welcomeMessage.textContent = "لطفاً ابتدا تیم خود را انتخاب کنید.";
+}
+
+welcomeMessage.classList.add('active');
+
+// تابع اعتبارسنجی آیدی‌ها (۱۰ رقم)
+function validatePlayerID(inputElement, errorElementID) {
+    const value = inputElement.value.trim();
+    const errorElement = document.getElementById(errorElementID);
+    
+    if (!/^\d{10}$/.test(value)) {
+        errorElement.style.display = "block";
+        inputElement.classList.add("invalid");
+        return false;
+    } else {
+        errorElement.style.display = "none";
+        inputElement.classList.remove("invalid");
+        return true;
+    }
+}
+
+// انتخاب فیلدهای آیدی
+const playerIDInputs = [
+    { input: document.querySelector('input[name="player1ID"]'), error: 'player1ID-error' },
+    { input: document.querySelector('input[name="player2ID"]'), error: 'player2ID-error' },
+    { input: document.querySelector('input[name="player3ID"]'), error: 'player3ID-error' },
+    { input: document.querySelector('input[name="player4ID"]'), error: 'player4ID-error' }
+];
+
+// اعتبارسنجی در زمان تایپ
+playerIDInputs.forEach(({ input, error }) => {
+    if (input) {
+        input.addEventListener('input', () => validatePlayerID(input, error));
+    }
+});
+
+// مدیریت فرم
+document.getElementById("register-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (!teamNumber) {
+        alert("شماره تیم مشخص نیست.");
+        return;
+    }
+
+    const leaderName = this.leaderName.value.trim();
+    const players = [
+        this.player1Username.value.trim(),
+        this.player2Username.value.trim(),
+        this.player3Username.value.trim(),
+        this.player4Username.value.trim()
+    ];
+    const playerIDs = playerIDInputs.map(({ input }) => input.value.trim());
+
+    if (!leaderName || players.some(p => !p) || playerIDs.some(id => !id)) {
+        alert("لطفاً تمام فیلدها را به‌طور کامل پر کنید.");
+        return;
+    }
+
+    const uniquePlayers = new Set(players);
+    if (uniquePlayers.size !== players.length) {
+        alert("نام‌های کاربری نباید تکراری باشند.");
+        return;
+    }
+
+    const uniquePlayerIDs = new Set(playerIDs);
+    if (uniquePlayerIDs.size !== playerIDs.length) {
+        alert("آیدی‌های بازیکنان نباید تکراری باشند.");
+        return;
+    }
+
+    const areIDsValid = playerIDInputs.every(({ input, error }) => validatePlayerID(input, error));
+    if (!areIDsValid) {
+        alert("آیدی‌ها باید دقیقاً ۱۰ رقم باشند.");
+        return;
+    }
+
+    // بررسی رزرو بودن تیم در Firebase
+    try {
+        const teamRef = ref(db, `tournament/teams/${teamNumber}`);
+        const snapshot = await get(teamRef);
+
+        if (snapshot.exists()) {
+            alert("این تیم قبلاً رزرو شده است!");
+            return;
+        }
+
+        // ذخیره در Firebase
+        const teamData = {
+            leader: leaderName,
+            players: players,
+            playerIDs: playerIDs,
+            locked: true,
+            timestamp: Date.now()
+        };
+
+        await set(teamRef, teamData);
+
+        // نمایش پیام موفقیت
+        const messagePanel = document.createElement('div');
+        messagePanel.style.position = 'fixed';
+        messagePanel.style.top = '50%';
+        messagePanel.style.left = '50%';
+        messagePanel.style.transform = 'translate(-50%, -50%)';
+        messagePanel.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
+        messagePanel.style.color = 'white';
+        messagePanel.style.padding = '20px 30px';
+        messagePanel.style.borderRadius = '10px';
+        messagePanel.style.textAlign = 'center';
+        messagePanel.style.fontSize = '18px';
+        messagePanel.style.zIndex = '10000';
+        messagePanel.style.fontFamily = "'Bebas Neue', sans-serif";
+
+        let countdown = 5;
+        messagePanel.innerHTML = `
+            ✅ پرداخت با موفقیت شبیه‌سازی شد!<br>
+            شما در حال انتقال به لابی هستید...<br>
+            لطفاً صبر کنید <span id="countdown">${countdown}</span> ثانیه.
+        `;
+        document.body.appendChild(messagePanel);
+
+        const countdownElement = document.getElementById('countdown');
+        const interval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(interval);
+                document.body.removeChild(messagePanel);
+                window.location.href = `lobby-room.html?team=${teamNumber}`;
+            }
+        }, 1000);
+    } catch (error) {
+        console.error("خطا در ثبت‌نام:", error);
+        alert("مشکلی در ثبت‌نام پیش آمد. لطفاً دوباره تلاش کنید.");
+    }
+});
