@@ -9,6 +9,10 @@ if (teamNumber) {
 
 welcomeMessage.classList.add('active');
 
+document.querySelectorAll('.leader, .player-group').forEach(element => {
+    element.classList.add('active');
+});
+
 // تابع اعتبارسنجی آیدی‌ها (10 رقم)
 function validatePlayerID(inputElement, errorElementID) {
     const value = inputElement.value.trim();

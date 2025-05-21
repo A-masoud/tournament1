@@ -100,7 +100,7 @@ function createTeamBlock(teamNumber) {
 
             document.getElementById("go-to-register").onclick = () => {
                 localStorage.setItem("selectedTeamNumber", teamNumber);
-                window.location.href = "rigister-tournament.html";
+                window.location.href = "register-tournament.html";
             };
 
             setTimeout(() => {

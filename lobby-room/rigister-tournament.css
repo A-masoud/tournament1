@@ -27,6 +27,14 @@ body {
 
 .leader {
   position: relative;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.9s ease;
+}
+
+.leader.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .leader label {
@@ -81,6 +89,10 @@ input:focus {
   direction: rtl;
 }
 
+.input-group-user {
+  position: relative;
+}
+
 .input-group-user label {
   position: absolute;
   top: 11px;
@@ -90,10 +102,6 @@ input:focus {
   transition: all 0.3s ease;
   pointer-events: none;
   direction: rtl;
-}
-
-.input-group-user {
-  position: relative;
 }
 
 .input-group input {
@@ -148,6 +156,14 @@ h3 {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.9s ease;
+}
+
+#welcome-message.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #welcome-message strong {
@@ -155,14 +171,37 @@ h3 {
   font-weight: bold;
 }
 
-#welcome-message {
+/* انیمیشن برای گروه‌های بازیکن */
+.player-group {
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.9s ease;
 }
-#welcome-message.active {
+
+.player-group.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* تأخیر برای افکت تدریجی */
+.leader {
+  transition-delay: 0.2s;
+}
+
+.player-group:nth-of-type(1) {
+  transition-delay: 0.4s;
+}
+
+.player-group:nth-of-type(2) {
+  transition-delay: 0.6s;
+}
+
+.player-group:nth-of-type(3) {
+  transition-delay: 0.8s;
+}
+
+.player-group:nth-of-type(4) {
+  transition-delay: 1.0s;
 }
 
 label {
@@ -173,7 +212,7 @@ label {
   width: 100%;
   border: 1px solid #ffffff;
   position: relative;
-  top: -2rem;
+  top: -1.5rem;
 }
 
 .hr-user {
@@ -211,6 +250,12 @@ label {
 .submit-btn:hover span {
   animation: stormEffect 0.7s ease-in-out both;
   animation-delay: 0.06s;
+}
+
+.player {
+  margin-bottom: 9px;
+  text-align: center;
+  color: #0cddf8;
 }
 
 @keyframes rotateEffect {
