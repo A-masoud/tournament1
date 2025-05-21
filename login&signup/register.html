@@ -2,30 +2,33 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>ثبت‌نام</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت نام</title>
   <link rel="stylesheet" href="../moshtarak/moshtarak.css">
   <link rel="stylesheet" href="register.css">
-
-  <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
   <script>
     async function loadPage() {
+     
       const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
       document.body.innerHTML = layout;
 
-      await new Promise(resolve => setTimeout(resolve, 100));
+    
+      await new Promise(resolve => setTimeout(resolve, 50));
 
+     
       const content = await fetch('register-content.html').then(res => res.text());
       document.getElementById('content').innerHTML = content;
 
-      // لود اسکریپت بعد از اینکه فرم لود شد
+
+    
       const script = document.createElement("script");
       script.src = "register-handler.js";
+      script.type = "module";
       document.body.appendChild(script);
     }
+
 
     loadPage();
   </script>

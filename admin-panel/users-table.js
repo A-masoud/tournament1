@@ -18,7 +18,7 @@ let UserDataList = [];  // حالا این لیست رو با داده های ف
 
 // خواندن کاربران از فایربیس
 async function loadUsers() {
-  const querySnapshot = await getDocs(collection(db, "users"));
+  const querySnapshot = await getDocs(collection(db, "UserDataList"));
   UserDataList = [];
   querySnapshot.forEach((doc) => {
     UserDataList.push({ id: doc.id, ...doc.data() });  // id برای حذف
