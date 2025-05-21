@@ -1,68 +1,85 @@
-
-    <form id="register-form">
-      <div id="welcome-message"></div>
-        <h3>مشخصات لیدر</h3>
-      <div class="leader">
-        <input  type="text" name="leaderName" required>
-        <label>نام و نام خانوادگی لیدر</label>
+<form id="register-form">
+  <div id="welcome-message"></div>
+  <h3>مشخصات لیدر</h3>
+  <div class="leader">
+    <input type="text" name="leaderName" required>
+    <label>نام و نام خانوادگی لیدر</label>
+  </div>
+        
+  <hr class="hr-user">
+  <h3>مشخصات بازیکنان</h3>
+        
+  <div class="player-group">
+    <div class="player">بازیکن شماره 1</div>
+    <div class="input-group-user">
+      <input type="text" name="player1Username" required>
+      <label>نام کاربری بازیکن 1</label>
+    </div>
+    <div class="input-group">
+      <input type="number" maxlength="10" name="player1ID" pattern="\d{10}" required>
+      <label for="player1ID">آیدی بازیکن 1</label>
+      <div class="error-message" id="player1ID-error" style="color: red; font-size: 15px; display: none;">
+        آیدی باید دقیقاً ۱۰ رقم باشد.
       </div>
-        
-      <hr class="hr-user">
-        <h3>مشخصات بازیکنان</h3>
-        
-        <div class="input-group-user">
-          <input type="text" name="player1Username" required>
-          <label>نام کاربری بازیکن 1</label>
-        </div>
-        <div class="input-group">
-          <input type="number" maxlength="10" name="player1ID" pattern="\d{10}" required>
-          <label for="player1ID">آیدی بازیکن 1</label>
-          <div class="error-message" id="player1ID-error" style="color: red; font-size: 15px; display: none;">
-            آیدی باید دقیقاً ۱۰ رقم باشد.
-          </div>
-        </div>
-        <hr class="between">
-        <div class="input-group-user">
-          <input type="text" name="player2Username" required>
-          <label>نام کاربری بازیکن 2</label>
-        </div>
-        <div class="input-group">
-          <input type="number" maxlength="10" name="player2ID" pattern="\d{10}" required>
-          <label for="player1ID">آیدی بازیکن 2</label>
-          <div class="error-message" id="player2ID-error" style="color: red; font-size: 15px; display: none;">
-          آیدی باید دقیقاً ۱۰ رقم باشد.
-          </div>
-        </div>
-        <hr class="between">
-        <div class="input-group-user">
-          <input type="text"  name="player3Username" required>
-          <label>نام کاربری بازیکن 3</label>
-        </div>
-        <div class="input-group">
-          <input type="number" maxlength="10" name="player3ID" pattern="\d{10}" required>
-          <label for="player1ID">آیدی بازیکن 3</label>
-          <div class="error-message" id="player3ID-error" style="color: red; font-size: 15px; display: none;">
-            آیدی باید دقیقاً ۱۰ رقم باشد.
-          </div>
-        </div>
-        <hr class="between">
-        <div class="input-group-user">
-          <input type="text" name="player4Username" required>
-          <label>نام کاربری بازیکن 4</label>
-        </div>
-        <div class="input-group">
-          <input type="number" maxlength="10" name="player4ID" pattern="\d{10}" required>
-          <label for="player1ID">آیدی بازیکن 4</label>
-          <div class="error-message" id="player4ID-error" style="color: red; font-size: 15px; display: none;">
-            آیدی باید دقیقاً ۱۰ رقم باشد.
-          </div>
-        </div>
-        <hr class="between">
-      
+    </div>
+  </div>
 
-        <div>
-          <button class="submit-btn" type="submit">
-            <span>پرداخت و نهایی کردن ثبت نام</span>
-          </button>
-        </div>
-      </form>
+  <hr class="between">
+
+  <div class="player-group">
+    <div class="player">بازیکن شماره 2</div>
+    <div class="input-group-user">
+      <input type="text" name="player2Username" required>
+      <label>نام کاربری بازیکن 2</label>
+    </div>
+    <div class="input-group">
+      <input type="number" maxlength="10" name="player2ID" pattern="\d{10}" required>
+      <label for="player2ID">آیدی بازیکن 2</label>
+      <div class="error-message" id="player2ID-error" style="color: red; font-size: 15px; display: none;">
+        آیدی باید دقیقاً ۱۰ رقم باشد.
+      </div>
+    </div>
+  </div>
+
+  <hr class="between">
+
+  <div class="player-group">
+    <div class="player">بازیکن شماره 3</div>
+    <div class="input-group-user">
+      <input type="text" name="player3Username" required>
+      <label>نام کاربری بازیکن 3</label>
+    </div>
+    <div class="input-group">
+      <input type="number" maxlength="10" name="player3ID" pattern="\d{10}" required>
+      <label for="player3ID">آیدی بازیکن 3</label>
+      <div class="error-message" id="player3ID-error" style="color: red; font-size: 15px; display: none;">
+        آیدی باید دقیقاً ۱۰ رقم باشد.
+      </div>
+    </div>
+  </div>
+
+  <hr class="between">
+
+  <div class="player-group">
+    <div class="player">بازیکن شماره 4</div>
+    <div class="input-group-user">
+      <input type="text" name="player4Username" required>
+      <label>نام کاربری بازیکن 4</label>
+    </div>
+    <div class="input-group">
+      <input type="number" maxlength="10" name="player4ID" pattern="\d{10}" required>
+      <label for="player4ID">آیدی بازیکن 4</label>
+      <div class="error-message" id="player4ID-error" style="color: red; font-size: 15px; display: none;">
+        آیدی باید دقیقاً ۱۰ رقم باشد.
+      </div>
+    </div>
+  </div>
+
+  <hr class="between">
+
+  <div>
+    <button class="submit-btn" type="submit">
+      <span>پرداخت و نهایی کردن ثبت نام</span>
+    </button>
+  </div>
+</form>
