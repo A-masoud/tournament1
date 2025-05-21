@@ -19,10 +19,10 @@
         document.getElementById("content").innerHTML =content
         
         const script = document.createElement("script");
-        script.src = "login.js";
-        document.body.appendChild(script);
-        }
-
+      script.src = "login.js";
+      script.type = "module";
+      document.body.appendChild(script);
+    }
 
         loadPage();
 
