@@ -1,22 +1,40 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
+  authDomain: "tournify-app.firebaseapp.com",
+  projectId: "tournify-app",
+  storageBucket: "tournify-app.appspot.com",
+  messagingSenderId: "273027702239",
+  appId: "1:273027702239:web:ae13272cba831cca2ef86a",
+  measurementId: "G-GEKS6X6RCV"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const leftColumn = document.querySelectorAll('.column')[0];
 const rightColumn = document.querySelectorAll('.column')[1];
 
+let teamDataMap = new Map(); // teamNumber => teamData
+
 function createTeamBlock(teamNumber) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add("team-wrapper", "hover-effect");
+  const wrapper = document.createElement('div');
+  wrapper.classList.add("team-wrapper", "hover-effect");
 
-    const title = document.createElement('p');
-    title.textContent = `Team ${teamNumber}`;
-    title.style.margin = "0 0 5px 0";
-    title.style.fontWeight = "bold";
-    title.style.textAlign = "center";
-    title.style.color = "#f0f0f0";
-    title.style.fontFamily = "'Bebas Neue', sans-serif";
-    title.style.backgroundColor = "rgba(255, 255, 255, 0.377)";
-    title.style.borderRadius = "50px";
+  const title = document.createElement('p');
+  title.textContent = `Team ${teamNumber}`;
+  title.style.margin = "0 0 5px 0";
+  title.style.fontWeight = "bold";
+  title.style.textAlign = "center";
+  title.style.color = "#f0f0f0";
+  title.style.fontFamily = "'Bebas Neue', sans-serif";
+  title.style.backgroundColor = "rgba(255, 255, 255, 0.377)";
+  title.style.borderRadius = "50px";
 
-    const row = document.createElement('div');
-    row.className = 'avatar-row';
+  const row = document.createElement('div');
+  row.className = 'avatar-row';
 
     const savedData = localStorage.getItem(`team-${teamNumber}`);
     const isLocked = !!savedData;
@@ -26,120 +44,84 @@ function createTeamBlock(teamNumber) {
       const teamData = JSON.parse(savedData);
       playerNames = teamData.players || [];
     }
+    wrapper.style.opacity = "0.5";
+    wrapper.style.cursor = "not-allowed";
 
-    for (let i = 0; i < 4; i++) {
-        const container = document.createElement('div');
-        container.style.position = "relative";
-        container.style.display = "inline-block";
+    wrapper.addEventListener("mouseenter", () => {
+      wrapper.style.opacity = "1";
+      wrapper.style.border = "2px solid red";
+      wrapper.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+    });
 
-        const img = document.createElement('img');
-        img.src = "../img/1.PNG";
-        img.alt = "Avatar";
+    wrapper.addEventListener("mouseleave", () => {
+      wrapper.style.opacity = "0.5";
+      wrapper.style.border = "none";
+      wrapper.style.backgroundColor = "transparent";
+    });
 
-        const nameOverlay = document.createElement('span');
-        nameOverlay.textContent = playerNames[i] || "";
-        nameOverlay.style.position = "absolute";
-        nameOverlay.style.bottom = "4px";
-        nameOverlay.style.left = "50%";
-        nameOverlay.style.transform = "translateX(-50%)";
-        nameOverlay.style.fontSize = "10px";
-        nameOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-        nameOverlay.style.color = "white";
-        nameOverlay.style.padding = "0px 4px";
-        nameOverlay.style.borderRadius = "4px";
-        nameOverlay.style.pointerEvents = "none";
-        nameOverlay.style.whiteSpace = "nowrap";
+    wrapper.addEventListener("click", () => {
+      alert("❌ این تیم قبلاً رزرو شده است.");
+    });
 
-        container.appendChild(img);
-        container.appendChild(nameOverlay);
-        row.appendChild(container);
-    }
+  } else {
+    wrapper.addEventListener("click", () => {
+      document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
+      wrapper.classList.add("selected");
 
-    wrapper.appendChild(title);
-    wrapper.appendChild(row);
+      const teamSelectionInfo = document.getElementById("team-selection-info");
+      const selectedText = document.getElementById("selected-team-text");
 
-    if (isLocked) {
-        wrapper.classList.add("locked");
-        if (!wrapper.querySelector('.reserved-stamp')) {
-            const stamp = document.createElement('div');
-            stamp.classList.add('reserved-stamp');
-            stamp.textContent = 'رزرو شد';
-            wrapper.style.position = 'relative';
-            wrapper.appendChild(stamp);
-          }
-        wrapper.style.opacity = "0.5";
-        wrapper.style.cursor = "not-allowed";
+      selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
+      teamSelectionInfo.classList.add("active");
 
-        wrapper.addEventListener("mouseenter", () => {
-            wrapper.style.opacity = "1";
-            wrapper.style.border = "2px solid red";
-            wrapper.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
-        });
+      document.getElementById("go-to-register").onclick = () => {
+        // ارسال شماره تیم از طریق query string
+        window.location.href = `register-tournament.html?team=${teamNumber}`;
+      };
 
-        wrapper.addEventListener("mouseleave", () => {
-            wrapper.style.opacity = "0.5";
-            wrapper.style.border = "none";
-            wrapper.style.backgroundColor = "transparent";
-        });
+      setTimeout(() => {
+        teamSelectionInfo.classList.remove("active");
+      }, 5000);
+    });
+  }
 
-        wrapper.addEventListener("click", () => {
-            alert("❌ این تیم قبلاً رزرو شده است.");
-        });
-    } else {
-        wrapper.addEventListener("click", () => {
-            document.querySelectorAll('.team-wrapper').forEach(el => el.classList.remove("selected"));
-            wrapper.classList.add("selected");
-
-            const teamSelectionInfo = document.getElementById("team-selection-info");
-            const selectedText = document.getElementById("selected-team-text");
-
-            selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
-            teamSelectionInfo.classList.add("active");
-
-            document.getElementById("go-to-register").onclick = () => {
-                localStorage.setItem("selectedTeamNumber", teamNumber);
-                window.location.href = "register-tournament.html";
-            };
-
-            setTimeout(() => {
-                teamSelectionInfo.classList.remove("active");
-            }, 5000);
-        });
-    }
-
-    return wrapper;
+  return wrapper;
 }
 
-for (let i = 0; i < 12; i++) {
+// دریافت تیم‌ها از فایربیس و ساخت DOM
+async function renderTeams() {
+  leftColumn.innerHTML = '';
+  rightColumn.innerHTML = '';
+
+  const snapshot = await getDocs(collection(db, "Teams"));
+  teamDataMap.clear();
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    teamDataMap.set(data.teamNumber, data);
+  });
+
+  for (let i = 0; i < 12; i++) {
     const teamNumberRight = i * 2 + 1;
     const teamNumberLeft = i * 2 + 2;
 
     rightColumn.appendChild(createTeamBlock(teamNumberRight));
     leftColumn.appendChild(createTeamBlock(teamNumberLeft));
+  }
+
+  updateAvailableTeams();
 }
 
-
-
-const totalTeams = 24;
-
-function countAvailableTeams(totalTeams) {
-    let count = 0;
-    for (let teamNumber = 1; teamNumber <= totalTeams; teamNumber++) {
-        const savedData = localStorage.getItem(`team-${teamNumber}`);
-        if (!savedData) {
-            count++;
-        }
+function updateAvailableTeams() {
+  let count = 0;
+  for (let i = 1; i <= 24; i++) {
+    const team = teamDataMap.get(i);
+    if (!team || !team.players || team.players.length === 0) {
+      count++;
     }
-    return count;
-} 
+  }
+  console.log("✅ تعداد تیم‌های خالی از Firebase:", count);
+}
 
-let availableTeamsCount = countAvailableTeams(totalTeams);
-localStorage.setItem("availableTeamsCount", availableTeamsCount);
-
-
-setInterval(() => {
-    const updatedCount = countAvailableTeams(totalTeams);
-    localStorage.setItem("availableTeamsCount", updatedCount);
-    console.log("تعداد تیم‌های خالی به‌روز شد:", updatedCount);
-}, 5000);
-
+// اجرای اولیه
+renderTeams();
