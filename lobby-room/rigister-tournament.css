@@ -1,102 +1,235 @@
 body {
-    background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
-    background-size: cover;
-    font-family: 'Vazirmatn', sans-serif;
-    color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 40px;
-  }
-  
-  form#register-form {
-    background: rgba(30, 30, 30, 0.95);
-    border: 2px solid #00ffea;
-    border-radius: 15px;
-    padding: 30px 40px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 0 20px #00fff2aa;
-    animation: fadeIn 0.8s ease;
-    direction: rtl;
-  }
-  
-  form h3 {
-    text-align: center;
-    color: #00ffea;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #00ffea;
-    padding-bottom: 10px;
-  }
-  
-  form label {
-    display: block;
-    margin-top: 15px;
-    color: #ddd;
-    font-size: 14px;
-    text-shadow: 0 0 2px #00ffee;
-  }
-  
-  form input {
-    width: 95%;
-    padding: 10px 15px;
-    margin: auto;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background: #222;
-    color: #fff;
-    outline: none;
-    font-size: 14px;
-    transition: 0.3s;
-  }
-  
-  form input:focus {
-    border-color: #00ffea;
-    box-shadow: 0 0 5px #00ffea88;
-  }
-  
-  form button {
-    font-family: 'Vazirmatn', sans-serif;
-    margin-top: 25px;
-    width: 100%;
-    padding: 12px 0;
-    background: #00ffea;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #000;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  form button:hover {
-    background: #00ffeacc;
-    box-shadow: 0 0 10px #00ffea;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  #welcome-message {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    font-size: 18px;
-    font-family: 'Vazir', sans-serif;
-    text-align: center;
-    margin: 20px auto;
-    width: fit-content;
-    max-width: 90%;
-    box-shadow: 0 0 20px #00fff2aa;
-    border: 2px solid #00ffea;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+#register-form {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 3px 7px 10px rgb(255 255 255 / 34%);
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  position: relative;
+  margin: 22px 0 65px 0;
+}
+
+.leader {
+  position: relative;
+}
+
+.leader label {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  color: black;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.leader:focus+label {
+  transform: translateY(-31px);
+  color: #020024;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+}
+
+input {
+  background-color: #faf9ff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+input:focus {
+  outline: none;
+  -webkit-box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  -moz-box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  background-color: white;
+  text-align: right;
+  direction: rtl;
+}
+
+/* Label Styling for Inputs */
+.input-group label {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  color: black;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  direction: rtl;
+}
+
+.input-group-user label {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  color: black;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  direction: rtl;
+}
+
+.input-group-user {
+  position: relative;
+}
+
+.input-group input {
+  text-align: left;
+}
+
+.input-group-user input {
+  text-align: left;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input:focus+label {
+  transform: translateY(-31px);
+  color: #002a7c;
+  background-color: #faf9ff;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  font-size: 17px;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+input:focus+label {
+  transform: translateY(-31px);
+  color: #002a7c;
+  background-color: #faf9ff;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+}
+
+h3 {
+  direction: rtl;
+  text-align: center;
+}
+
+#welcome-message {
+  direction: rtl;
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#welcome-message strong {
+  color: #0cddf8;
+  font-weight: bold;
+}
+
+#welcome-message {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.9s ease;
+}
+#welcome-message.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+label {
+  direction: rtl;
+}
+
+.between {
+  width: 100%;
+  border: 1px solid #ffffff;
+  position: relative;
+  top: -2rem;
+}
+
+.hr-user {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  top: 1rem;
+}
+
+.submit-btn {
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 45px;
+  background-color: #002a7c;
+  border: 1px solid #ffffff8c;
+  width: 100%;
+  margin-top: 12px;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.submit-btn span {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.submit-btn:hover {
+  animation: rotateEffect 0.7s ease-in-out both;
+}
+
+.submit-btn:hover span {
+  animation: stormEffect 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+@keyframes rotateEffect {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #faf9ff inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl !important;
+  background-color: #faf9ff !important;
 }
