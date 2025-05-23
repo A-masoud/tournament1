@@ -1,3 +1,23 @@
+// === ایمپورت Firebase ===
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+// === کانفیگ Firebase (جایگزین با اطلاعات پروژه خودت) ===
+const firebaseConfig = {
+    apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
+    authDomain: "tournify-app.firebaseapp.com",
+    projectId: "tournify-app",
+    storageBucket: "tournify-app.firebasestorage.app",
+    messagingSenderId: "273027702239",
+    appId: "1:273027702239:web:ae13272cba831cca2ef86a",
+    measurementId: "G-GEKS6X6RCV"
+};
+
+// === مقداردهی اولیه ===
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// === گرفتن شماره تیم انتخاب شده از لوکال استوریج ===
 const teamNumber = localStorage.getItem("selectedTeamNumber");
 const welcomeMessage = document.getElementById("welcome-message");
 
@@ -13,7 +33,7 @@ document.querySelectorAll('.leader, .player-group ,.hr-user , h3,.between').forE
     element.classList.add('active');
 });
 
-
+// === اعتبارسنجی آیدی بازیکنان ===
 function validatePlayerID(inputElement, errorElementID) {
     const value = inputElement.value.trim();
     const errorElement = document.getElementById(errorElementID);
@@ -29,7 +49,6 @@ function validatePlayerID(inputElement, errorElementID) {
     }
 }
 
-// انتخاب فیلدهای آیدی
 const playerIDInputs = [
     { input: document.querySelector('input[name="player1ID"]'), error: 'player1ID-error' },
     { input: document.querySelector('input[name="player2ID"]'), error: 'player2ID-error' },
@@ -37,20 +56,25 @@ const playerIDInputs = [
     { input: document.querySelector('input[name="player4ID"]'), error: 'player4ID-error' }
 ];
 
-// بررسی وجود تمام فیلدهای آیدی
 if (playerIDInputs.some(({ input }) => !input)) {
     console.error("یکی از فیلدهای آیدی یافت نشد. لطفاً HTML را بررسی کنید.");
 }
 
-// اعتبارسنجی در زمان تایپ
 playerIDInputs.forEach(({ input, error }) => {
     if (input) {
         input.addEventListener('input', () => validatePlayerID(input, error));
     }
 });
 
-// مدیریت ارسال فرم
-document.getElementById("register-form").addEventListener("submit", function (e) {
+// === تابع بررسی وجود تیم در Firebase ===
+async function isTeamTaken(teamNumber) {
+  const docRef = doc(db, "teams", `team-${teamNumber}`);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists();
+}
+
+// === مدیریت ارسال فرم ===
+document.getElementById("register-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     if (!teamNumber) {
@@ -72,9 +96,6 @@ document.getElementById("register-form").addEventListener("submit", function (e)
         return;
     }
 
-    console.log("نام‌های کاربری:", players);
-    console.log("آیدی‌ها:", playerIDs);
-
     const uniquePlayers = new Set(players);
     if (uniquePlayers.size !== players.length) {
         alert("نام‌های کاربری نباید تکراری باشند.");
@@ -93,22 +114,28 @@ document.getElementById("register-form").addEventListener("submit", function (e)
         return;
     }
 
-    const existingTeam = localStorage.getItem(`team-${teamNumber}`);
-    if (existingTeam) {
+    // بررسی در Firebase
+    const teamExistsInFirebase = await isTeamTaken(teamNumber);
+    if (teamExistsInFirebase) {
         alert("این تیم قبلاً رزرو شده است!");
         return;
     }
 
-    // ذخیره تیم
+    // داده‌های تیم
     const teamData = {
         leader: leaderName,
         players: players,
         playerIDs: playerIDs,
         locked: true
     };
+
+    // ذخیره تو لوکال استوریج
     localStorage.setItem(`team-${teamNumber}`, JSON.stringify(teamData));
 
-    // نمایش پیام موفقیت
+    // ذخیره تو Firebase Firestore
+    await setDoc(doc(db, "teams", `team-${teamNumber}`), teamData);
+
+    // نمایش پیام موفقیت و شمارش معکوس
     const messagePanel = document.createElement('div');
     messagePanel.style.position = 'fixed';
     messagePanel.style.top = '50%';
@@ -132,7 +159,6 @@ document.getElementById("register-form").addEventListener("submit", function (e)
 
     document.body.appendChild(messagePanel);
 
-    
     const countdownElement = document.getElementById('countdown');
     if (!countdownElement) {
         console.error("عنصر countdown یافت نشد.");
