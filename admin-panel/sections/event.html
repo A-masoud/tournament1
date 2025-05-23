@@ -1,37 +1,49 @@
 <div class="event-container">
-    <!-- ثبت رویداد جدید -->
-    <div class="event-form-wrapper">
-      <h3>➕ ثبت رویداد جدید</h3>
-      <div class="event-form">
-        <div id="step-1">
-          <label>⏱️ زمان شروع رویداد:</label>
-          <input type="datetime-local" id="event-start-time" min="">
-          <button id="step1-next">مرحله بعد</button>
-        </div>
+  <!-- ثبت رویداد جدید -->
+  <div class="event-form-wrapper">
+    <h3>➕ ثبت رویداد جدید</h3>
+    <div class="event-form">
+      <!-- مرحله 1: زمان شروع -->
+      <div id="step-1">
+        <label>⏱️ زمان شروع رویداد:</label>
+        <input type="datetime-local" id="event-start-time" min="">
+        <button id="step1-next">مرحله بعد</button>
+      </div>
 
-        <div id="step-2" style="display: none;">
-          <label>🗺️ انتخاب نقشه بازی:</label>
-          <select id="event-map">
-            <option value="Dust2">Dust2</option>
-            <option value="Mirage">Mirage</option>
-            <option value="Inferno">Inferno</option>
-          </select>
-          <button id="step2-next">مرحله بعد</button>
-        </div>
+      <!-- مرحله 2: نقشه بازی -->
+      <div id="step-2" style="display: none;">
+        <label>🗺️ انتخاب نقشه بازی:</label>
+        <select id="event-map">
+          <option value="Dust2">Dust2</option>
+          <option value="Mirage">Mirage</option>
+          <option value="Inferno">Inferno</option>
+        </select>
+        <button id="step2-next">مرحله بعد</button>
+      </div>
 
-        <div id="step-3" style="display: none;">
-          <p>⏰ شروع: <span id="confirm-start"></span></p>
-          <p>🗺️ نقشه: <span id="confirm-map"></span></p>
-          <button id="save-event">ثبت رویداد ✅</button>
-        </div>
+      <!-- مرحله 3: سرور و تأیید نهایی -->
+      <div id="step-3" style="display: none;">
+        <label>🌐 انتخاب سرور:</label>
+        <select id="event-server">
+          <option value="Europe">Europe</option>
+          <option value="Asia">Asia</option>
+          <option value="MiddleEast">MiddleEast</option>
+        </select>
+        <button id="step3-next">مرحله بعد</button>
+
+        <!-- تأیید نهایی -->
+        <p>⏰ شروع: <span id="confirm-start"></span></p>
+        <p>🗺️ نقشه: <span id="confirm-map"></span></p>
+        <p>🌐 سرور: <span id="confirm-server"></span></p>
+
+        <button id="save-event" style="display: none;">ثبت رویداد ✅</button>
       </div>
     </div>
-
-    <!-- لیست رویدادها -->
-    <div class="event-list-wrapper">
-      <h3>📋 رویدادهای ثبت‌شده</h3>
-      <ul id="event-history"></ul>
-    </div>
   </div>
-</section>
-  
+
+  <!-- لیست رویدادها -->
+  <div class="event-list-wrapper">
+    <h3>📋 رویدادهای ثبت‌شده</h3>
+    <ul id="event-history"></ul>
+  </div>
+</div>
