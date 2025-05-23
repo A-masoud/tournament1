@@ -92,3 +92,47 @@ caption {
     25% {  transform: rotateX(30deg) translateY(10px) rotate(-13deg); }
     50% { transform: translateY(-22px) rotate(3deg) scale(1.1);  }
 }
+
+.item:nth-child(3){
+    position: relative;
+}
+
+@property --angel{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: true;
+}
+.item:nth-child(3)::before{
+    filter: blur(20px);
+    opacity: 50% ;
+}
+.item:nth-child(3)::after , .item:nth-child(3)::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(
+    from var(--angel),
+    transparent 0%,
+    #0aaced 50%,
+    #cf0047 80%,
+    transparent 100%
+  );
+    top: 50%;
+    left: 50%;
+    translate:-50% -50% ;
+    z-index: -1;
+    padding: 7px;
+    border-radius: 29px 29px 0 0;
+    animation: 3s spin linear infinite;
+}
+
+
+@keyframes spin{
+    from{
+        --angel: 0deg;
+    }
+    to{
+        --angel:360deg;
+    }
+}
