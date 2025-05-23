@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 // --- تنظیمات Firebase خودت رو اینجا بذار ---
 const firebaseConfig = {
@@ -57,7 +57,7 @@ async function createTeamBlock(teamNumber) {
       container.style.display = "inline-block";
 
       const img = document.createElement('img');
-      img.src = "../img/1.PNG";
+      img.src = "../img/1.PNG"; // مسیر عکس آواتار
       img.alt = "Avatar";
 
       const nameOverlay = document.createElement('span');
@@ -164,14 +164,25 @@ async function countAvailableTeams(totalTeams) {
   return count;
 }
 
-async function updateAvailableTeamsCount() {
-  const availableCount = await countAvailableTeams(24);
-  localStorage.setItem("availableTeamsCount", availableCount);
-  console.log("تعداد تیم‌های خالی به‌روز شد:", availableCount);
+async function updateTeamsCountInFirestore() {
+  const totalTeams = 24;
+  const availableCount = await countAvailableTeams(totalTeams);
+  const registeredCount = totalTeams - availableCount;
+
+  const statsDocRef = doc(db, "teamStats", "counts");
+
+  await setDoc(statsDocRef, {
+    totalTeams,
+    availableTeams: availableCount,
+    registeredTeams: registeredCount,
+    updatedAt: new Date()
+  });
+
+  console.log("تعداد تیم‌ها در فایربیس به‌روزرسانی شد:", {availableCount, registeredCount});
 }
 
 // بار اول
-updateAvailableTeamsCount();
+updateTeamsCountInFirestore();
 
 // هر ۵ ثانیه یکبار
-setInterval(updateAvailableTeamsCount, 5000);
+setInterval(updateTeamsCountInFirestore, 5000);
