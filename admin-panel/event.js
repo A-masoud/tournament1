@@ -1,11 +1,10 @@
-// Import ماژول‌های لازم از Firebase نسخه ۹
-console.log("...اسکریپت لود شد")
+// event.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import {
   getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, Timestamp
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-// تنظیمات Firebase (اطلاعات پروژه خودتو بذار)
+// تنظیمات Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
   authDomain: "tournify-app.firebaseapp.com",
@@ -20,26 +19,33 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function setupEventSteps() {
-  // المان‌ها
+export function setupEventSteps() {
+  console.log("setupEventSteps اجرا شد");
   const step1 = document.getElementById("step-1");
   const step2 = document.getElementById("step-2");
   const step3 = document.getElementById("step-3");
 
+  if (!step1 || !step2 || !step3) {
+    console.error("یک یا چند المان step-1، step-2 یا step-3 پیدا نشدند!");
+    return;
+  }
+
   const startTimeInput = document.getElementById("event-start-time");
   const mapSelect = document.getElementById("event-map");
-
   const step1NextBtn = document.getElementById("step1-next");
   const step2NextBtn = document.getElementById("step2-next");
   const saveEventBtn = document.getElementById("save-event");
-
   const confirmStart = document.getElementById("confirm-start");
   const confirmMap = document.getElementById("confirm-map");
   let confirmServer = document.getElementById("confirm-server");
-
   const eventHistory = document.getElementById("event-history");
 
-  // مرحله سرور (مرحله 3 به بعد)
+  if (!startTimeInput || !mapSelect || !step1NextBtn || !step2NextBtn || !saveEventBtn || !confirmStart || !confirmMap || !eventHistory) {
+    console.error("یک یا چند المان مورد نیاز پیدا نشدند!");
+    return;
+  }
+
+  // بقیه کدها مثل قبل
   const step3Content = document.createElement("div");
   step3Content.innerHTML = `
     <label>🌐 انتخاب سرور:</label>
@@ -55,14 +61,11 @@ function setupEventSteps() {
   const serverSelect = document.getElementById("event-server");
   const step3NextBtn = document.getElementById("step3-next");
 
-  // جلوگیری از انتخاب زمان گذشته
   const nowISO = new Date().toISOString().slice(0, 16);
   startTimeInput.min = nowISO;
 
-  // دکمه ثبت ابتدا مخفی باشه
   saveEventBtn.style.display = "none";
 
-  // مدیریت مراحل فرم
   step1NextBtn.onclick = () => {
     if (!startTimeInput.value) {
       alert("لطفا زمان شروع رو انتخاب کن");
@@ -97,7 +100,6 @@ function setupEventSteps() {
     saveEventBtn.style.display = "inline-block";
   };
 
-  // ذخیره رویداد در Firestore
   saveEventBtn.onclick = async () => {
     saveEventBtn.disabled = true;
     try {
@@ -115,25 +117,20 @@ function setupEventSteps() {
     saveEventBtn.disabled = false;
   };
 
-  // ریست کردن فرم برای ثبت رویداد جدید
   function resetForm() {
     startTimeInput.value = "";
     mapSelect.value = "Dust2";
     serverSelect.value = "Europe";
-
     step1.style.display = "block";
     step2.style.display = "none";
     step3.style.display = "none";
-
     step3NextBtn.style.display = "inline-block";
     saveEventBtn.style.display = "none";
-
     confirmStart.textContent = "";
     confirmMap.textContent = "";
     if (confirmServer) confirmServer.textContent = "";
   }
 
-  // نمایش لحظه‌ای لیست رویدادها
   const q = query(collection(db, "events"), orderBy("startTime", "desc"));
   onSnapshot(q, (snapshot) => {
     eventHistory.innerHTML = "";
@@ -145,6 +142,3 @@ function setupEventSteps() {
     });
   });
 }
-
-// اجرای تابع برای راه‌اندازی فرم و مدیریت مراحل
-setupEventSteps();

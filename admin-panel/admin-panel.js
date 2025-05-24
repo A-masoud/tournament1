@@ -1,4 +1,5 @@
 
+import { setupEventSteps } from './event.js';
 document.addEventListener("DOMContentLoaded", function () {
   const sidebarLinks = document.querySelectorAll(".sidebar a");
   const contentSection = document.querySelector(".content");
@@ -24,8 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (section === "users-list") {
               renderTable();
             }
-
+              
             if (section === "event") {
+              
               setupEventSteps(); // اینجا حالا مطمئنیم دکمه‌ها تو DOM هستن
             }
           });
