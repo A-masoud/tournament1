@@ -36,7 +36,7 @@
 }
 
 input {
-  background-color: #faf9ff;
+  background-color: white;
   border: none;
   border-radius: 10px;
   padding: 12px;
@@ -45,7 +45,7 @@ input {
   font-family: 'Vazirmatn', sans-serif;
   width: 100%;
   box-sizing: border-box;
-  text-align: center;
+  text-align: right;
 }
 
 #fullName{
@@ -85,7 +85,7 @@ label[for="agree"] {
   display: flex;
   align-items: center;
   font-size: 15px;
-  color: #ffffff;
+  color: white;
   font-family: 'Vazirmatn', sans-serif;
   margin-bottom: 15px;
 }
@@ -93,9 +93,19 @@ label[for="agree"] {
 input:focus+label{
   transform: translateY(-31px);
   color: #002a7c;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 8px;
   padding: 2px 3.5px 0 3.5px;
+}
+
+input:focus + label,
+input:valid + label {
+  transform: translateY(-31px);
+  color: #002a7c;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+  font-size: 17px;
 }
 
 /* Submit Button */

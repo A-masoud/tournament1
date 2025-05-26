@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lobby</title>
+    <title>contact</title>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <link rel="stylesheet" href="lobby-room.css">
+    <link rel="stylesheet" href="contact-list.css">
     <link rel="stylesheet" href="../moshtarak/moshtarak.css">
+    <link rel="stylesheet" href="contact.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -17,13 +18,9 @@
 
         await new Promise(resolve => setTimeout(resolve, 100));
 
-        const content = await fetch("lobby-room-content.html").then(res => res.text());
+        const content = await fetch("contact-content.html").then(res => res.text());
         document.getElementById("content").innerHTML =content
         
-        const script = document.createElement("script");
-      script.src = "lobby-room.js";
-      script.type = "module";
-      document.body.appendChild(script);
     }
 
 

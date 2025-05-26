@@ -1,7 +1,293 @@
-body{
-    background: #546BFF;
-background: linear-gradient(110deg, rgba(84, 107, 255, 1) 0%, rgba(227, 227, 250, 1) 58%, rgba(205, 218, 250, 1) 51%, rgba(84, 107, 255, 1) 100%);
+body {
+  font-family: Vazir, sans-serif;
+  direction: rtl;
+  margin: 0;
 }
-img{
 
+.upp {
+  display: flex;
+  justify-content: center;
+  color: #96c0ff;
+  margin-bottom: 10px;
 }
+
+h1{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.down-betwen{
+  margin: 55px 0 40px 0 ;
+}
+
+.h1-down{
+  margin: 55px 0 40px 0 ;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.platform-up{
+    display: flex;
+    width: 45%;
+    background-color: rgba(255, 255, 255, 0.178);
+    gap: 5%;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    height: 25%;
+    align-items: center;
+    color: white;
+}
+
+.div1{
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  width: 185px;
+  height: 220px;
+  align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+
+.div1 strong{
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+
+.div2{
+  border: 1px solid white;
+    display: flex;
+  flex-direction: column;
+  width: 185px;
+  height: 220px;
+  align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.div2 strong{
+    display: flex;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+
+.div3{
+  border: 1px solid white;
+      display: flex;
+  flex-direction: column;
+  width: 185px;
+  height: 220px;
+  align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.div3 strong{
+    display: flex;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+
+#contact {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: auto;
+  height: auto;
+}
+
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#contact button {
+  padding: 10px 20px;
+  background-color: #0cddf8;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#contact button:hover {
+  background-color: #09c0d0;
+}
+
+/* آیکن سمت راست */
+#right-up {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px 0 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  margin-left: auto;
+}
+
+
+.platformh div{
+  width: 20%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+.main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      direction: ltr;
+      align-items: center;
+      /* margin-bottom:50px ; */
+    }
+    .up {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+    }
+    .down {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+    }
+    .card {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: rgba(255, 255, 255, 0.603);
+      border-radius: 90px 5px 5px 5px;
+      box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+      display: flex;
+      text-align: center;
+    justify-items: center;
+        align-content: center;
+     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 10px 0 0 10px ;
+    }
+    .card:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: white;
+    }
+    .instagram {
+      margin-top: 1.5em;
+      margin-left: 1.2em;
+      fill: #cc39a4;
+    }
+    .instagram:hover {
+      fill: white;
+    }
+    .card2 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: rgba(255, 255, 255, 0.603);
+      border-radius: 5px 90px 5px 5px;
+      box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+      display: flex;
+      text-align: center;
+    justify-items: center;
+        align-content: center;
+     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 10px 10px 0 0px ;
+    }
+    .card2:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: white;
+    }
+    .card2:hover .twitter {
+      fill: white;
+    }
+    .card3 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: rgba(255, 255, 255, 0.603);
+      border-radius: 5px 5px 5px 90px;
+      box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+      display: flex;
+      text-align: center;
+    justify-items: center;
+        align-content: center;
+     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0px 0px 10px 10px ;
+    }
+    .card3:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: white;
+    }
+    .card3:hover .github {
+      fill: white;
+    }
+    .card4 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: rgba(255, 255, 255, 0.603);
+      border-radius: 5px 5px 90px 5px;
+      box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+      display: flex;
+      text-align: center;
+    justify-items: center;
+        align-content: center;
+     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0px 10px 10px 0px ;
+    }
+    .card4:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: white;
+    }
+    .card4:hover .discord {
+      fill: white;
+    }
