@@ -1,10 +1,8 @@
-// event.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import {
   getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, Timestamp
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-// تنظیمات Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
   authDomain: "tournify-app.firebaseapp.com",
@@ -15,7 +13,6 @@ const firebaseConfig = {
   measurementId: "G-GEKS6X6RCV"
 };
 
-// Initialize Firebase و Firestore
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -45,9 +42,8 @@ export function setupEventSteps() {
     return;
   }
 
-  // بقیه کدها مثل قبل
-  const step3Content = document.createElement("div");
-  step3Content.innerHTML = `
+  // اضافه کردن محتوای مرحله سوم (سرور + دکمه مرحله بعد)
+  step3.innerHTML = `
     <label>🌐 انتخاب سرور:</label>
     <select id="event-server">
       <option value="Europe">Europe</option>
@@ -55,17 +51,27 @@ export function setupEventSteps() {
       <option value="MiddleEast">MiddleEast</option>
     </select>
     <button id="step3-next">مرحله بعد</button>
+    <button id="save-event" style="display:none;">ذخیره رویداد</button>
+    <p>تایید زمان شروع: <span id="confirm-start"></span></p>
+    <p>تایید مپ: <span id="confirm-map"></span></p>
+    <p>تایید سرور: <span id="confirm-server"></span></p>
   `;
-  step3.insertBefore(step3Content, saveEventBtn);
 
   const serverSelect = document.getElementById("event-server");
   const step3NextBtn = document.getElementById("step3-next");
+  const saveEventBtnNew = document.getElementById("save-event");
+  const confirmStartNew = document.getElementById("confirm-start");
+  const confirmMapNew = document.getElementById("confirm-map");
+  const confirmServerNew = document.getElementById("confirm-server");
+
+  // مقدار دهی اولیه و مخفی کردن مرحله 2 و 3
+  step2.style.display = "none";
+  step3.style.display = "none";
 
   const nowISO = new Date().toISOString().slice(0, 16);
   startTimeInput.min = nowISO;
 
-  saveEventBtn.style.display = "none";
-
+  // رویداد کلیک مرحله 1 -> مرحله 2
   step1NextBtn.onclick = () => {
     if (!startTimeInput.value) {
       alert("لطفا زمان شروع رو انتخاب کن");
@@ -75,33 +81,30 @@ export function setupEventSteps() {
     step2.style.display = "block";
   };
 
+  // رویداد کلیک مرحله 2 -> مرحله 3
   step2NextBtn.onclick = () => {
     step2.style.display = "none";
     step3.style.display = "block";
+    saveEventBtnNew.style.display = "none";
+    step3NextBtn.style.display = "inline-block";
   };
 
+  // رویداد کلیک مرحله 3 -> نمایش تاییدیه و دکمه ذخیره
   step3NextBtn.onclick = () => {
     if (!serverSelect.value) {
       alert("لطفا سرور رو انتخاب کن");
       return;
     }
-    confirmStart.textContent = new Date(startTimeInput.value).toLocaleString();
-    confirmMap.textContent = mapSelect.value;
-
-    if (!confirmServer) {
-      const serverConfirmP = document.createElement("p");
-      serverConfirmP.innerHTML = `🌐 سرور: <span id="confirm-server"></span>`;
-      step3.insertBefore(serverConfirmP, saveEventBtn);
-      confirmServer = document.getElementById("confirm-server");
-    }
-    confirmServer.textContent = serverSelect.value;
+    confirmStartNew.textContent = new Date(startTimeInput.value).toLocaleString();
+    confirmMapNew.textContent = mapSelect.value;
+    confirmServerNew.textContent = serverSelect.value;
 
     step3NextBtn.style.display = "none";
-    saveEventBtn.style.display = "inline-block";
+    saveEventBtnNew.style.display = "inline-block";
   };
 
-  saveEventBtn.onclick = async () => {
-    saveEventBtn.disabled = true;
+  saveEventBtnNew.onclick = async () => {
+    saveEventBtnNew.disabled = true;
     try {
       await addDoc(collection(db, "events"), {
         startTime: Timestamp.fromDate(new Date(startTimeInput.value)),
@@ -114,23 +117,27 @@ export function setupEventSteps() {
     } catch (error) {
       alert("خطا در ثبت رویداد: " + error.message);
     }
-    saveEventBtn.disabled = false;
+    saveEventBtnNew.disabled = false;
   };
 
   function resetForm() {
     startTimeInput.value = "";
     mapSelect.value = "Dust2";
     serverSelect.value = "Europe";
+
     step1.style.display = "block";
     step2.style.display = "none";
     step3.style.display = "none";
+
     step3NextBtn.style.display = "inline-block";
-    saveEventBtn.style.display = "none";
-    confirmStart.textContent = "";
-    confirmMap.textContent = "";
-    if (confirmServer) confirmServer.textContent = "";
+    saveEventBtnNew.style.display = "none";
+
+    confirmStartNew.textContent = "";
+    confirmMapNew.textContent = "";
+    confirmServerNew.textContent = "";
   }
 
+  // نمایش تاریخچه رویدادها
   const q = query(collection(db, "events"), orderBy("startTime", "desc"));
   onSnapshot(q, (snapshot) => {
     eventHistory.innerHTML = "";
