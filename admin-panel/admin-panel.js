@@ -1,5 +1,5 @@
-
 import { setupEventSteps } from './event.js';
+
 document.addEventListener("DOMContentLoaded", function () {
   const sidebarLinks = document.querySelectorAll(".sidebar a");
   const contentSection = document.querySelector(".content");
@@ -25,9 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (section === "users-list") {
               renderTable();
             }
-              
+
             if (section === "event") {
-              
               setupEventSteps(); // اینجا حالا مطمئنیم دکمه‌ها تو DOM هستن
             }
           });
@@ -38,11 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   });
+
+  // ⬇️ بارگذاری اولیه داشبورد هنگام باز شدن صفحه
+  fetch(`sections/dashboard.html`)
+    .then(res => res.text())
+    .then(data => {
+      contentSection.innerHTML = data;
+      // لینک داشبورد رو هم فعال کن
+      const defaultLink = document.querySelector('[data-section="dashboard"]');
+      if (defaultLink) {
+        sidebarLinks.forEach(item => item.classList.remove("active-link"));
+        defaultLink.classList.add("active-link");
+      }
+    })
+    .catch(err => {
+      contentSection.innerHTML = `<p style="color:red;">خطا در بارگذاری داشبورد</p>`;
+      console.error(err);
+    });
 });
-
-
-
-
-
-
-
