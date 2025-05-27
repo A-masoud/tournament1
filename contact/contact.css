@@ -30,6 +30,7 @@ h1{
     display: flex;
     width: 45%;
     background-color: rgba(255, 255, 255, 0.178);
+    backdrop-filter: blur(15px);
     gap: 5%;
     justify-content: center;
     margin: auto;
@@ -99,7 +100,8 @@ h1{
 
 
 #contact {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(15px);
   padding: 20px;
   border-radius: 0 20px 20px 0;
   display: flex;
@@ -107,21 +109,16 @@ h1{
   gap: 10px;
   margin-right: auto;
   height: auto;
+  width: 40%;
 }
 
 
 input, textarea {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  font-family: inherit;
 }
 
-label {
-  margin-top: 10px;
-  font-weight: bold;
-}
 
 #contact button {
   padding: 10px 20px;
@@ -138,7 +135,8 @@ label {
 
 /* آیکن سمت راست */
 #right-up {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(15px);
   border-radius: 20px 0 0 20px;
   display: flex;
   justify-content: center;
@@ -154,15 +152,12 @@ label {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-
-
 .main {
       display: flex;
       flex-direction: column;
       gap: 0.5em;
       direction: ltr;
       align-items: center;
-      /* margin-bottom:50px ; */
     }
     .up {
       display: flex;
@@ -179,9 +174,10 @@ label {
       height: 90px;
       outline: none;
       border: none;
-      background: rgba(255, 255, 255, 0.603);
+      background: rgba(255, 255, 255, 0.178);
       border-radius: 90px 5px 5px 5px;
       box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      backdrop-filter: blur(15px);
       transition: .2s ease-in-out;
       display: flex;
       text-align: center;
@@ -196,7 +192,7 @@ label {
     .card:hover {
       cursor: pointer;
       scale: 1.1;
-      background-color: white;
+      background-color: #00008b33;
     }
     .instagram {
       margin-top: 1.5em;
@@ -211,9 +207,10 @@ label {
       height: 90px;
       outline: none;
       border: none;
-      background: rgba(255, 255, 255, 0.603);
+      background: rgba(255, 255, 255, 0.178);
       border-radius: 5px 90px 5px 5px;
       box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      backdrop-filter: blur(15px);
       transition: .2s ease-in-out;
       display: flex;
       text-align: center;
@@ -228,7 +225,7 @@ label {
     .card2:hover {
       cursor: pointer;
       scale: 1.1;
-      background-color: white;
+      background-color: #00008b33;
     }
     .card2:hover .twitter {
       fill: white;
@@ -238,9 +235,10 @@ label {
       height: 90px;
       outline: none;
       border: none;
-      background: rgba(255, 255, 255, 0.603);
+      background: rgba(255, 255, 255, 0.178);
       border-radius: 5px 5px 5px 90px;
       box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      backdrop-filter: blur(15px);
       transition: .2s ease-in-out;
       display: flex;
       text-align: center;
@@ -255,7 +253,7 @@ label {
     .card3:hover {
       cursor: pointer;
       scale: 1.1;
-      background-color: white;
+      background-color: #00008b33;
     }
     .card3:hover .github {
       fill: white;
@@ -265,9 +263,10 @@ label {
       height: 90px;
       outline: none;
       border: none;
-      background: rgba(255, 255, 255, 0.603);
+      background: rgba(255, 255, 255, 0.178);
       border-radius: 5px 5px 90px 5px;
       box-shadow: rgb(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      backdrop-filter: blur(15px);
       transition: .2s ease-in-out;
       display: flex;
       text-align: center;
@@ -282,8 +281,121 @@ label {
     .card4:hover {
       cursor: pointer;
       scale: 1.1;
-      background-color: white;
+      background-color: #00008b33;
     }
     .card4:hover .discord {
       fill: white;
     }
+
+    .form{
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .form label{
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: black;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  direction: rtl;
+  }
+
+input:focus+label,textarea:focus+label{
+  transform: translateY(-31px);
+  color: #002a7c;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+}
+
+
+
+input:focus, textarea:focus{
+  outline: none;
+  -webkit-box-shadow:0px 0px 32px 0px rgba(0,3,167,0.52);
+  -moz-box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  box-shadow: 0px 0px 32px 0px rgba(0,3,167,0.52);
+  background-color: white;
+  text-align: right;
+}
+
+input:focus + label,
+input:valid + label,
+textarea:focus + label,
+textarea:valid + label{
+  transform: translateY(-31px);
+  color: #002a7c;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2px 3.5px 0 3.5px;
+  font-size: 17px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input,textarea{
+  border: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #faf9ff inset !important; 
+  -webkit-text-fill-color: #000000 !important; 
+  border: none !important; 
+  border-radius: 10px !important; 
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl !important;
+  background-color: #faf9ff ;
+}
+
+
+.submit-btn {
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  background-color: #002a7c ;
+  border: 1px solid #ffffff8c;
+  width: 100%;
+  margin-top: 12px;
+  font-family: 'Vazirmatn', sans-serif;
+  width: 30%;
+}
+
+.submit-btn span {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.submit-btn:hover {
+  animation: rotateEffect 0.7s ease-in-out both;
+}
+
+.submit-btn:hover span {
+  animation: stormEffect 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+.btn{
+  display: flex;
+      flex-wrap: wrap;
+    justify-content: center;
+}
+
+@keyframes rotateEffect {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
