@@ -1,64 +1,75 @@
 <div class="login-container">
   <div class="terms">
     <form id="register-form" action="#" method="POST">
-
       <div class="player-group">
-      <div class="input-group">
-        <input type="text" id="fullName" name="fullName" required aria-label="نام و نام خانوادگی">
-        <label for="fullName"> نام کامل :</label>
-      </div>
-      </div>
-
-      <div class="player-group">
-      <div class="input-group">
-        <input type="text" id="username" name="username" required aria-label="نام کاربری">
-        <label for="username">نام کاربری:</label>
-      </div>
+        <div class="input-group">
+          <input type="text" id="fullName" name="fullName" required aria-label="نام و نام خانوادگی">
+          <label for="fullName">نام کامل</label>
+        </div>
       </div>
 
       <div class="player-group">
-      <div class="input-group">
-        <input type="password" id="password" name="password" required aria-label="رمز عبور" onpaste="return false" oncopy="return false">
-        <label for="password">رمز عبور:</label>
-      </div>
-      </div>
-
-      <div class="player-group">
-      <div class="input-group">
-        <input type="password" id="passwordAgain" name="passwordAgain" required aria-label="تکرار رمز عبور" onpaste="return false" oncopy="return false">
-        <label for="passwordAgain">تکرار رمز عبور:</label>
-      </div>
+        <div class="input-group">
+          <input type="text" id="username" name="username" required aria-label="نام کاربری">
+          <label for="username">نام کاربری</label>
+        </div>
       </div>
 
       <div class="player-group">
-      <div class="input-group">
-        <input type="email" id="email" name="email" required aria-label="ایمیل">
-        <label for="email">ایمیل:</label>
-      </div>
+        <div class="input-group">
+          <input type="password" id="password" name="password" required aria-label="رمز عبور" onpaste="return false" oncopy="return false">
+          <label for="password">رمز عبور</label>
+          <svg class="close" viewBox="0 0 100 100" id="pas">
+            <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+            <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+            <circle cx="50" cy="50" r="10" fill="black"></circle>
+          </svg>
+        </div>
       </div>
 
       <div class="player-group">
-      <label for="agree">
-        <input class="checkbox" type="checkbox" id="agree" > 
-        <a href="#"> قوانین و مقررات  </a> این سایت را قبول دارم  
-      </label>
-      
-      <div>
-        از قبل حساب کاربری دارید؟
-        <a href="login.html">وارد شوید</a>
+        <div class="input-group">
+          <input type="password" id="passwordAgain" name="passwordAgain" required aria-label="تکرار رمز عبور" onpaste="return false" oncopy="return false">
+          <label for="passwordAgain">تکرار رمز عبور</label>
+          <svg class="close" viewBox="0 0 100 100" id="pas1">
+            <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+            <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+            <circle cx="50" cy="50" r="10" fill="black"></circle>
+          </svg>
+        </div>
       </div>
-      </div>
-      <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
-        <div class="loader"></div>
-      </div>
-      
+
       <div class="player-group">
-      <div>
-        <button class="submit-btn" type="submit">
-          <span>ثبت‌نام</span>
-        </button>
+        <div class="input-group">
+          <input type="email" id="email" name="email" required aria-label="ایمیل">
+          <label for="email">ایمیل</label>
+        </div>
       </div>
+
+      <div class="player-group">
+        <label for="agree">
+          <input class="checkbox" type="checkbox" id="agree">
+          <a href="#">قوانین و مقررات</a> این سایت را قبول دارم
+        </label>
+        <div>
+          از قبل حساب کاربری دارید؟
+          <a href="login.html">وارد شوید</a>
+        </div>
       </div>
-    <form>
+
+      <div class="player-group">
+        <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+          <div class="loader"></div>
+        </div>
+      </div>
+
+      <div class="player-group">
+        <div>
+          <button class="submit-btn" type="submit">
+            <span>ثبت ‌نام</span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

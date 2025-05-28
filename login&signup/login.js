@@ -14,6 +14,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const svg = document.getElementById("pas");
+const passwordInput = document.getElementById("password");
+
+svg.addEventListener("click", function() {
+  this.classList.toggle("close");
+  setTimeout(() => {
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  }, 125);
+});
+
 document.querySelectorAll('.player-group').forEach(element => {
   element.classList.add('active');
 }); 

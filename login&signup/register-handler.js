@@ -15,12 +15,38 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// اضافه کردن تعریف متغیرهای مورد نیاز در ابتدای فایل
+const svg = document.getElementById("pas");
+const svg1 = document.getElementById("pas1");
+const passwordInput = document.getElementById("password");
+const passwordInput2 = document.getElementById("passwordAgain");
+
+// مدیریت نمایش/مخفی کردن رمز عبور
+svg.addEventListener("click", function() {
+  this.classList.toggle("close");
+  setTimeout(() => {
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  }, 125);
+});
+
+svg1.addEventListener("click", function() {
+  this.classList.toggle("close");
+  setTimeout(() => {
+    passwordInput2.type = passwordInput2.type === "password" ? "text" : "password";
+  }, 125);
+});
+
+
+
+// افزودن کلاس active به تمام player-group
 document.querySelectorAll('.player-group').forEach(element => {
   element.classList.add('active');
 });
 
+
+
 // هندل ثبت‌نام
-document.getElementById("register-form").addEventListener("submit", async function(e) {
+document.getElementById("register-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const fullName = document.getElementById("fullName").value.trim();
@@ -59,7 +85,6 @@ document.getElementById("register-form").addEventListener("submit", async functi
 
     alert("ثبت‌نام با موفقیت انجام شد!");
     window.location.href = "login.html";
-
   } catch (err) {
     alert("خطا در ذخیره اطلاعات: " + err.message);
   } finally {

@@ -285,3 +285,37 @@ input:-webkit-autofill:active {
   .player-group:nth-of-type(8){
     transition-delay: 1.2s;
   }
+
+/* سایر استایل‌ها بدون تغییر باقی می‌مانند */
+
+svg {
+  width: 3.8vmin;
+  height: 5vmin;
+  border-radius: 0.5rem;
+  margin: 0 1vmin;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+svg path {
+  transition: all 0.25s ease;
+  transform-origin: center center;
+  stroke: #002a7c;
+}
+
+svg circle {
+  transition: all 0.25s ease;
+  transform-origin: center center;
+  fill: #002a7c;
+}
+
+svg.close circle {
+  transform: scale(0);
+}
+
+svg.close #top-eye-part {
+  d: path("M10,50 Q50,110 90,50");
+}
