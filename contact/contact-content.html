@@ -10,16 +10,21 @@
     <!-- فرم ارتباط -->
     <div class="item" id="contact">
       <form action="Criticisms">
-        <label for="full-name">نام کامل</label>
-        <input type="text" name="full-name" id="full-name" placeholder="نام خود را وارد کنید">
-
-        <label for="phone-number">شماره تماس</label>
-        <input type="number" name="phone-number" id="phone-number" placeholder="مثلاً 09123456789">
-
-        <label for="message">شرح پیام</label>
-        <textarea name="message" id="message" rows="4" placeholder="پیام خود را بنویسید"></textarea>
-
-        <button type="submit">ارسال</button>
+        <div class="form">
+          <input type="text" name="full-name" id="full-name" required>
+          <label for="full-name">نام کامل</label>
+        </div>
+        <div class="form">
+          <input type="number" name="phone-number" id="phone-number" required>
+          <label for="phone-number">شماره تماس</label>
+        </div>
+        <div class="form">
+          <textarea name="message" id="message" rows="4" required ></textarea>
+          <label for="message">شرح پیام</label>
+        </div>
+        <div class="btn">
+        <button class="submit-btn" type="submit"><span>ارسال</span></button>
+      </div>
       </form>
     </div>
     
@@ -45,6 +50,7 @@
       <lord-icon class="phone"
     src="https://cdn.lordicon.com/vcdutftw.json"
     trigger="hover"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:90px;height:90px ">
 </lord-icon>
       <strong><span>تماس با ما</span></strong>
@@ -55,6 +61,7 @@
       <lord-icon
     src="https://cdn.lordicon.com/jdgfsfzr.json"
     trigger="hover"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:90px;height:90px">
 </lord-icon>
      <strong><span>پشتیبانی</span></strong> <div><span>Lorem ipsum dolor sit amet.</span> </div></div> 
@@ -62,6 +69,7 @@
       <lord-icon
     src="https://cdn.lordicon.com/fqbvgezn.json"
     trigger="hover"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:90px;height:90px">
 </lord-icon>
       <strong><span> همکاری با ما </span></strong> <div> <span>Lorem ipsum dolor sit amet.</span> </div></div>
@@ -77,7 +85,7 @@
     trigger="hover"
     state="hover-rotate"
     stroke="bold"
-    colors="primary:#000000,secondary:#0cddf8"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:50px;height:50px">
 </lord-icon>
       </button>
@@ -86,7 +94,7 @@
     src="https://cdn.lordicon.com/ehrllifz.json"
     trigger="hover"
     stroke="bold"
-    colors="primary:#000000,secondary:#0cddf8"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:50px;height:50px">
 </lord-icon>
       </button>
@@ -98,7 +106,7 @@
     trigger="morph"
     stroke="bold"
     state="morph-logotype"
-    colors="primary:#000000,secondary:#0cddf8"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:50px;height:50px">
 </lord-icon>
       </button>
@@ -107,7 +115,7 @@
     src="https://cdn.lordicon.com/zvnxzuwv.json"
     trigger="hover"
     stroke="bold"
-    colors="primary:#000000,secondary:#0cddf8"
+    colors="primary:#ffffff,secondary:#0cddf8"
     style="width:50px;height:50px">
 </lord-icon>
       </button>
