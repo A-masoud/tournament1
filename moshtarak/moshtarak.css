@@ -3,10 +3,12 @@ body {
   font-family: 'Vazirmatn', sans-serif;
   background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
   height: 100vh;
-  display: flex;
+  display: flex ;
   flex-direction: column;
   direction: rtl;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {

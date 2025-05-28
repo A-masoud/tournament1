@@ -46,25 +46,31 @@ async function loadUsers() {
 
 function renderTable() {
   const tableBody = document.getElementById("table-body");
-  if (!tableBody) return;
+  const userCountElement = document.getElementById("UserCount");
+  
+  if (tableBody) {
+    if (UserDataList.length > 0) {
+      let rows = "";
+      UserDataList.forEach((user) => {
+        rows += `
+          <tr>
+            <td>${user.username || ""}</td>
+            <td>${user.fullName || ""}</td>
+            <td>${user.email || ""}</td>
+            <td>******</td>
+            <td><button onclick="deleteUser('${user.id}')">حذف</button></td>
+          </tr>
+        `;
+      });
+      tableBody.innerHTML = rows;
+    } else {
+      tableBody.innerHTML =
+        '<tr><td colspan="5">هیچ کاربری یافت نشد</td></tr>';
+    }
+  }
 
-  if (UserDataList.length > 0) {
-    let rows = "";
-    UserDataList.forEach((user) => {
-      rows += `
-        <tr>
-          <td>${user.username || ""}</td>
-          <td>${user.fullName || ""}</td>
-          <td>${user.email || ""}</td>
-          <td>******</td>
-          <td><button onclick="deleteUser('${user.id}')">حذف</button></td>
-        </tr>
-      `;
-    });
-    tableBody.innerHTML = rows;
-  } else {
-    tableBody.innerHTML =
-      '<tr><td colspan="5">هیچ کاربری یافت نشد</td></tr>';
+  if (userCountElement) {
+    userCountElement.textContent = UserDataList.length;
   }
 }
 
@@ -92,7 +98,7 @@ async function clearUsers() {
       UserDataList = [];
       renderTable();
       alert("همه کاربران حذف شدند ✅");
-      await loadUsers(); // اطمینان از بازخوانی
+      await loadUsers();
     } catch (error) {
       alert("خطا در حذف همه کاربران: " + error.message);
     }
@@ -100,8 +106,8 @@ async function clearUsers() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  loadUsers(); // بارگذاری اولیه
-  setInterval(loadUsers, 5000); // هر ۵ ثانیه آپدیت
+  loadUsers();
+  setInterval(loadUsers, 5000);
 });
 
 window.deleteUser = deleteUser;
