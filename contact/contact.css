@@ -28,7 +28,7 @@ h1{
 
 .platform-up{
     display: flex;
-    width: 45%;
+    width: 52%;
     background-color: rgba(255, 255, 255, 0.178);
     backdrop-filter: blur(15px);
     gap: 5%;
@@ -42,14 +42,15 @@ h1{
 }
 
 .div1{
-  border: 1px solid white;
+  border: 5px double white;
   display: flex;
   flex-direction: column;
   width: 185px;
   height: 220px;
   align-items: center;
-    justify-content: space-between;
+  justify-content: space-around;
     border-radius: 15px;
+    padding: 7px 0 7px 0;
 }
 
 
@@ -62,14 +63,15 @@ h1{
 
 
 .div2{
-  border: 1px solid white;
+  border: 5px double white;
     display: flex;
   flex-direction: column;
   width: 185px;
   height: 220px;
   align-items: center;
-    justify-content: space-between;
+  justify-content: space-around;
     border-radius: 15px;
+    padding: 7px 0 7px 0;
 }
 
 .div2 strong{
@@ -81,14 +83,15 @@ h1{
 
 
 .div3{
-  border: 1px solid white;
+  border: 5px double white;
       display: flex;
   flex-direction: column;
   width: 185px;
   height: 220px;
   align-items: center;
-    justify-content: space-between;
+  justify-content: space-around;
     border-radius: 15px;
+    padding: 7px 0 7px 0;
 }
 
 .div3 strong{
@@ -117,6 +120,8 @@ input, textarea {
   width: 100%;
   padding: 8px;
   border-radius: 8px;
+  height: 1%;
+  font-size: 16px;
 }
 
 
@@ -143,6 +148,7 @@ input, textarea {
   align-items: center;
   width: 20%;
   margin-left: auto;
+  padding: 20px;
 }
 
 
