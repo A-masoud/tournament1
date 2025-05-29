@@ -15,26 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// اضافه کردن تعریف متغیرهای مورد نیاز در ابتدای فایل
-const svg = document.getElementById("pas");
-const svg1 = document.getElementById("pas1");
-const passwordInput = document.getElementById("password");
-const passwordInput2 = document.getElementById("passwordAgain");
 
-// مدیریت نمایش/مخفی کردن رمز عبور
-svg.addEventListener("click", function() {
-  this.classList.toggle("close");
-  setTimeout(() => {
-    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-  }, 125);
-});
 
-svg1.addEventListener("click", function() {
-  this.classList.toggle("close");
-  setTimeout(() => {
-    passwordInput2.type = passwordInput2.type === "password" ? "text" : "password";
-  }, 125);
-});
 
 
 
