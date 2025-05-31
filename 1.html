@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چک لیست</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .check-list {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 2px solid #ff4d4d;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(45deg, #4b1a3a, #ff4d4d);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .price {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+        .header .discount {
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+        .checklist {
+            padding: 20px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-item::before {
+            content: '✔';
+            color: #00cc00;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        .button {
+            background: linear-gradient(45deg, #ffcc00, #ff4d4d);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="check-list">
+        <div class="header">
+            <h1>محصول نات و بوف</h1>
+            <div class="price">15000 تومن</div>
+            <div class="discount">20000 تومن</div>
+        </div>
+        <div class="checklist">
+            <div class="checklist-item">تغذیه و رژیم غذایی سریع</div>
+            <div class="checklist-item">رژیم غذایی با کالری مشخص و رژیم غذایی پر کربوهیدرات</div>
+            <div class="checklist-item">سیستم تغذیه کم کالری و رژیم غذایی پر کربوهیدرات</div>
+            <div class="checklist-item">تنظیم وزن و سوخت و ساز بدن</div>
+            <div class="checklist-item">نتیجه دهی در کمتر از 24 ساعت</div>
+            <div class="checklist-item">دارای چارت حرفه ای برای رژیم</div>
+        </div>
+        <div class="button">مشاهده این برنامه</div>
+    </div>
+</body>
+</html>

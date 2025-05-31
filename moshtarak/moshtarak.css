@@ -3,7 +3,7 @@ body {
   font-family: 'Vazirmatn', sans-serif;
   background-image: url(../img/ChatGPT\ Image\ May\ 3\,\ 2025\,\ 02_24_54\ PM.png);
   height: 100vh;
-  display: flex ;
+  display: flex;
   flex-direction: column;
   direction: rtl;
   background-size: cover;
@@ -17,7 +17,7 @@ header {
   align-items: center;
   backdrop-filter: blur(20px);
   border-bottom: #3a41d8 1px solid;
-  padding: 1% ;
+  padding: 1%;
   border-radius: 0 0 12px 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   direction: ltr;
@@ -37,17 +37,14 @@ h1 {
 nav {
   display: flex;
   align-items: center;
-  
-  
 }
-.hamburger{
+
+.hamburger {
   display: none;
 }
 
-
 nav .menu-item {
   position: relative;
-  
 }
 
 nav a {
@@ -58,7 +55,6 @@ nav a {
   transition: color 0.3s;
   border: #8b8fdd4a 1px solid;
   border-radius: 18px;
-  
 }
 
 nav a:hover {
@@ -132,20 +128,21 @@ nav a:hover {
 
 main {
   flex: 1;
-  padding: 40px 20px 100px;
+  padding: 5% 2% 10%;
 }
 
 footer {
   font-size: 14.5px;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 20px 110px;
   border-radius: 12px 12px 0px 0px;
   backdrop-filter: blur(20px);
   border: 1.5px solid white;
   border-bottom: none;
+  gap: 2%;
 }
 
 footer a {
@@ -163,31 +160,34 @@ footer a:hover {
 }
 
 img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 #footer-center {
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1)  ;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  height: 63%;
+  justify-content: center;
 }
 
 #footer-left {
   text-align: center;
   gap: 0;
-  background-color: rgba(255, 255, 255, 0.1)  ;
-  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
   border-radius: 15px;
+  height: 77%;
 }
 
 #footer-right {
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1)  ;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   display: flex;
@@ -195,13 +195,13 @@ img {
   align-items: flex-start;
 }
 
-#footer-right span{
+#footer-right span {
   margin: 0 0 8px 0;
-  border-bottom: 2px solid #4bf1d8 ;
+  border-bottom: 2px solid #4bf1d8;
   padding-bottom: 8px;
 }
 
-#footer-right a{
+#footer-right a {
   margin-bottom: 6px;
 }
 
@@ -221,34 +221,106 @@ img {
   direction: ltr;
 }
 
-@media (max-width: 942px) {
+.subscribe-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+h2 {
+  color: #4bf1d8;
+  font-size: 24px;
+  margin-top: 0%;
+  margin-bottom: 2%;
+}
+
+p {
+  color: #666;
+  margin-bottom: 10px;
+  margin-top: 0%;
+}
+
+input[type="email"] {
+  padding: 10px 15px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #5e66f6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 2%;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+button:hover {
+  background-color: #3a41d8;
+}
+
+#footer-center-right {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#footer-center-right span {
+  margin: 0 0 8px 0;
+  border-bottom: 2px solid #4bf1d8;
+  padding-bottom: 8px;
+}
+
+/* Tablet Responsiveness (max-width: 768px) */
+@media (max-width: 879px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
   nav {
-    display: none; /* مخفی کردن منو */
+    display: none;
     flex-direction: column;
     background-color: #6064da;
     position: absolute;
     top: 60px;
     right: 0;
-    width: 220px;
-    padding: 20px;
+    width: 200px;
+    padding: 15px;
     border-radius: 0 0 0 10px;
     box-shadow: -4px 4px 10px rgba(0,0,0,0.2);
     transition: all 0.4s ease;
     z-index: 999;
   }
-  
+
   nav.active {
-    display: flex; /* نمایش منو وقتی فعال شد */
+    display: flex;
   }
 
   .hamburger {
-    display: flex; /* نمایش دکمه همبرگری */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
     cursor: pointer;
   }
+
   .hamburger span {
     height: 3px;
     width: 100%;
@@ -260,23 +332,184 @@ img {
   .hamburger.open span:nth-child(1) {
     transform: rotate(45deg) translateY(9px);
   }
+
   .hamburger.open span:nth-child(2) {
     opacity: 0;
   }
+
   .hamburger.open span:nth-child(3) {
     transform: rotate(-45deg) translateY(-9px);
   }
-}
 
-@media (max-width: 643px){
-  header{
-    width: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .buttons button {
+    width: 80px;
+    font-size: 1rem;
+    padding: 3%;
   }
-  
+
+  main {
+    padding: 3% 2% 8%;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  #footer-center, #footer-left, #footer-right, #footer-center-right {
+    height: auto;
+    padding: 20px;
+    width: 100%;
+  }
+
+  #vertical-line {
+    width: 80%;
+    height: 1px;
+  }
+
+  .subscribe-container {
+    width: 100%;
+  }
+
+  input[type="email"] {
+    width: 80%;
+  }
 }
 
-  
+/* Mobile Responsiveness (max-width: 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
+  header {
+    padding: 2%;
+  }
+
+  nav {
+    width: 180px;
+    padding: 10px;
+    top: 50px;
+  }
+
+  nav a {
+    font-size: 18px;
+    padding: 5px 6px;
+  }
+
+  .submenu {
+    width: 100%;
+  }
+
+  .buttons {
+    align-items: center;
+  }
+
+  .buttons button {
+    width: 70px;
+    font-size: 0.9rem;
+    padding: 2%;
+  }
+
+  .buttons p {
+    font-size: 0.8rem;
+  }
+
+  main {
+    padding: 2% 1% 6%;
+  }
+
+  footer {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  #footer-center, #footer-left, #footer-right, #footer-center-right {
+    padding: 15px;
+    font-size: 12px;
+  }
+
+  #footer-right a, #footer-center-right a {
+    font-size: 12px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .subscribe-container {
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input[type="email"] {
+    width: 90%;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+.check-list {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 2px solid #ff4d4d;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(45deg, #4b1a3a, #ff4d4d);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .price {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+        .header .discount {
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+        .checklist {
+            padding: 20px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-item::before {
+            content: '✔';
+            color: #00cc00;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        .button {
+            background: linear-gradient(45deg, #ffcc00, #ff4d4d);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
