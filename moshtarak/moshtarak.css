@@ -28,27 +28,22 @@ header {
 
 h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 28px;
   font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 1%;
+  font-size: 40px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
 }
 
 nav {
   display: flex;
+  gap: 15px;
   align-items: center;
-  
-  
 }
-.hamburger{
-  display: none;
-}
-
 
 nav .menu-item {
   position: relative;
-  
 }
 
 nav a {
@@ -57,9 +52,6 @@ nav a {
   font-size: 20px;
   padding: 6px 8px;
   transition: color 0.3s;
-  border: #8b8fdd4a 1px solid;
-  border-radius: 18px;
-  
 }
 
 nav a:hover {
@@ -69,20 +61,23 @@ nav a:hover {
 .submenu {
   display: none;
   position: absolute;
+  top: 35px;
+  right: 0;
   background-color: rgb(162, 206, 236);
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-  width: 150%;
+  min-width: 200px;
   direction: rtl;
 }
 
 .submenu a {
   display: flex;
   align-items: center;
-  padding: 5%;
+  gap: 8px;
+  padding: 10px;
   color: #333;
-  font-size: 1rem;
+  font-size: 16px;
   border-radius: 8.5px;
 }
 
@@ -97,20 +92,21 @@ nav a:hover {
 .buttons {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   align-items: flex-end;
 }
 
 .buttons p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 15px;
   color: white;
   direction: rtl;
 }
 
 .buttons button {
-  padding: 4%;
-  font-size: 1.1rem;
-  border: rgb(72, 0, 255) 1px solid;
+  padding: 6px 14px;
+  font-size: 16px;
+  border: none;
   border-radius: 8px;
   background-color: #5e66f6;
   color: white;
@@ -124,10 +120,11 @@ nav a:hover {
 .buttons button:hover {
   background-color: #3a41d8;
   border: solid 2px white;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .submenu i {
+  width: 20px;
   text-align: center;
 }
 
@@ -222,63 +219,80 @@ img {
   direction: ltr;
 }
 
-@media (max-width: 942px) {
+/* اضافه کردن ریسپانسیو */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 15px;
+  }
+
+  h1 {
+      font-size: 30px;
+  }
+
   nav {
-    display: none; /* مخفی کردن منو */
-    flex-direction: column;
-    background-color: #6064da;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 220px;
-    padding: 20px;
-    border-radius: 0 0 0 10px;
-    box-shadow: -4px 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.4s ease;
-    z-index: 999;
-  }
-  
-  nav.active {
-    display: flex; /* نمایش منو وقتی فعال شد */
+      width: 100%;
+      justify-content: flex-start;
+      gap: 10px;
   }
 
-  .hamburger {
-    display: flex; /* نمایش دکمه همبرگری */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-  }
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 2px;
-    transition: all 0.4s ease;
+  .buttons {
+      align-items: center;
   }
 
-  .hamburger.open span:nth-child(1) {
-    transform: rotate(45deg) translateY(9px);
+  footer {
+      padding: 20px 40px;
+      flex-direction: column;
   }
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
+
+  footer a {
+      font-size: 14px;
   }
-  .hamburger.open span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-9px);
+
+  img {
+      width: 120px;
+      height: 120px;
+  }
+
+  #footer-center {
+      text-align: center;
+  }
+
+  #footer-left, #footer-right {
+      text-align: center;
+      gap: 5px;
+  }
+
+  #vertical-line {
+      display: none;
   }
 }
 
-@media (max-width: 643px){
-  header{
-    width: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+@media (max-width: 480px) {
+  h1 {
+      font-size: 24px;
   }
-  
+
+  nav a {
+      font-size: 18px;
+  }
+
+  .buttons button {
+      font-size: 14px;
+      width: 80px;
+  }
+
+  footer {
+      padding: 15px 20px;
+  }
+
+  footer a {
+      font-size: 12px;
+  }
+
+  img {
+      width: 100px;
+      height: 100px;
+  }
 }
-
-  
-
-
