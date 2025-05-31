@@ -187,8 +187,8 @@ input, textarea {
       transition: .2s ease-in-out;
       display: flex;
       text-align: center;
-    justify-items: center;
-        align-content: center;
+      justify-items: center;
+    align-content: center;
      align-items: center;
     flex-wrap: wrap;
     flex-direction: column-reverse;
