@@ -16,6 +16,7 @@ header {
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(20px);
+  
   border-bottom: #3a41d8 1px solid;
   padding: 1% ;
   border-radius: 0 0 12px 12px;
