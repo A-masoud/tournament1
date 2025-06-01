@@ -289,6 +289,7 @@ button:hover {
 
 /* Tablet Responsiveness (max-width: 768px) */
 @media (max-width: 879px) {
+  
   h1 {
     font-size: 2.2rem;
   }
@@ -297,7 +298,7 @@ button:hover {
     position: fixed;
     top: 0;
     right: 0;
-    width: 250px;
+    width: 40%;
     height: 100vh;
     background-color: #22247dd7;
     display: flex;
@@ -319,7 +320,7 @@ button:hover {
     text-decoration: none;
     font-size: 1.2rem;
     padding: 10px;
-    border-radius: 8px;
+    width: 100%;
     background: rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease, transform 0.3s ease;
   }
@@ -346,6 +347,12 @@ button:hover {
     border-radius: 2px;
     transition: all 0.4s ease;
   }
+  .menu-item{
+    width: 110%;
+    display: flex;
+    
+  }
+
 
   .hamburger.open span:nth-child(1) {
     transform: rotate(45deg) translateY(9px);
