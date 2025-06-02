@@ -248,7 +248,7 @@ p {
   margin-top: 0%;
 }
 
-input[type="email"] {
+.subscribe-container input[type="email"] {
   padding: 10px 15px;
   width: 250px;
   border: 1px solid #ccc;
@@ -432,7 +432,7 @@ button:hover {
     width: 100%;
   }
 
-  input[type="email"] {
+  .subscribe-container input[type="email"] {
     width: 80%;
   }
 }
@@ -508,7 +508,7 @@ button:hover {
     font-size: 20px;
   }
 
-  input[type="email"] {
+  .subscribe-container input[type="email"] {
     width: 90%;
     padding: 8px 12px;
     font-size: 14px;
