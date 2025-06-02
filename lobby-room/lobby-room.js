@@ -94,7 +94,7 @@ async function createTeamBlock(teamNumber) {
           stamp.textContent = 'رزرو شد';
           wrapper.style.position = 'relative';
           wrapper.appendChild(stamp);
-          title.style.color = "red"
+          
         }
       wrapper.style.opacity = "0.5";
       wrapper.style.cursor = "not-allowed";
@@ -103,8 +103,6 @@ async function createTeamBlock(teamNumber) {
           wrapper.style.opacity = "1";
           wrapper.style.border = "2px solid red";
           wrapper.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
-          
-          
       });
 
       wrapper.addEventListener("mouseleave", () => {
@@ -114,7 +112,15 @@ async function createTeamBlock(teamNumber) {
       });
 
       wrapper.addEventListener("click", () => {
-          alert("❌ این تیم قبلاً رزرو شده است.");
+          const teamSelectionInfo = document.getElementById("team-selection-info");
+          const selectedText = document.getElementById("selected-team-text");
+
+          selectedText.textContent = `❌ این تیم قبلاً رزرو شده است.`;
+          teamSelectionInfo.classList.add("active");
+
+          setTimeout(() => {
+              teamSelectionInfo.classList.remove("active");
+          }, 5000);
       });
   } else {
       wrapper.addEventListener("click", () => {

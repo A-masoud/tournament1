@@ -56,7 +56,7 @@ body {
   }
   #team-selection-info {
     position: fixed;
-    top: -100px;
+    top: -105px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(181, 197, 203, 0.799);
@@ -91,7 +91,7 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  width: 15%;
+  width: 20%;
   height: 20%;
   background-color: rgba(255, 255, 255, 0);
   border: 3px solid #ff1e00;
@@ -110,6 +110,45 @@ body {
   user-select: none;
   pointer-events: none;
   z-index: 100;
+}
+@media (max-width: 590px){
+
+  #team-selection-info {
+    position: fixed;
+    top: -131px;
+    left: 50%;
+  }
+  .reserved-stamp {
+    width: 40%;
+    height: 20%;
+  }
+}
+@media (max-width: 359px){
+  #team-selection-info {
+    position: fixed;
+    top: -160px;
+    left: 50%;
+  }
+  .reserved-stamp {
+    width: 50%;
+    height: 20%;
+  }
+  
+  
+
+}
+@media (max-width: 359px){
+  #team-selection-info {
+    position: fixed;
+    top: -180px;
+    left: 50%;
+  }
+  .reserved-stamp {
+    width: 50%;
+    height: 20%;
+  }
+  
+
 }
 
 
