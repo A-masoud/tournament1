@@ -298,12 +298,13 @@ input:-webkit-autofill:active {
 /* Tablet (600px - 1024px) */
 @media screen and (max-width: 1024px) {
   .platform-up {
-    width: 80%;
+    width: 50%;
     flex-direction: column;
     height: auto;
     padding: 20px;
     gap: 20px;
   }
+
 
   .div1, .div2, .div3 {
     width: 100%;
@@ -313,14 +314,14 @@ input:-webkit-autofill:active {
   }
 
   #contact {
-    width: 50%;
+    width: 80%;
     margin: auto;
     border-radius: 0 0 20px 20px;
     display: flex;
   }
 
   #right-up {
-    width: 50%;
+    width: 80%;
     margin: 0px auto;
     border-radius: 20px 20px 0 0;
   }
@@ -336,7 +337,7 @@ input:-webkit-autofill:active {
   }
 
   .submit-btn {
-    width: 50%;
+    width: 40%;
   }
 }
 
