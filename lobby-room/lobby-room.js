@@ -37,7 +37,11 @@ async function createTeamBlock(teamNumber) {
   title.style.color = "#f0f0f0";
   title.style.fontFamily = "'Bebas Neue', sans-serif";
   title.style.backgroundColor = "rgba(255, 255, 255, 0.377)";
-  title.style.borderRadius = "50px";
+  title.style.borderRadius = "100px";
+  title.style.fontSize ="23px"
+  title.style.letterSpacing = "2px"
+  title.style.color = "rgb(186, 255, 210)"
+  
 
   const row = document.createElement('div');
   row.className = 'avatar-row';
@@ -90,6 +94,7 @@ async function createTeamBlock(teamNumber) {
           stamp.textContent = 'رزرو شد';
           wrapper.style.position = 'relative';
           wrapper.appendChild(stamp);
+          title.style.color = "red"
         }
       wrapper.style.opacity = "0.5";
       wrapper.style.cursor = "not-allowed";
@@ -98,6 +103,8 @@ async function createTeamBlock(teamNumber) {
           wrapper.style.opacity = "1";
           wrapper.style.border = "2px solid red";
           wrapper.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+          
+          
       });
 
       wrapper.addEventListener("mouseleave", () => {
