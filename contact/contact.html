@@ -20,6 +20,10 @@
 
         const content = await fetch("contact-content.html").then(res => res.text());
         document.getElementById("content").innerHTML =content
+
+        const moshtarak = document.createElement("script");
+        moshtarak.src = "../moshtarak/moshtarak.js";
+        document.body.appendChild(moshtarak);
         
     }
 

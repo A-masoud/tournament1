@@ -23,7 +23,13 @@
       script.src = "login.js";
       script.type = "module";
       document.body.appendChild(script);
+
+      const moshtarak = document.createElement("script");
+      moshtarak.src = "../moshtarak/moshtarak.js";
+      document.body.appendChild(moshtarak);
+
     }
+
 
         loadPage();
 

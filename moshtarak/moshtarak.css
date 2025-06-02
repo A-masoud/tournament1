@@ -352,7 +352,7 @@ button:hover {
     transition: all 0.4s ease;
   }
   .menu-item{
-    width: 110%;
+    width: 100%;
     display: flex;
     
   }
@@ -385,7 +385,7 @@ button:hover {
   }
 
   .buttons button {
-    width: 80px;
+    width: 94px;
     font-size: 1rem;
     padding: 3%;
   }
@@ -420,8 +420,9 @@ button:hover {
   }
 }
 
+
 /* Mobile Responsiveness (max-width: 480px) */
-@media (max-width: 480px) {
+@media (max-width: 534px) {
   h1 {
     font-size: 1.8rem;
   }

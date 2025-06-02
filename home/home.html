@@ -36,6 +36,10 @@
       timerScript.type = 'module';
       timerScript.src = 'event-home.js';
       document.body.appendChild(timerScript);
+
+      const moshtarak = document.createElement("script");
+      moshtarak.src = "../moshtarak/moshtarak.js";
+      document.body.appendChild(moshtarak);
     }
   
     loadPage();
