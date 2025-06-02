@@ -94,7 +94,7 @@ async function createTeamBlock(teamNumber) {
           stamp.textContent = 'رزرو شد';
           wrapper.style.position = 'relative';
           wrapper.appendChild(stamp);
-          
+          title.style.color = "red"
         }
       wrapper.style.opacity = "0.5";
       wrapper.style.cursor = "not-allowed";
@@ -114,13 +114,16 @@ async function createTeamBlock(teamNumber) {
       wrapper.addEventListener("click", () => {
           const teamSelectionInfo = document.getElementById("team-selection-info");
           const selectedText = document.getElementById("selected-team-text");
+          const goToRegisterButton = document.getElementById("go-to-register");
 
           selectedText.textContent = `❌ این تیم قبلاً رزرو شده است.`;
+          goToRegisterButton.textContent = "باشه";
           teamSelectionInfo.classList.add("active");
 
-          setTimeout(() => {
+          goToRegisterButton.onclick = () => {
               teamSelectionInfo.classList.remove("active");
-          }, 5000);
+              goToRegisterButton.textContent = "ادامه و ثبت‌نام"; // بازگشت به متن اولیه
+          };
       });
   } else {
       wrapper.addEventListener("click", () => {
@@ -129,17 +132,20 @@ async function createTeamBlock(teamNumber) {
 
           const teamSelectionInfo = document.getElementById("team-selection-info");
           const selectedText = document.getElementById("selected-team-text");
+          const goToRegisterButton = document.getElementById("go-to-register");
 
           selectedText.textContent = `شما تیم شماره ${teamNumber} را انتخاب کردید.`;
+          goToRegisterButton.textContent = "ادامه و ثبت‌نام"; // تنظیم متن دکمه برای تیم خالی
           teamSelectionInfo.classList.add("active");
 
-          document.getElementById("go-to-register").onclick = () => {
+          goToRegisterButton.onclick = () => {
               localStorage.setItem("selectedTeamNumber", teamNumber);
               window.location.href = "register-tournament.html";
           };
 
           setTimeout(() => {
               teamSelectionInfo.classList.remove("active");
+              goToRegisterButton.textContent = "ادامه و ثبت‌نام"; // بازگشت به متن اولیه
           }, 5000);
       });
   }
