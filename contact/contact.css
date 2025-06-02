@@ -330,6 +330,11 @@ input:-webkit-autofill:active {
    height:200px;
 }
 
+  input, textarea {
+    position: relative;
+    left: 1.5%;
+  }
+
   .submit-btn {
     width: 50%;
   }
@@ -367,7 +372,9 @@ input:-webkit-autofill:active {
   }
 
   input, textarea {
+    position: relative;
     font-size: 14px;
+    left: 2%;
   }
 
   .form label {
