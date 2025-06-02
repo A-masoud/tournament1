@@ -289,7 +289,6 @@ button:hover {
 
 /* Tablet Responsiveness (max-width: 768px) */
 @media (max-width: 879px) {
-  
   h1 {
     font-size: 2.2rem;
   }
@@ -309,6 +308,7 @@ button:hover {
     transform: translateX(100%);
     transition: transform 0.4s ease;
     z-index: 999;
+    border-radius: 20px 0 0 20px;
   }
 
   nav.active {
@@ -347,12 +347,12 @@ button:hover {
     border-radius: 2px;
     transition: all 0.4s ease;
   }
-  .menu-item{
-    width: 110%;
-    display: flex;
-    
-  }
 
+  .menu-item {
+    width: 100%; /* اصلاح عرض به 100% برای جلوگیری از سرریز */
+    display: flex;
+    flex-direction: column; /* آیتم‌های منو و ساب‌منو به صورت عمودی */
+  }
 
   .hamburger.open span:nth-child(1) {
     transform: rotate(45deg) translateY(9px);
@@ -364,6 +364,38 @@ button:hover {
 
   .hamburger.open span:nth-child(3) {
     transform: rotate(-45deg) translateY(-9px);
+  }
+
+  .submenu {
+    position: static; /* موقعیت استاتیک برای قرارگیری طبیعی زیر آیتم */
+    width: 100%; /* عرض کامل */
+    background-color: rgba(255, 255, 255, 0.2); /* پس‌زمینه هماهنگ با منو */
+    border: none; /* حذف حاشیه برای ظاهر تمیزتر */
+    box-shadow: none; /* حذف سایه برای جلوگیری از شلوغی */
+    display: none; /* به صورت پیش‌فرض مخفی */
+    padding: 10px 0; /* فاصله داخلی برای جداسازی */
+    margin-top: 5px; /* فاصله از آیتم اصلی */
+    opacity: 0; /* برای انیمیشن fade-in */
+    transform: translateY(-10px); /* برای انیمیشن slide-in */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* انیمیشن باز شدن */
+  }
+
+  .menu-item.open-submenu .submenu {
+    display: block; /* نمایش ساب‌منو هنگام باز شدن */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .submenu a {
+    font-size: 1rem; /* اندازه فونت کمی کوچکتر برای ساب‌منو */
+    padding: 8px 15px; /* پدینگ مناسب */
+    background: rgba(255, 255, 255, 0.1); /* پس‌زمینه هماهنگ */
+    margin: 2px 0; /* فاصله بین آیتم‌های ساب‌منو */
+  }
+
+  .submenu a:hover {
+    background: rgba(255, 255, 255, 0.3); /* افکت هاور */
+    transform: translateX(-5px); /* انیمیشن جابجایی هماهنگ با منوی اصلی */
   }
 
   .buttons button {
@@ -382,7 +414,10 @@ button:hover {
     gap: 15px;
   }
 
-  #footer-center, #footer-left, #footer-right, #footer-center-right {
+  #footer-center,
+  #footer-left,
+  #footer-right,
+  #footer-center-right {
     height: auto;
     padding: 20px;
     width: 100%;
