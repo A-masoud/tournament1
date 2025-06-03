@@ -325,3 +325,17 @@ input:-webkit-autofill:active {
   direction: rtl !important;
   background-color: #faf9ff ;
 }
+@media (max-width:463px){
+  #register-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    border-radius: 13px;
+    padding: 20px;
+    box-shadow: 3px 7px 10px rgb(255 255 255 / 34%);
+    width: 80%;
+    height: auto;
+    color: #ffffff;
+    margin: 0 auto;
+  }
+
+}
