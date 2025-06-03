@@ -340,6 +340,7 @@ button:hover {
     margin: 5px;
 
   }
+  
     
 
  
@@ -467,9 +468,12 @@ button:hover {
   }
 
   nav {
-    width: 180px;
-    padding: 10px;
-    top: 50px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: auto;
+    
   }
 
   nav a {
@@ -477,9 +481,7 @@ button:hover {
     padding: 5px 6px;
   }
 
-  .submenu {
-    width: 100%;
-  }
+
 
   .buttons {
     align-items: center;
@@ -536,66 +538,9 @@ button:hover {
     padding: 8px 12px;
     font-size: 14px;
   }
-  .has-submenu a{
-    color: #4b1a3a;
-    width: 100%;
-    display: flex;
-    position: relative;
-    left:7px;
-  };
-}
+  .has-submenu a i{
+    color: #a7bdff;
+    margin: 5px;
 
-.check-list {
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            border: 2px solid #ff4d4d;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(45deg, #4b1a3a, #ff4d4d);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .header .price {
-            font-size: 28px;
-            margin: 10px 0;
-        }
-        .header .discount {
-            font-size: 18px;
-            text-decoration: line-through;
-        }
-        .checklist {
-            padding: 20px;
-        }
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 16px;
-        }
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-        .checklist-item::before {
-            content: '✔';
-            color: #00cc00;
-            margin-left: 10px;
-            font-size: 20px;
-        }
-        .button {
-            background: linear-gradient(45deg, #ffcc00, #ff4d4d);
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+  }
+}
