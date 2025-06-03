@@ -315,6 +315,7 @@ button:hover {
 
   nav.active {
     transform: translateX(0);
+    
   }
 
   nav a {
@@ -326,7 +327,20 @@ button:hover {
     background: rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease, transform 0.3s ease;
     border: none;
+    
   }
+  .has-submenu a {
+    width: 100%;
+    
+    position: relative;
+    left: 10px;
+  }
+  .has-submenu a i{
+    color: #a7bdff;
+    margin: 5px;
+
+  }
+    
 
  
 
@@ -368,8 +382,8 @@ button:hover {
 
   .submenu {
     position: static; /* موقعیت استاتیک برای قرارگیری طبیعی زیر آیتم */
-    width: 100%; /* عرض کامل */
-    background-color: rgba(255, 255, 255, 0.2); /* پس‌زمینه هماهنگ با منو */
+    width: 80%; /* عرض کامل */
+    background-color: #383973; /* پس‌زمینه هماهنگ با منو */
     border: none; /* حذف حاشیه برای ظاهر تمیزتر */
     box-shadow: none; /* حذف سایه برای جلوگیری از شلوغی */
     display: none; /* به صورت پیش‌فرض مخفی */
@@ -378,6 +392,7 @@ button:hover {
     opacity: 0; /* برای انیمیشن fade-in */
     transform: translateY(-10px); /* برای انیمیشن slide-in */
     transition: opacity 0.3s ease, transform 0.3s ease; /* انیمیشن باز شدن */
+    
   }
 
   .menu-item.open-submenu .submenu {
@@ -391,11 +406,14 @@ button:hover {
     padding: 8px 15px; /* پدینگ مناسب */
     background: rgba(255, 255, 255, 0.1); /* پس‌زمینه هماهنگ */
     margin: 2px 0; /* فاصله بین آیتم‌های ساب‌منو */
+    color: #f0f0f0;
+    
   }
 
   .submenu a:hover {
     background: rgba(255, 255, 255, 0.3); /* افکت هاور */
     transform: translateX(-5px); /* انیمیشن جابجایی هماهنگ با منوی اصلی */
+    color: #4bf1d8;
   }
 
   .buttons button {
@@ -518,6 +536,13 @@ button:hover {
     padding: 8px 12px;
     font-size: 14px;
   }
+  .has-submenu a{
+    color: #4b1a3a;
+    width: 100%;
+    display: flex;
+    position: relative;
+    left:7px;
+  };
 }
 
 .check-list {
