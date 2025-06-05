@@ -332,14 +332,14 @@ button:hover {
   .has-submenu a {
     width: 100%;
     
-    position: relative;
-    left: 10px;
+  
   }
   .has-submenu a i{
     color: #a7bdff;
     margin: 5px;
 
   }
+
   
     
 
