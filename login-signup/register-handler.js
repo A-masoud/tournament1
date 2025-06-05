@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 // کانفیگ Firebase
 const firebaseConfig = {
@@ -14,18 +15,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-
-
-
-
+const auth = getAuth(app);
 
 // افزودن کلاس active به تمام player-group
 document.querySelectorAll('.player-group').forEach(element => {
   element.classList.add('active');
 });
-
-
 
 // هندل ثبت‌نام
 document.getElementById("register-form").addEventListener("submit", async function (e) {
@@ -57,10 +52,14 @@ document.getElementById("register-form").addEventListener("submit", async functi
   spinner.style.display = "block"; // نمایش لودینگ
 
   try {
-    await addDoc(collection(db, "UserDataList"), {
+    // ثبت‌نام کاربر با Firebase Auth
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // ذخیره اطلاعات اضافه کاربر در Firestore با شناسه کاربری uid
+    await setDoc(doc(db, "UserDataList", user.uid), {
       fullName,
       username,
-      password,
       email,
       createdAt: new Date()
     });
@@ -68,7 +67,7 @@ document.getElementById("register-form").addEventListener("submit", async functi
     alert("ثبت‌نام با موفقیت انجام شد!");
     window.location.href = "login.html";
   } catch (err) {
-    alert("خطا در ذخیره اطلاعات: " + err.message);
+    alert("خطا در ثبت‌نام: " + err.message);
   } finally {
     spinner.style.display = "none"; // مخفی‌سازی لودینگ
   }

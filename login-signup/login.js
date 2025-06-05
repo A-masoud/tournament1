@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const svg = document.getElementById("pas");
 const passwordInput = document.getElementById("password");
@@ -26,7 +28,7 @@ svg.addEventListener("click", function() {
 
 document.querySelectorAll('.player-group').forEach(element => {
   element.classList.add('active');
-}); 
+});
 
 document.getElementById("login-form").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -38,27 +40,42 @@ document.getElementById("login-form").addEventListener("submit", async function 
   const password = document.getElementById("password").value;
 
   try {
-    const querySnapshot = await getDocs(collection(db, "UserDataList"));
-    let matchedUser = null;
+    // 1. جستجو در Firestore برای پیدا کردن ایمیل بر اساس username
+    const usersRef = collection(db, "UserDataList");
+    const q = query(usersRef, where("username", "==", username));
+    const querySnapshot = await getDocs(q);
 
+    if (querySnapshot.empty) {
+      alert("کاربری با این نام کاربری یافت نشد ❌");
+      return;
+    }
+
+    let userEmail = null;
     querySnapshot.forEach((doc) => {
-      const user = doc.data();
-      if (user.username === username && user.password === password) {
-        matchedUser = user;
-      }
+      const userData = doc.data();
+      userEmail = userData.email; // ایمیل مربوط به یوزر نیم
     });
 
-    if (matchedUser) {
-      localStorage.setItem("currentUser", matchedUser.username);
-      alert("شما با موفقیت وارد شدید ✅");
-      window.location.href = "../home/home.html";
-    } else {
-      alert("کاربری با این مشخصات یافت نشد ❌");
+    if (!userEmail) {
+      alert("خطا در بازیابی ایمیل کاربر.");
+      return;
     }
+
+    // 2. ورود به Firebase Auth با ایمیل پیدا شده و پسورد
+    const userCredential = await signInWithEmailAndPassword(auth, userEmail, password);
+    const user = userCredential.user;
+
+    // ذخیره اطلاعات کاربر در localStorage
+    localStorage.setItem("currentUserUid", user.uid);
+    localStorage.setItem("currentUserEmail", user.email);
+    localStorage.setItem("currentUsername", username);
+
+    alert("شما با موفقیت وارد شدید ✅");
+    window.location.href = "../home/home.html";
 
   } catch (error) {
     console.error("خطا در لاگین:", error);
-    alert("خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.");
+    alert("رمز عبور اشتباه است یا خطایی رخ داده ❌");
   } finally {
     if (spinner) spinner.style.display = "none"; // مخفی کردن لودینگ
   }
