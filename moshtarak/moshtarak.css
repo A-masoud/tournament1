@@ -331,7 +331,8 @@ button:hover {
   }
   .has-submenu a {
     width: 100%;
-    
+    position: relative;
+    left: 8px;
   
   }
   .has-submenu a i{
@@ -339,11 +340,6 @@ button:hover {
     margin: 5px;
 
   }
-
-  
-    
-
- 
 
   .hamburger {
     display: flex;
