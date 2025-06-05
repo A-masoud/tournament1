@@ -27,7 +27,7 @@ onAuthStateChanged(auth, (user) => {
       <p> ${username} سلام خوش اومدی!</p>
       <div>
         <button id="logoutBtn">خروج </button>
-        <a href="../dashboard/dashboard.html">
+        <a href="../user-panel/user-panel.html">
           <button>پنل کاربری </button>
         </a>
       </div>
