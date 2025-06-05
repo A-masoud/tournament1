@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت نام</title>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <link rel="stylesheet" href="../moshtarak/moshtarak.css">
+  <link rel="stylesheet" href="user-panel.css">
+</head>
+<body>
+  <script>
+    async function loadPage() {
+     
+      const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
+      document.body.innerHTML = layout;
+
+    
+      await new Promise(resolve => setTimeout(resolve, 50));
+
+     
+      const content = await fetch('user-panel-content.html').then(res => res.text());
+      document.getElementById('content').innerHTML = content;
+
+
+    
+      const script = document.createElement("script");
+      script.src = "user-panel.js";
+      document.body.appendChild(script);
+
+      const moshtarak = document.createElement("script");
+      moshtarak.src = "../moshtarak/moshtarak.js";
+      document.body.appendChild(moshtarak);
+    }
+
+
+    loadPage();
+  </script>
+
+</body>
+</html>
