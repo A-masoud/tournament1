@@ -40,6 +40,7 @@ onAuthStateChanged(auth, (user) => {
       signOut(auth).then(() => {
         localStorage.clear();
         location.reload();
+        window.location.href = "../home/home.html"
       });
     });
   }

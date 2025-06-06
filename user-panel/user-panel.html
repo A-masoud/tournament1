@@ -32,11 +32,15 @@
       const moshtarak = document.createElement("script");
       moshtarak.src = "../moshtarak/moshtarak.js";
       moshtarak.type = 'module'
+      document.body.appendChild(moshtarak);
+
+      const section = document.createElement("script");
+      section.src = "section.js";
+      document.body.appendChild(section);
+      
       
     }
-    const moshtarak = document.createElement("script");
-      moshtarak.src = "section.js";
-      document.body.appendChild(moshtarak);
+    
 
     loadPage();
   </script>
