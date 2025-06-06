@@ -23,12 +23,15 @@ onAuthStateChanged(auth, (user) => {
   if (user && userButtons) {
     const username = localStorage.getItem("currentUsername") || "کاربر";
 
+    // ذخیره uid در localStorage
+    localStorage.setItem("currentUserUID", user.uid);
+
     userButtons.innerHTML = `
-      <p> ${username} سلام خوش اومدی!</p>
+      <p>${username} سلام خوش اومدی!</p>
       <div>
-        <button id="logoutBtn">خروج </button>
+        <button id="logoutBtn">خروج</button>
         <a href="../user-panel/user-panel.html">
-          <button>پنل کاربری </button>
+          <button>پنل کاربری</button>
         </a>
       </div>
     `;
@@ -41,6 +44,7 @@ onAuthStateChanged(auth, (user) => {
     });
   }
 });
+
 
 /////////////////////////////
 const hamburger = document.getElementById('hamburger');

@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 // کانفیگ Firebase
 const firebaseConfig = {
@@ -52,11 +52,15 @@ document.getElementById("register-form").addEventListener("submit", async functi
   spinner.style.display = "block"; // نمایش لودینگ
 
   try {
-    // ثبت‌نام کاربر با Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // ذخیره اطلاعات اضافه کاربر در Firestore با شناسه کاربری uid
+    // 👇 ذخیره نام کامل در Authentication
+    await updateProfile(user, {
+      displayName: fullName
+    });
+
+    // 👇 ذخیره اطلاعات بیشتر در Firestore
     await setDoc(doc(db, "UserDataList", user.uid), {
       fullName,
       username,
@@ -69,6 +73,6 @@ document.getElementById("register-form").addEventListener("submit", async functi
   } catch (err) {
     alert("خطا در ثبت‌نام: " + err.message);
   } finally {
-    spinner.style.display = "none"; // مخفی‌سازی لودینگ
+    spinner.style.display = "none";
   }
 });
