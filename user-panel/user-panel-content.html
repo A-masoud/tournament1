@@ -1,0 +1,60 @@
+
+  <div class="dashboard">
+    <nav class="nav-panel">
+      <button onclick="showSection('profile')">پروفایل</button>
+      <button onclick="showSection('teams')">تیم‌های من</button>
+      <button onclick="showSection('payments')">پرداخت‌ها</button>
+      <button onclick="showSection('messages')">پیام‌ها</button>
+      <button onclick="showSection('discounts')">کدهای تخفیف</button>
+      <button onclick="showSection('security')">امنیت</button>
+      <button onclick="showSection('debug')">📦 دیتای تست</button>
+      <button onclick="logout()">🚪 خروج</button>
+    </nav>
+
+    <div id="content">
+      <section id="profile" class="panel-section active-section">
+        <h2>پروفایل کاربری</h2>
+        <div class="card" id="card-FullName">نام: مسعود علیپور</div>
+        <div class="card" id="card-email">ایمیل: masoud@example.com</div>
+        <div class="card" id="card-UserName">نام کاربری: ثبت نشده</div>
+        <div class="card">
+          <button id="edit-btn" class="edit-button">ویرایش اطلاعات</button>
+        </div>
+      </section>
+      
+
+      <section id="teams" class="panel-section">
+        <h2>تیم‌های من</h2>
+        <div class="card" id="card-YourTeam">شما عضو تیم «شیرهای آبی» هستید.</div>
+        <div class="card" id="SemiMember">عضو تیم: تأیید شده</div>
+      </section>
+
+      <section id="payments" class="panel-section">
+        <h2>پرداخت‌ها</h2>
+        <div class="card">پرداخت ۱۰۰,۰۰۰ تومان - موفق</div>
+        <div class="card">پرداخت ۱۵۰,۰۰۰ تومان - در انتظار</div>
+      </section>
+
+      <section id="messages" class="panel-section">
+        <h2>پیام‌ها</h2>
+        <div class="card">یادآوری: مسابقه از ساعت ۱۸ شروع می‌شود.</div>
+      </section>
+
+      <section id="discounts" class="panel-section">
+        <h2>کدهای تخفیف</h2>
+        <div class="card">کد: MASOUD10 - قابل استفاده تا ۳۰ خرداد</div>
+      </section>
+
+      <section id="security" class="panel-section">
+        <h2>امنیت حساب</h2>
+        <div class="card">تغییر رمز عبور</div>
+        <div class="card">ورود دومرحله‌ای: فعال نیست</div>
+      </section>
+
+      <section id="debug" class="panel-section">
+        <h2>دیتای تست (فقط برای برنامه‌نویس)</h2>
+        <div class="card">UID کاربر: <code>uid_abc123</code></div>
+      </section>
+    </div>
+  </div>
+

@@ -1,0 +1,66 @@
+
+  .dashboard {
+    display: flex;
+    min-height: 50vh;
+  }
+
+  .nav-panel {
+    width: 220px;
+    background: rgba(34, 44, 74, 0.552);
+    color: rgb(151, 183, 249);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    border: solid 1px rgba(65, 40, 105, 0.397);
+  }
+
+  .nav-panel button {
+    text-align: center;
+    width: 100%;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    text-align: right;
+    padding: 10px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  nav button:hover {
+    background: rgba(53, 2, 120, 0.453);
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 100%;
+    
+  }
+
+  #content {
+    flex: 1;
+    padding: 2rem;
+    background-color: rgba(69, 122, 255, 0.159);
+    border: solid 1px rgba(65, 40, 105, 0.397);
+    border-radius: 18px;
+  }
+
+  .panel-section {
+    display: none;
+  }
+
+  .active-section {
+    display: block;
+  }
+
+  h2 {
+    color: #aaff2b;
+  }
+
+  .card {
+    /* background: #f9f9f900; */
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgb(0, 0, 0);
+    margin-bottom: 1rem;
+    color: aliceblue;
+  }
