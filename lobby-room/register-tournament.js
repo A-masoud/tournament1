@@ -1,21 +1,11 @@
 // === ایمپورت Firebase ===
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+import {  doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
 
 // === کانفیگ Firebase (جایگزین با اطلاعات پروژه خودت) ===
-const firebaseConfig = {
-    apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
-    authDomain: "tournify-app.firebaseapp.com",
-    projectId: "tournify-app",
-    storageBucket: "tournify-app.firebasestorage.app",
-    messagingSenderId: "273027702239",
-    appId: "1:273027702239:web:ae13272cba831cca2ef86a",
-    measurementId: "G-GEKS6X6RCV"
-};
 
-// === مقداردهی اولیه ===
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+
 
 // === گرفتن شماره تیم انتخاب شده از لوکال استوریج ===
 const teamNumber = localStorage.getItem("selectedTeamNumber");
