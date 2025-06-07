@@ -174,7 +174,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 63%;
+  height: 69%;
   justify-content: center;
 }
 
@@ -184,7 +184,7 @@ img {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 15px;
-  height: 77%;
+  height: 84%;
 }
 
 #footer-right {
@@ -290,7 +290,7 @@ button:hover {
 }
 
 /* Tablet Responsiveness (max-width: 768px) */
-@media (max-width: 879px) {
+@media (max-width: 1024px) {
   h1 {
     font-size: 2.2rem;
   }
@@ -439,6 +439,9 @@ button:hover {
     height: auto;
     padding: 20px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #vertical-line {
