@@ -105,16 +105,30 @@ nav a:hover {
 .buttons button {
   padding: 4%;
   font-size: 1.1rem;
-  border: rgb(72, 0, 255) 1px solid;
   border-radius: 8px;
   background-color: #5e66f6;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
   font-family: 'Vazirmatn', sans-serif;
   width: 96px;
   height: auto;
+  border: solid 2px rgba(237, 237, 237, 0.527);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(94, 102, 246, 0.6);
 }
+
+.buttons button:hover {
+  background-color: #837ff8;
+  box-shadow: 0 0 15px 3px #837ff8;
+  transform: scale(1.05);
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px 1px #5e66f6;
+  background-color: #4b56d6;
+}
+
 
 .buttons button:hover {
   background-color: #3a41d8;
@@ -476,8 +490,8 @@ button:hover {
 
   .buttons button {
     width: 70px;
-    font-size: 0.9rem;
-    padding: 2%;
+    font-size: 0.8rem;
+    padding: 4%;
   }
 
   .buttons p {

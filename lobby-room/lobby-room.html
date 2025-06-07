@@ -10,32 +10,59 @@
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div id="layout"></div>
+  
     <script>
-        async function loadPage (){
-        const layout = await fetch("../moshtarak/moshtarak.html").then(res => res.text());
-        document.body.innerHTML = layout;
-
-        await new Promise(resolve => setTimeout(resolve, 100));
-
-        const content = await fetch("lobby-room-content.html").then(res => res.text());
-        document.getElementById("content").innerHTML =content
-        
-        const script = document.createElement("script");
-      script.src = "lobby-room.js";
-      script.type = "module";
-      document.body.appendChild(script);
-
-      const moshtarak = document.createElement("script");
-      moshtarak.src = "../moshtarak/moshtarak.js";
-      document.body.appendChild(moshtarak);
-    }
-
-
-        loadPage();
-
-    </script>
- 
-      
+      async function loadPage() {
+        try {
+          // بارگذاری layout
+          const layout = await fetch("../moshtarak/moshtarak.html").then(res => res.text());
+          document.getElementById("layout").innerHTML = layout;
     
-</body>
+          // مکث کوتاه برای اطمینان از اینکه DOM آماده‌ست
+          await new Promise(resolve => setTimeout(resolve, 100));
+    
+          // بارگذاری محتوای لابی
+          const content = await fetch("lobby-room-content.html").then(res => res.text());
+          const contentEl = document.getElementById("content");
+          if (contentEl) {
+            contentEl.innerHTML = content;
+          } else {
+            console.error("❌ عنصر content پیدا نشد");
+            return;
+          }
+    
+          // بارگذاری اسکریپت‌ها
+          const moshtarakScript = document.createElement("script");
+          moshtarakScript.src = "../moshtarak/moshtarak.js";
+          moshtarakScript.type = "module"; // ماژول برای استفاده از import
+          moshtarakScript.onload = () => {
+            console.log("✅ moshtarak.js اجرا شد");
+    
+            const lobbyScript = document.createElement("script");
+            lobbyScript.src = "lobby-room.js";
+            lobbyScript.type = "module"; // ماژول برای فایل دوم هم
+            lobbyScript.onload = () => {
+              console.log("✅ lobby-room.js اجرا شد");
+            };
+            lobbyScript.onerror = () => {
+              console.error("❌ خطا در بارگذاری lobby-room.js");
+            };
+            document.body.appendChild(lobbyScript);
+          };
+          moshtarakScript.onerror = () => {
+            console.error("❌ خطا در بارگذاری moshtarak.js");
+          };
+          document.body.appendChild(moshtarakScript);
+        } catch (err) {
+          console.error("❌ خطا در اجرای loadPage:", err);
+        }
+      }
+    
+      loadPage();
+    </script>
+    
+  </body>
+  
+
 </html>
