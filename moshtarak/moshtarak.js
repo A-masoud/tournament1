@@ -1,8 +1,7 @@
-// moshtarak.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-// مقداردهی Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
   authDomain: "tournify-app.firebaseapp.com",
@@ -15,16 +14,29 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-// پیدا کردن div مربوط به دکمه‌ها
 const userButtons = document.querySelector(".buttons");
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user && userButtons) {
-    const username = localStorage.getItem("currentUsername") || "کاربر";
+    const uid = user.uid;
+    localStorage.setItem("currentUserUID", uid);
 
-    // ذخیره uid در localStorage
-    localStorage.setItem("currentUserUID", user.uid);
+    let username = "کاربر";
+
+    try {
+      const docRef = doc(db, "UserDataList", uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        username = userData.username || "کاربر";
+        localStorage.setItem("currentUsername", username);
+      }
+    } catch (error) {
+      console.error("خطا در دریافت یوزرنیم از Firestore:", error);
+    }
 
     userButtons.innerHTML = `
       <p>${username} سلام خوش اومدی!</p>
@@ -40,36 +52,8 @@ onAuthStateChanged(auth, (user) => {
       signOut(auth).then(() => {
         localStorage.clear();
         location.reload();
-        window.location.href = "../home/home.html"
+        window.location.href = "../home/home.html";
       });
     });
   }
 });
-
-
-/////////////////////////////
-const hamburger = document.getElementById('hamburger');
-const menu = document.querySelector('nav');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  menu.classList.toggle('active');
-});
-
-document.querySelectorAll('.has-submenu > a').forEach(item => {
-  item.addEventListener('click', function (e) {
-    e.preventDefault(); // جلوگیری از رفتن به لینک
-    const parent = this.parentElement;
-
-    // بستن همه‌ی ساب‌منوها به جز مورد کلیک‌شده
-    document.querySelectorAll('.has-submenu').forEach(el => {
-      if (el !== parent) {
-        el.classList.remove('open-submenu');
-      }
-    });
-
-    // باز یا بسته کردن ساب‌منوی مورد نظر
-    parent.classList.toggle('open-submenu');
-  });
-});
-
