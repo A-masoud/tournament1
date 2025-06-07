@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../moshtarak/moshtarak.css">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="register-tournament.css">
-    <title>فرم ثبت نام در مسابقه</title>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../moshtarak/moshtarak.css" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="register-tournament.css" />
+  <title>فرم ثبت نام در مسابقه</title>
 </head>
-<body>               
-<script>
+<body>
+  <script type="module">
     async function loadPage() {
-     
+      // لود کردن قالب اصلی
       const layout = await fetch('../moshtarak/moshtarak.html').then(res => res.text());
       document.body.innerHTML = layout;
 
-    
-      await new Promise(resolve => setTimeout(resolve, 50));
-
-     
+      // لود محتوای صفحه ثبت‌نام
       const content = await fetch('register-tournament-content.html').then(res => res.text());
-      document.getElementById('content').innerHTML = content;
+      const contentDiv = document.getElementById('content');
+      if (contentDiv) {
+        contentDiv.innerHTML = content;
+      }
 
+      // لود اسکریپت‌ها به ترتیب
+      const loadScript = (src) => {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.type = 'module';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+      };
 
-      const moshtarak = document.createElement("script");
-      moshtarak.src = "../moshtarak/moshtarak.js";
-      moshtarak.type = "module"
-      document.body.appendChild(moshtarak);
-
-
-      const script = document.createElement("script");
-      script.src = "register-tournament.js";
-      script.type = "module";
-      document.body.appendChild(script);
-     
-
-      
+      try {
+        await loadScript('../moshtarak/moshtarak.js'); // اول فایل‌های مشترک
+        await loadScript('register-tournament.js');    // بعدش فایل اصلی ثبت‌نام
+      } catch (e) {
+        console.error("خطا در لود اسکریپت‌ها:", e);
+      }
     }
-    
 
     loadPage();
   </script>
-  </body>
-  </html>  
+</body>
+</html>
