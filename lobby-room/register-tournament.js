@@ -2,23 +2,16 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-
-
 const db = getFirestore();
 const auth = getAuth();
 
-
-// === گرفتن شماره تیم انتخاب شده از لوکال استوریج ===
 const teamNumber = localStorage.getItem("selectedTeamNumber");
 const welcomeMessage = document.getElementById("welcome-message");
-
-// === بررسی ورود کاربر و دریافت username ===
-
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     alert("برای ثبت‌نام ابتدا باید وارد حساب خود شوید.");
-    window.location.href = "register.html";
+    window.location.href = "../login-signup/register.html";
     return;
   }
 
@@ -34,12 +27,41 @@ onAuthStateChanged(auth, async (user) => {
       const userData = docSnap.data();
       username = userData.username || "کاربر";
       localStorage.setItem("currentUsername", username);
+
+      // اگر قبلاً تیم ثبت‌نام کرده بود
+      if (userData.teamRegistered) {
+        const prevTeam = userData.teamRegistered;
+        const confirmUse = confirm(`شما قبلاً تیم شماره ${prevTeam.teamNumber} رو ثبت‌نام کردید.\nآیا می‌خواید اطلاعات قبلی‌تون برای فرم فعلی استفاده بشه؟`);
+        if (confirmUse) {
+          document.querySelector('input[name="leaderName"]').value = prevTeam.leader || "";
+
+          const playerUsernames = [
+            'player1Username',
+            'player2Username',
+            'player3Username',
+            'player4Username'
+          ];
+          const playerIDs = [
+            'player1ID',
+            'player2ID',
+            'player3ID',
+            'player4ID'
+          ];
+
+          playerUsernames.forEach((name, i) => {
+            document.querySelector(`input[name="${name}"]`).value = prevTeam.players[i] || "";
+          });
+
+          playerIDs.forEach((id, i) => {
+            document.querySelector(`input[name="${id}"]`).value = prevTeam.playerIDs[i] || "";
+          });
+        }
+      }
     }
   } catch (error) {
     console.error("خطا در دریافت یوزرنیم از Firestore:", error);
   }
 
-  // === خوش‌آمدگویی با username ===
   if (teamNumber) {
     welcomeMessage.innerHTML = `🌟 سلام <strong>${username}</strong>!<br>شما تیم شماره <strong>${teamNumber}</strong> رو انتخاب کردید.<br>حالا نوبت ثبت‌نامه!`;
   } else {
@@ -47,12 +69,8 @@ onAuthStateChanged(auth, async (user) => {
   }
 
   welcomeMessage.classList.add('active');
+  document.querySelectorAll('.leader, .player-group, .hr-user, h3, .between').forEach(el => el.classList.add('active'));
 
-  document.querySelectorAll('.leader, .player-group, .hr-user, h3, .between').forEach(element => {
-    element.classList.add('active');
-  });
-
-  // === اعتبارسنجی آیدی بازیکنان ===
   function validatePlayerID(inputElement, errorElementID) {
     const value = inputElement.value.trim();
     const errorElement = document.getElementById(errorElementID);
@@ -81,14 +99,12 @@ onAuthStateChanged(auth, async (user) => {
     }
   });
 
-  // === بررسی وجود تیم در Firestore ===
   async function isTeamTaken(teamNumber) {
     const docRef = doc(db, "teams", `team-${teamNumber}`);
     const docSnap = await getDoc(docRef);
     return docSnap.exists();
   }
 
-  // === مدیریت ارسال فرم ===
   document.getElementById("register-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -146,6 +162,16 @@ onAuthStateChanged(auth, async (user) => {
     localStorage.setItem(`team-${teamNumber}`, JSON.stringify(teamData));
 
     await setDoc(doc(db, "teams", `team-${teamNumber}`), teamData);
+
+    const userRef = doc(db, "UserDataList", uid);
+    await setDoc(userRef, {
+      teamRegistered: {
+        teamNumber: teamNumber,
+        leader: leaderName,
+        players: players,
+        playerIDs: playerIDs
+      }
+    }, { merge: true });
 
     const messagePanel = document.createElement('div');
     messagePanel.style.position = 'fixed';
