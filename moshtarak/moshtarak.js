@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
+/* ---------- تنظیمات Firebase ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyC5mI93Gj8Oo73OLFMdoRExN46Ffcr1AQ4",
   authDomain: "tournify-app.firebaseapp.com",
@@ -16,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+/* ---------- المنت‌های مربوط به منوی کاربری ---------- */
 const userButtons = document.querySelector(".buttons");
 
 onAuthStateChanged(auth, async (user) => {
@@ -126,29 +128,28 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-////////////////////////////////////////////////////////////
+/* ---------- منوی همبرگری و ساب‌منو ---------- */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.querySelector("nav");
 
-const hamburger = document.getElementById('hamburger');
-const menu = document.querySelector('nav');
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    navMenu.classList.toggle("active");
+  });
+}
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  menu.classList.toggle('active');
-});
-
-document.querySelectorAll('.has-submenu > a').forEach(item => {
-  item.addEventListener('click', function (e) {
-    e.preventDefault(); // جلوگیری از رفتن به لینک
+document.querySelectorAll(".has-submenu > a").forEach(item => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
     const parent = this.parentElement;
 
-    // بستن همه‌ی ساب‌منوها به جز مورد کلیک‌شده
-    document.querySelectorAll('.has-submenu').forEach(el => {
+    document.querySelectorAll(".has-submenu").forEach(el => {
       if (el !== parent) {
-        el.classList.remove('open-submenu');
+        el.classList.remove("open-submenu");
       }
     });
 
-    // باز یا بسته کردن ساب‌منوی مورد نظر
-    parent.classList.toggle('open-submenu');
+    parent.classList.toggle("open-submenu");
   });
 });
