@@ -2,6 +2,7 @@
   .dashboard {
     display: flex;
     min-height: 50vh;
+    margin: 2;
   }
 
   .nav-panel {
@@ -42,6 +43,7 @@
     background-color: rgba(69, 122, 255, 0.159);
     border: solid 1px rgba(65, 40, 105, 0.397);
     border-radius: 18px;
+    margin: 2%;
   }
 
   .panel-section {
