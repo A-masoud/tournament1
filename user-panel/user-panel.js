@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import {
   getAuth,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  signOut
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 import {
   getFirestore,
@@ -31,6 +32,20 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+/* ---------- تابع خروج ---------- */
+window.logout = function () {
+  signOut(auth)
+    .then(() => {
+      localStorage.removeItem("currentUserUID");
+      alert("با موفقیت خارج شدید.");
+      location.replace("../home/home.html"); // استفاده از replace
+    })
+    .catch((error) => {
+      console.error("خطا در خروج:", error);
+      alert("مشکلی در خروج پیش آمد.");
+    });
+};
+
 /* ---------- انتخاب المنت‌ها ---------- */
 const emailCard     = document.getElementById("card-email");
 const nameCard      = document.getElementById("card-FullName");
@@ -39,8 +54,13 @@ const editBtn       = document.getElementById("edit-btn");
 
 let isEditing = false;
 
+/* ---------- بررسی وضعیت کاربر ---------- */
 onAuthStateChanged(auth, async (user) => {
-  if (!user) return;
+  if (!user) {
+    localStorage.removeItem("currentUserUID");
+    location.replace("../home/home.html");
+    return;
+  }
 
   localStorage.setItem("currentUserUID", user.uid);
   emailCard.textContent = `ایمیل: ${user.email}`;
@@ -83,7 +103,7 @@ onAuthStateChanged(auth, async (user) => {
 
     for (const doc of querySnapshot.docs) {
       if (doc.id !== user.uid) {
-        return true; // یکی دیگه از این username استفاده کرده
+        return true;
       }
     }
     return false;
@@ -111,12 +131,10 @@ onAuthStateChanged(auth, async (user) => {
       }
 
       try {
-        // آپدیت نام در Auth
         if (newName !== user.displayName) {
           await updateProfile(user, { displayName: newName });
         }
 
-        // آپدیت یا ساخت داکیومنت در Firestore
         if (!docSnap.exists()) {
           await setDoc(docRef, {
             username: newUsername,
