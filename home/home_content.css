@@ -331,7 +331,7 @@
       transition: 0.3s;
     }
 
-      img{
+    .slider  img{
     position: relative;
     top: -88px;
     width: 361px;
