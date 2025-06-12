@@ -1,75 +1,132 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>چک لیست</title>
-    <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            direction: rtl;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        .check-list {
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            border: 2px solid #ff4d4d;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(45deg, #4b1a3a, #ff4d4d);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .header .price {
-            font-size: 28px;
-            margin: 10px 0;
-        }
-        .header .discount {
-            font-size: 18px;
-            text-decoration: line-through;
-        }
-        .checklist {
-            padding: 20px;
-        }
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 16px;
-        }
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-        .checklist-item::before {
-            content: '✔';
-            color: #00cc00;
-            margin-left: 10px;
-            font-size: 20px;
-        }
-        .button {
-            background: linear-gradient(45deg, #ffcc00, #ff4d4d);
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="check-list">
+<div class="container">
+    <div class="item"><div class="slider-container">
+      <div class="slider">
+          <div class="slide"><img src="../img/call-of-duty-black-3840x2160-19463.jpg" alt="Image 1"></div>
+          <div class="slide"><img src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" alt="Image 2"></div>
+          <div class="slide"><img src="../img/wp2208679-pubg-wallpapers.jpg" alt="Image 3"></div>
+          <div class="slide"><img src="../img/call-of-duty-black-3840x2160-19463.jpg" alt="Image 4"></div>
+          <div class="slide"><img src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" alt="Image 5"></div>
+      </div>
+  
+      <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+      <div class="cont">
+        <img class="pic" onclick="currentSlide(1)" src="../img/call-of-duty-black-3840x2160-19463.jpg" width="120px" height="90px" alt="Call of Duty">
+        <img class="pic" onclick="currentSlide(2)" src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" width="120px" height="90px" alt="Fortnite">
+        <img class="pic" onclick="currentSlide(3)" src="../img/wp2208679-pubg-wallpapers.jpg" width="120px" height="90px" alt="PUBG">
+    </div>
+  </div></div>
+    <div class="item"><table>
+      <caption>
+        <span class="neon"></span>
+        
+        <span class="neon">لیست برندگان آخرین مسابقه</span>
+          
+      </caption>
+      <tr>
+          <th>Team Name</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th>Player 3</th>
+          <th>Player 4</th>
+      </tr>
+      <tr>
+          <td>Team 1</td>
+          <td>Ali</td>
+          <td>Mahdi</td>
+          <td>Mahamad</td>
+          <td>Masoud</td>
+      </tr>
+      <tr>
+          <td>Team 2</td>
+          <td>Ali</td>
+          <td>Mahdi</td>
+          <td>Mahamad</td>
+          <td>Masoud</td>
+      </tr>
+      <tr>
+          <td>Team 3</td>
+          <td>Ali</td>
+          <td>Mahdi</td>
+          <td>Mahamad</td>
+          <td>Masoud</td>
+      </tr>
+      <tr>
+          <td>Team 3</td>
+          <td>Ali</td>
+          <td>Mahdi</td>
+          <td>Mahamad</td>
+          <td>Masoud</td>
+      </tr>
+      <tr>
+        <td>Team 3</td>
+        <td>Ali</td>
+        <td>Mahdi</td>
+        <td>Mahamad</td>
+        <td>Masoud</td>
+    </tr>
+    <tr>
+        <td>Team 3</td>
+        <td>Ali</td>
+        <td>Mahdi</td>
+        <td>Mahamad</td>
+        <td>Masoud</td>
+    </tr>
+    <tr>
+        <td>Team 3</td>
+        <td>Ali</td>
+        <td>Mahdi</td>
+        <td>Mahamad</td>
+        <td>Masoud</td>
+    
+  </table>
+</div>
+<div class="item status-table-item">
+    <table class="status-table">
+        <caption>
+         
+          <span>وضعیت مسابقه</span>
+        </caption>
+        <tr>
+          <th>آیتم</th>
+          <th>وضعیت</th>
+        </tr>
+        <tr>
+          <td>تایمر شروع مسابقه</td>
+          <td id="countdown-cell">
+            <div id="countdown">در حال بارگذاری ...</div>
+          </td>
+        </tr>
+        <tr>
+          <td>تعداد تیم‌های ثبت‌نام‌شده</td>
+          <td id="registered-teams">در حال بارگذاری...</td>
+        </tr>
+        <tr>
+          <td>تعداد جایگاه‌های خالی</td>
+          <td id="empty-slots">در حال بارگذاری...</td>
+        </tr>
+        <tr>
+          <td>وضعیت مسابقه</td>
+          <td id="match-status">در حال بارگذاری...</td>
+        </tr>
+        <tr>
+          <td>نقشه بازی</td>
+          <td id="map-name">در حال بارگذاری...</td>
+        </tr>
+        <tr>
+          <td>سرور مسابقه</td>
+          <td id="server">در حال بارگزاری</td>
+        </tr >
+        <tr class="h"  >
+          
+          <td colspan="2" >
+            <a class="btn41-43 btn-41"href="../lobby-room/lobby-room.html" target="_blank"> ثبت نام در مسابقه </a>
+          </td>
+          
+        </tr>
+      </table>
+      </div>
+      <div class="check-list">
         <div class="header">
             <h1>محصول نات و بوف</h1>
             <div class="price">15000 تومن</div>
@@ -85,5 +142,9 @@
         </div>
         <div class="button">مشاهده این برنامه</div>
     </div>
-</body>
-</html>
+  </div>
+  
+
+ 
+
+  </div>

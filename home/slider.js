@@ -2,7 +2,7 @@ let currentIndex = 0;
 let autoSlideInterval;
 
 function moveSlide(direction) {
-    const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.slide-img');
     const totalSlides = slides.length;
 
     currentIndex += direction;
@@ -17,7 +17,7 @@ function moveSlide(direction) {
 }
 
 function currentSlide(index) {
-    const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.slide-img');
     const totalSlides = slides.length;
 
     if (index >= 1 && index <= totalSlides) {
@@ -28,7 +28,7 @@ function currentSlide(index) {
 }
 
 function updateSlider() {
-    const slider = document.querySelector('.slider');
+    const slider = document.querySelector('.slider-img');
     slider.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
@@ -45,5 +45,10 @@ function resetAutoSlide() {
 
 startAutoSlide();
 //////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
   

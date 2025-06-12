@@ -1,150 +1,77 @@
-<div class="container">
-    <div class="item"><div class="slider-container">
-      <div class="slider">
-          <div class="slide"><img src="../img/call-of-duty-black-3840x2160-19463.jpg" alt="Image 1"></div>
-          <div class="slide"><img src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" alt="Image 2"></div>
-          <div class="slide"><img src="../img/wp2208679-pubg-wallpapers.jpg" alt="Image 3"></div>
-          <div class="slide"><img src="../img/call-of-duty-black-3840x2160-19463.jpg" alt="Image 4"></div>
-          <div class="slide"><img src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" alt="Image 5"></div>
-      </div>
-  
-      <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
-      <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
-      <div class="cont">
-        <img class="pic" onclick="currentSlide(1)" src="../img/call-of-duty-black-3840x2160-19463.jpg" width="120px" height="90px" alt="Call of Duty">
-        <img class="pic" onclick="currentSlide(2)" src="../img/fortnite-lawless-mugshot-battle-pass-loading-screen-hd-wallpaper-uhdpaper.com-718@5@d.jpg" width="120px" height="90px" alt="Fortnite">
-        <img class="pic" onclick="currentSlide(3)" src="../img/wp2208679-pubg-wallpapers.jpg" width="120px" height="90px" alt="PUBG">
+<div class="top">
+
+  <div class="title-box">
+    <span>سایت برتر ورزش‌های الکترونیک و گیمینگ</span>
+
+    <div class="border"></div>
+
+    <span>شکل‌دهی آینده ورزش‌های</span>
+
+    <div class="border-right"></div>
+
+    <span>الکترونیک</span>
+  </div>
+
+  <div class="btn-top">
+    <div>
+      <a class="btn-41 btn-red" class="btn-top" href="">ثبت نام</a>
     </div>
-  </div></div>
-    <div class="item"><table>
-      <caption>
-        <span class="neon"></span>
+    <div>
+      <a class="btn-41 btn-blue" class="btn-top" href="">بیلمیرم</a>
+    </div>
+  </div>
+
+
+
+    <div class="slider">
+    <!-- Radio buttons -->
+    <input type="radio" name="slider" id="s1" checked>
+    <input type="radio" name="slider" id="s2">
+    <input type="radio" name="slider" id="s3">
+
+    <!-- Slides --><img class="left-img" src="../img/Untitled-3.png" alt="">
+    <div class="slides">
+      <div class="slide">
         
-        <span class="neon">لیست برندگان آخرین مسابقه</span>
-          
-      </caption>
-      <tr>
-          <th>Team Name</th>
-          <th>Player 1</th>
-          <th>Player 2</th>
-          <th>Player 3</th>
-          <th>Player 4</th>
-      </tr>
-      <tr>
-          <td>Team 1</td>
-          <td>Ali</td>
-          <td>Mahdi</td>
-          <td>Mahamad</td>
-          <td>Masoud</td>
-      </tr>
-      <tr>
-          <td>Team 2</td>
-          <td>Ali</td>
-          <td>Mahdi</td>
-          <td>Mahamad</td>
-          <td>Masoud</td>
-      </tr>
-      <tr>
-          <td>Team 3</td>
-          <td>Ali</td>
-          <td>Mahdi</td>
-          <td>Mahamad</td>
-          <td>Masoud</td>
-      </tr>
-      <tr>
-          <td>Team 3</td>
-          <td>Ali</td>
-          <td>Mahdi</td>
-          <td>Mahamad</td>
-          <td>Masoud</td>
-      </tr>
-      <tr>
-        <td>Team 3</td>
-        <td>Ali</td>
-        <td>Mahdi</td>
-        <td>Mahamad</td>
-        <td>Masoud</td>
-    </tr>
-    <tr>
-        <td>Team 3</td>
-        <td>Ali</td>
-        <td>Mahdi</td>
-        <td>Mahamad</td>
-        <td>Masoud</td>
-    </tr>
-    <tr>
-        <td>Team 3</td>
-        <td>Ali</td>
-        <td>Mahdi</td>
-        <td>Mahamad</td>
-        <td>Masoud</td>
-    
-  </table>
-</div>
-<div class="item status-table-item">
-    <table class="status-table">
-        <caption>
-         
-          <span>وضعیت مسابقه</span>
-        </caption>
-        <tr>
-          <th>آیتم</th>
-          <th>وضعیت</th>
-        </tr>
-        <tr>
-          <td>تایمر شروع مسابقه</td>
-          <td id="countdown-cell">
-            <div id="countdown">در حال بارگذاری ...</div>
-          </td>
-        </tr>
-        <tr>
-          <td>تعداد تیم‌های ثبت‌نام‌شده</td>
-          <td id="registered-teams">در حال بارگذاری...</td>
-        </tr>
-        <tr>
-          <td>تعداد جایگاه‌های خالی</td>
-          <td id="empty-slots">در حال بارگذاری...</td>
-        </tr>
-        <tr>
-          <td>وضعیت مسابقه</td>
-          <td id="match-status">در حال بارگذاری...</td>
-        </tr>
-        <tr>
-          <td>نقشه بازی</td>
-          <td id="map-name">در حال بارگذاری...</td>
-        </tr>
-        <tr>
-          <td>سرور مسابقه</td>
-          <td id="server">در حال بارگزاری</td>
-        </tr >
-        <tr class="h"  >
-          
-          <td colspan="2" >
-            <a class="btn41-43 btn-41"href="../lobby-room/lobby-room.html" target="_blank"> ثبت نام در مسابقه </a>
-          </td>
-          
-        </tr>
-      </table>
+        <div class="text">
+          <h2>Join The Big Tournaments</h2>
+          <p>Beyond esports tournaments, include a broader calendar of gaming events, conferences, and conventions, and connect with each other.</p>
+          <a href="#">JOIN NOW →</a>
+        </div>
+
       </div>
-      <div class="check-list">
-        <div class="header">
-            <h1>محصول نات و بوف</h1>
-            <div class="price">15000 تومن</div>
-            <div class="discount">20000 تومن</div>
+
+      <div class="slide">
+
+        <div class="text">
+          <h2>Compete With Pro Players</h2>
+          <p>Join leagues with top players and improve your gaming skills in real-time competition.</p>
+          <a href="#">JOIN NOW →</a>
         </div>
-        <div class="checklist">
-            <div class="checklist-item">تغذیه و رژیم غذایی سریع</div>
-            <div class="checklist-item">رژیم غذایی با کالری مشخص و رژیم غذایی پر کربوهیدرات</div>
-            <div class="checklist-item">سیستم تغذیه کم کالری و رژیم غذایی پر کربوهیدرات</div>
-            <div class="checklist-item">تنظیم وزن و سوخت و ساز بدن</div>
-            <div class="checklist-item">نتیجه دهی در کمتر از 24 ساعت</div>
-            <div class="checklist-item">دارای چارت حرفه ای برای رژیم</div>
+
+      </div>
+
+      <div class="slide">
+
+        <div class="text">
+          <h2>Win Exclusive Rewards</h2>
+          <p>Participate in events and tournaments to earn exclusive in-game rewards and bonuses.</p>
+          <a href="#">JOIN NOW →</a>
         </div>
-        <div class="button">مشاهده این برنامه</div>
+        
+      </div>
+    </div><img src="../img/Untitled-1.png" alt="">
+
+    <!-- Dots -->
+    <div class="dots">
+      <label for="s1"></label>
+      <label for="s2"></label>
+      <label for="s3"></label>
     </div>
   </div>
-  
 
- 
+</div>
+<div id="betwen">
 
-  </div>
+</div>
+

@@ -172,7 +172,7 @@ footer a:hover {
   border-bottom: 1px solid #4bf1d8;
 }
 
-img {
+#footer-left img {
   width: 100px;
   height: 100px;
 }
@@ -185,7 +185,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 69%;
+  height: 60%;
   justify-content: center;
 }
 
@@ -195,7 +195,7 @@ img {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 15px;
-  height: 84%;
+  height: 72%;
 }
 
 #footer-right {
@@ -802,4 +802,10 @@ button {
 #logoutBtn1 {
   display: flex;
   align-items: center;
+}
+
+#footer-center, #footer-left, #footer-right, #footer-center-right {
+    height: 200px; /* یا هر مقدار دلخواه */
+    min-height: 200px; /* برای اطمینان از حداقل ارتفاع */
+    box-sizing: border-box; /* برای محاسبه padding و border در ارتفاع */
 }
